@@ -11,7 +11,12 @@ const nextConfig = {
     typedRoutes: true,
   },
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
 }
 

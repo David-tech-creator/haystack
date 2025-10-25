@@ -12,7 +12,12 @@ const nextConfig: NextConfig = withMDX({
     typedRoutes: true,
   },
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
 })
 
