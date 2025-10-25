@@ -71,8 +71,9 @@ function HowItWorks() {
 
 function FinalCTA() {
   return (
-    <section className="bg-[#1f2640] py-20 text-[#fdf9ef]">
-      <div className="container flex flex-col items-center gap-6 text-center">
+    <section className="relative overflow-hidden bg-[#1f2640] py-20 text-[#fefbf4]">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1f2640] via-[#222b47] to-[#1f2640] opacity-90" aria-hidden />
+      <div className="container relative flex flex-col items-center gap-6 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#e8d8b8]">Next sprint launches Monday</p>
         <h2 className="max-w-2xl font-display text-3xl leading-snug">
           Ready to find decisive AI talent? Book a Haystack sprint today.
