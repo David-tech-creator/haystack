@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import type { Route } from "next"
 import { usePathname } from "next/navigation"
@@ -46,7 +47,21 @@ export function SiteHeader() {
       />
       <div className="container flex items-center justify-between gap-10 py-6">
         <Link href="/" className="flex items-center gap-3 text-sm font-semibold text-primary">
-          <span className="text-3xl font-display lowercase tracking-tight text-primary">haystack.</span>
+          <Image
+            src="/Haystack logo no text.png"
+            alt="Haystack mark"
+            width={36}
+            height={36}
+            priority
+          />
+          <Image
+            src="/Haystack logo.png"
+            alt="Haystack wordmark"
+            width={120}
+            height={32}
+            priority
+            className="hidden sm:block"
+          />
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-semibold text-primary/80 md:flex">
           {navItems.map((item) => {

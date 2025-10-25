@@ -3,7 +3,6 @@
 import { Logos } from "@/components/logos"
 import { Stats } from "@/components/stats"
 import { Testimonials } from "@/components/testimonials"
-import { ValueCards } from "@/components/value-cards"
 import { Hero } from "@/components/hero"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -12,7 +11,6 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       <Hero />
-      <ValueCards />
       <Logos />
       <HowItWorks />
       <Stats />
