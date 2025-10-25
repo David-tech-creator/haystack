@@ -26,7 +26,7 @@ export function Hero() {
           >
             <span className="relative inline-block">
               <span className="absolute inset-x-0 bottom-1 h-4 rounded-full bg-[#f4ca64]/80" aria-hidden />
-              <span className="relative font-script italic text-[1.05em]">Think big.</span>
+              <span className="relative font-script italic text-[1.05em]">Move the needle.</span>
             </span>{" "}
             Haystack finds decisive talent step by step.
           </motion.h1>
