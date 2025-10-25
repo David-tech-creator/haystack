@@ -42,9 +42,9 @@ function HowItWorks() {
       <Image
         src="/images/Haystack-logo.png"
         alt="Haystack emblem background"
-        width={640}
-        height={640}
-        className="pointer-events-none absolute -right-32 top-12 hidden opacity-10 lg:block"
+        width={920}
+        height={920}
+        className="pointer-events-none absolute right-1/2 top-1/2 hidden -translate-y-1/2 translate-x-[48%] opacity-18 lg:block"
         aria-hidden
       />
       <div className="container relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
