@@ -5,21 +5,6 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
-const heroImages = [
-  {
-    src: "/Team Brainstorming Session.jpg",
-    alt: "Team collaborating at whiteboard",
-    width: 420,
-    height: 320,
-  },
-  {
-    src: "/Needle.jpg",
-    alt: "Needle in haystack",
-    width: 320,
-    height: 380,
-  },
-]
-
 export function Hero() {
   return (
     <section className="relative bg-[#f6f0e2] py-20 lg:py-24">
@@ -75,26 +60,22 @@ export function Hero() {
             </Link>
           </motion.div>
         </div>
-        <div className="flex flex-col gap-6 lg:flex-row">
-          {heroImages.map((image, index) => (
-            <motion.div
-              key={image.src}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-              className="overflow-hidden rounded-3xl border border-white/80 shadow-lg"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                className="h-full w-full object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="overflow-hidden rounded-3xl border border-white/80 shadow-lg"
+        >
+          <Image
+            src="/images/Needle.png"
+            alt="Needle in haystack illustration"
+            width={880}
+            height={660}
+            priority
+            className="h-full w-full object-cover"
+          />
+        </motion.div>
       </div>
     </section>
   )
