@@ -44,7 +44,7 @@ function HowItWorks() {
         alt="Haystack emblem background"
         width={920}
         height={920}
-        className="pointer-events-none absolute right-1/2 top-1/2 hidden -translate-y-1/2 translate-x-[48%] opacity-18 lg:block"
+        className="pointer-events-none absolute right-1/2 top-1/2 hidden -translate-y-[62%] translate-x-[58%] opacity-25 mix-blend-multiply lg:block"
         aria-hidden
       />
       <div className="container relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
