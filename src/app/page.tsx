@@ -4,7 +4,6 @@ import { Logos } from "@/components/logos"
 import { Stats } from "@/components/stats"
 import { Testimonials } from "@/components/testimonials"
 import { Hero } from "@/components/hero"
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -39,14 +38,6 @@ function HowItWorks() {
 
   return (
     <section className="relative overflow-hidden bg-[#fdf9ef] py-20">
-      <Image
-        src="/images/Haystack-logo.png"
-        alt="Haystack emblem background"
-        width={920}
-        height={920}
-        className="pointer-events-none absolute right-1/2 top-1/2 hidden -translate-y-[62%] translate-x-[58%] opacity-25 mix-blend-multiply lg:block"
-        aria-hidden
-      />
       <div className="container relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl space-y-4">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60">How it works</p>
