@@ -98,6 +98,7 @@ const tailwindConfig = {
       fontFamily: {
         sans: ["var(--font-mulish)", ...fontFamily.sans],
         display: ["var(--font-cormorant)", "var(--font-mulish)", ...fontFamily.sans],
+        brand: ["var(--font-outfit)", "var(--font-mulish)", ...fontFamily.sans],
       },
       boxShadow: {
         "soft-lg": "0 25px 50px -12px rgba(13, 18, 33, 0.35)",

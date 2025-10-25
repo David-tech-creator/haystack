@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
-import { mulish, cormorant } from "@/styles/fonts"
+import { mulish, cormorant, outfit } from "@/styles/fonts"
 
 import "./globals.css"
 
@@ -40,6 +40,7 @@ export default function RootLayout({
           "min-h-screen bg-background text-foreground font-sans",
           mulish.variable,
           cormorant.variable,
+          outfit.variable,
         )}
       >
         <Providers>

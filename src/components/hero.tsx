@@ -7,14 +7,14 @@ import Balancer from "react-wrap-balancer"
 
 const heroImages = [
   {
-    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=960&q=80",
-    alt: "Team collaborating at glass wall",
+    src: "/Team Brainstorming Session.jpg",
+    alt: "Team collaborating at whiteboard",
     width: 420,
     height: 320,
   },
   {
-    src: "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=720&q=80",
-    alt: "Leaders shaking hands",
+    src: "/Needle.jpg",
+    alt: "Needle in haystack",
     width: 320,
     height: 380,
   },
