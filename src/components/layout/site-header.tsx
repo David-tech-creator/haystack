@@ -53,7 +53,7 @@ export function SiteHeader() {
             width={72}
             height={72}
             priority
-            className="h-14 w-auto"
+            className="h-14 w-auto mix-blend-multiply"
           />
           <span className="text-4xl font-display tracking-tight text-primary">Haystack</span>
         </Link>
