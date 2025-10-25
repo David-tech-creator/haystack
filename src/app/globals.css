@@ -1,26 +1,78 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 42 60% 96%;
+    --foreground: 231 44% 14%;
+    --muted: 36 52% 90%;
+    --muted-foreground: 232 16% 38%;
+    --card: 42 60% 96%;
+    --card-foreground: 231 44% 14%;
+    --popover: 42 60% 96%;
+    --popover-foreground: 231 44% 14%;
+    --primary: 232 45% 18%;
+    --primary-foreground: 40 70% 92%;
+    --secondary: 42 92% 72%;
+    --secondary-foreground: 232 45% 18%;
+    --accent: 35 70% 86%;
+    --accent-foreground: 232 45% 18%;
+    --destructive: 7 78% 48%;
+    --destructive-foreground: 42 100% 96%;
+    --border: 35 40% 84%;
+    --input: 35 40% 84%;
+    --ring: 232 45% 18%;
+    --radius: 0.875rem;
+  }
+
+  .dark {
+    --background: 232 45% 12%;
+    --foreground: 42 60% 94%;
+    --muted: 233 30% 20%;
+    --muted-foreground: 42 40% 80%;
+    --card: 232 45% 12%;
+    --card-foreground: 42 60% 94%;
+    --popover: 232 45% 12%;
+    --popover-foreground: 42 60% 94%;
+    --primary: 42 92% 72%;
+    --primary-foreground: 232 45% 14%;
+    --secondary: 230 36% 20%;
+    --secondary-foreground: 42 60% 94%;
+    --accent: 230 32% 26%;
+    --accent-foreground: 42 60% 94%;
+    --destructive: 7 80% 56%;
+    --destructive-foreground: 42 100% 96%;
+    --border: 230 32% 28%;
+    --input: 230 32% 28%;
+    --ring: 42 92% 72%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-medium tracking-tight text-primary;
+  }
+
+  ::selection {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
