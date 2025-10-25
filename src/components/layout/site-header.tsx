@@ -82,7 +82,7 @@ export function SiteHeader() {
             size="sm"
             className="rounded-full bg-[#1f2640] px-6 text-[#fefbf4] hover:bg-[#1f2640]/90"
           >
-            Request a demo
+            Request a sprint
           </Button>
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
