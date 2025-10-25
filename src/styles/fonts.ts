@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Mulish, Outfit } from "next/font/google"
+import { Alex_Brush, Cormorant_Garamond, Mulish, Outfit } from "next/font/google"
 
 export const mulish = Mulish({
   subsets: ["latin"],
@@ -17,6 +17,13 @@ export const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+})
+
+export const alexBrush = Alex_Brush({
+  subsets: ["latin"],
+  variable: "--font-alex-brush",
+  weight: "400",
   display: "swap",
 })
 

@@ -39,7 +39,11 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
             className="font-display text-5xl leading-tight text-[#1f2640] lg:text-[3.6rem]"
           >
-            Think big. Haystack finds decisive talent step by step.
+            <span className="relative inline-block">
+              <span className="absolute inset-x-0 bottom-1 h-4 rounded-full bg-[#f4ca64]/80" aria-hidden />
+              <span className="relative font-script italic text-[1.05em]">Think big.</span>
+            </span>{" "}
+            Haystack finds decisive talent step by step.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
