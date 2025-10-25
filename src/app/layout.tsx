@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
-import { mulish, cormorant, outfit, alexBrush } from "@/styles/fonts"
+import { mulish, cormorant, outfit } from "@/styles/fonts"
 
 import "./globals.css"
 
@@ -41,7 +41,6 @@ export default function RootLayout({
           mulish.variable,
           cormorant.variable,
           outfit.variable,
-          alexBrush.variable,
         )}
       >
         <Providers>

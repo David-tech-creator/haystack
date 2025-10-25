@@ -14,6 +14,9 @@ importers:
       '@fontsource/mulish':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource/outfit':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.65.0(react@18.3.1))
@@ -327,6 +330,9 @@ packages:
 
   '@fontsource/mulish@5.2.8':
     resolution: {integrity: sha512-pAqO7fkpGHd0Zjr5ieiWrr9kJiZWbaADaZWOlMERTsSqNsRUsg5y0jv4n6/VjWhd4LUfkYpiQBhP0yLDpbPNiw==}
+
+  '@fontsource/outfit@5.2.8':
+    resolution: {integrity: sha512-rXC6g0MqD7cOBjht0bMqc43qM6lRqDLML9KXsmg9uykz0wLQhy8Z/ajrMG6iyoT3NJR+MYgU+OEHp7uHoTb+Yw==}
 
   '@hookform/resolvers@5.2.2':
     resolution: {integrity: sha512-A/IxlMLShx3KjV/HeTcTfaMxdwy690+L/ZADoeaTltLx+CVuzkeVIPuybK3jrRfw7YZnmdKsVVHAlEPIAEUNlA==}
@@ -3418,6 +3424,8 @@ snapshots:
   '@fontsource/cormorant-garamond@5.2.11': {}
 
   '@fontsource/mulish@5.2.8': {}
+
+  '@fontsource/outfit@5.2.8': {}
 
   '@hookform/resolvers@5.2.2(react-hook-form@7.65.0(react@18.3.1))':
     dependencies:

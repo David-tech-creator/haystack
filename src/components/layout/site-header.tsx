@@ -46,23 +46,15 @@ export function SiteHeader() {
         style={{ opacity: scrollIndicator }}
       />
       <div className="container flex items-center justify-between gap-10 py-6">
-        <Link href="/" className="flex items-center gap-4 text-primary">
+        <Link href="/" className="flex items-center gap-3 text-sm font-semibold text-primary">
           <Image
             src="/Haystack logo no text.png"
             alt="Haystack mark"
-            width={44}
-            height={44}
+            width={40}
+            height={40}
             priority
           />
-          <Image
-            src="/Haystack logo.png"
-            alt="Haystack wordmark"
-            width={160}
-            height={44}
-            priority
-            className="hidden sm:block"
-          />
-          <span className="font-brand text-3xl font-semibold tracking-tight sm:hidden">Haystack</span>
+          <span className="text-4xl font-display tracking-tight text-primary">Haystack</span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-semibold text-primary/80 md:flex">
           {navItems.map((item) => {

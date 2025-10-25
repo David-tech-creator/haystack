@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/mulish": "^5.2.8",
+    "@fontsource/outfit": "^5.2.8",
     "@hookform/resolvers": "^5.2.2",
     "@mdx-js/loader": "^3.1.1",
     "@next/font": "^14.2.15",
