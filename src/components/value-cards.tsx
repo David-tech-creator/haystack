@@ -27,8 +27,8 @@ const values = [
 
 export function ValueCards() {
   return (
-    <section className="container py-20">
-      <div className="grid gap-6 md:grid-cols-3">
+    <section className="bg-[#fdf9ef] py-20">
+      <div className="container grid gap-6 md:grid-cols-3">
         {values.map((value, index) => (
           <motion.div
             key={value.title}

@@ -12,6 +12,17 @@ const tailwindConfig = {
     "./content/**/*.{md,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "2.5rem",
+        lg: "3.5rem",
+        xl: "4.5rem",
+      },
+      screens: {
+        "2xl": "1280px",
+      },
+    },
     extend: {
       borderRadius: {
         lg: "var(--radius)",

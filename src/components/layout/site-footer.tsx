@@ -40,7 +40,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-[#e3d7be] bg-[#f6f0e2]">
-      <div className="container grid gap-10 py-12 md:grid-cols-[2fr,3fr] md:py-16">
+      <div className="container grid gap-10 py-16 md:grid-cols-[2fr,3fr]">
         <div className="space-y-4">
           <div>
             <Link href={"/" as Route} className="font-display text-2xl text-primary">

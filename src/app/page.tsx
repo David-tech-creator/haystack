@@ -39,7 +39,7 @@ function HowItWorks() {
   }
 
   return (
-    <section className="bg-[#fefbf4] py-18">
+    <section className="bg-[#fdf9ef] py-20">
       <div className="container flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl space-y-4">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60">How it works</p>

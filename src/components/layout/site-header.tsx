@@ -44,9 +44,9 @@ export function SiteHeader() {
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary/70 to-transparent"
         style={{ opacity: scrollIndicator }}
       />
-      <div className="container flex items-center justify-between gap-6 py-5">
+      <div className="container flex items-center justify-between gap-10 py-6">
         <Link href="/" className="flex items-center gap-3 text-sm font-semibold text-primary">
-          <span className="text-2xl font-display tracking-tight text-primary">Haystack</span>
+          <span className="text-3xl font-display lowercase tracking-tight text-primary">haystack.</span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-semibold text-primary/80 md:flex">
           {navItems.map((item) => {
@@ -65,12 +65,15 @@ export function SiteHeader() {
             )
           })}
         </nav>
-        <div className="hidden items-center gap-3 md:flex">
-          <Button variant="ghost" size="sm">
+        <div className="hidden items-center gap-4 md:flex">
+          <Button variant="ghost" size="sm" className="text-primary/80 hover:text-primary">
             Login
           </Button>
-          <Button size="sm" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-            Book a sprint
+          <Button
+            size="sm"
+            className="rounded-full bg-[#1f2640] px-6 text-[#fefbf4] hover:bg-[#1f2640]/90"
+          >
+            Request a demo
           </Button>
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
