@@ -46,13 +46,14 @@ export function SiteHeader() {
         style={{ opacity: scrollIndicator }}
       />
       <div className="container flex items-center justify-between gap-10 py-6">
-        <Link href="/" className="flex items-center gap-3 text-sm font-semibold text-primary">
+        <Link href="/" className="flex items-center gap-4 text-sm font-semibold text-primary">
           <Image
-            src="/Haystack logo no text.png"
-            alt="Haystack mark"
-            width={40}
-            height={40}
+            src="/images/Haystack-logo.png"
+            alt="Haystack logo"
+            width={72}
+            height={72}
             priority
+            className="h-14 w-auto"
           />
           <span className="text-4xl font-display tracking-tight text-primary">Haystack</span>
         </Link>
