@@ -28,7 +28,7 @@ export function Hero() {
               <span className="absolute inset-x-0 bottom-1 h-4 rounded-full bg-[#f4ca64]/80" aria-hidden />
               <span className="relative font-script italic text-[1.05em]">Move the needle.</span>
             </span>{" "}
-            Haystack finds decisive talent step by step.
+            Haystack finds decisive talent the moment you need it.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
