@@ -19,6 +19,41 @@ export const metadata: Metadata = {
   keywords: siteConfig.keywords,
   authors: siteConfig.authors,
   creator: "Haystack",
+  icons: {
+    icon: "/images/Haystack logo no text.png",
+    shortcut: "/images/Haystack logo no text.png",
+    apple: "/images/Haystack logo no text.png",
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/images/Haystack logo no text.png",
+        color: "#1f2640",
+      },
+    ],
+  },
+  openGraph: {
+    type: "website",
+    url: siteConfig.url,
+    title: "Haystack — Signal over noise for AI + data hiring",
+    description: siteConfig.description,
+    siteName: "Haystack",
+    images: [
+      {
+        url: `${siteConfig.url}/api/og`,
+        width: 1200,
+        height: 630,
+        alt: "Haystack—Find the needle. Faster.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@haystack_ai",
+    creator: "@haystack_ai",
+    title: "Haystack — Signal over noise for AI + data hiring",
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/api/og`],
+  },
 }
 
 export const viewport: Viewport = {

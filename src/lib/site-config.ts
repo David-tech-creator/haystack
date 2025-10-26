@@ -1,7 +1,8 @@
 export const siteConfig = {
   name: "Haystack",
-  url: "https://haystack.example",
-  description: "Signal over noise for AI and data hiring.",
+  url: "https://haystack.ai",
+  description:
+    "Haystack helps AI and data leaders hire faster with curated search sprints, purpose-built assessments, and decisive candidate intel.",
   keywords: [
     "AI recruiting",
     "data talent",
@@ -13,8 +14,8 @@ export const siteConfig = {
   socials: {
     linkedin: "https://www.linkedin.com/company/haystack-ai",
     x: "https://x.com/haystack_ai",
-    email: "hello@haystack.example",
-    jobs: "https://haystack.example/jobs",
+    email: "hello@haystack.ai",
+    jobs: "https://haystack.ai/jobs",
   },
 }
 

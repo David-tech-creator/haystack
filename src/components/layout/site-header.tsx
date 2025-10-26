@@ -48,12 +48,12 @@ export function SiteHeader() {
       <div className="container flex items-center justify-between gap-10 py-6">
         <Link href="/" className="flex items-center gap-4 text-sm font-semibold text-primary">
           <Image
-            src="/images/Haystack-logo.png"
-            alt="Haystack logo"
+            src="/images/Haystack logo no text.png"
+            alt="Haystack icon"
             width={72}
             height={72}
             priority
-            className="h-14 w-auto mix-blend-multiply"
+            className="h-14 w-auto object-contain"
           />
           <span className="text-4xl font-display tracking-tight text-primary">Haystack</span>
         </Link>
