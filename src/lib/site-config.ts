@@ -12,7 +12,7 @@ export const siteConfig = {
   ],
   authors: [{ name: "Haystack" }],
   socials: {
-    linkedin: "https://www.linkedin.com/company/haystack-ai",
+    linkedin: "https://www.linkedin.com/company/haystack-agency",
     x: "https://x.com/haystack_ai",
     email: "hello@haystack.ai",
     jobs: "https://haystack.ai/jobs",
