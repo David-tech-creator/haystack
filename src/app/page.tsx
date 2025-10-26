@@ -1,9 +1,10 @@
 "use client"
 
+import { Hero } from "@/components/hero"
+import { InsightStack } from "@/components/insight-stack"
 import { Logos } from "@/components/logos"
 import { Stats } from "@/components/stats"
 import { Testimonials } from "@/components/testimonials"
-import { Hero } from "@/components/hero"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <Logos />
       <HowItWorks />
+      <InsightStack />
       <Stats />
       <Testimonials />
       <FinalCTA />
