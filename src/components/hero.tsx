@@ -68,7 +68,7 @@ export function Hero() {
           className="overflow-hidden rounded-3xl border border-white/80 shadow-lg"
         >
           <Image
-            src="/images/Needle.png"
+            src="/Needle.png"
             alt="Needle in haystack illustration"
             width={880}
             height={660}
