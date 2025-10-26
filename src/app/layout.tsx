@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next"
 
-import { Providers } from "@/components/providers"
-import { SiteHeader } from "@/components/layout/site-header"
 import { SiteFooter } from "@/components/layout/site-footer"
+import { SiteHeader } from "@/components/layout/site-header"
+import { Providers } from "@/components/providers"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
-import { mulish, cormorant, outfit } from "@/styles/fonts"
+import { cormorant, mulish, outfit } from "@/styles/fonts"
 
 import "./globals.css"
 
@@ -20,13 +20,17 @@ export const metadata: Metadata = {
   authors: siteConfig.authors,
   creator: "Haystack",
   icons: {
-    icon: "/images/Haystack logo no text.png",
-    shortcut: "/images/Haystack logo no text.png",
-    apple: "/images/Haystack logo no text.png",
+    icon: [
+      { url: "/haystack-icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/haystack-icon.png", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.ico", rel: "icon" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/haystack-icon.png",
     other: [
       {
         rel: "mask-icon",
-        url: "/images/Haystack logo no text.png",
+        url: "/haystack-icon.png",
         color: "#1f2640",
       },
     ],
