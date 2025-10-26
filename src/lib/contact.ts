@@ -17,7 +17,8 @@ export async function sendContactMessage(payload: ContactPayload) {
   console.log("Contact submission", payload)
 
   if (!brevoKey) {
-    return { success: true }
+    console.error("BREVO_API_KEY is not configured. Contact form submission skipped.")
+    return { success: false }
   }
 
   try {
