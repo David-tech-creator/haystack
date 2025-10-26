@@ -15,24 +15,6 @@ const principles = [
   },
 ]
 
-const team = [
-  {
-    name: "Asha Menon",
-    role: "Founder & CEO",
-    bio: "Former Head of Talent at growth-stage ML startup. Built engineering teams across three continents.",
-  },
-  {
-    name: "Noah Ellis",
-    role: "Head of Delivery",
-    bio: "Ex-technical recruiter at top-tier venture studio. Leads sourcing and signal operations.",
-  },
-  {
-    name: "Vivian Chen",
-    role: "Signals Lead",
-    bio: "Data scientist turned talent strategist. Designs scorecards and work samples for AI teams.",
-  },
-]
-
 export const metadata: Metadata = {
   title: "About",
   description: "Meet the team building Haystack and the principles guiding our sprints.",
@@ -67,22 +49,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-16 space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
-          Team
-        </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {team.map((member) => (
-            <div key={member.name} className="rounded-3xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
-              <h3 className="text-lg font-semibold text-navy-900 dark:text-wheat-50">
-                {member.name}
-              </h3>
-              <p className="text-sm text-muted-foreground">{member.role}</p>
-              <p className="mt-3 text-sm text-muted-foreground">{member.bio}</p>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   )
 }
