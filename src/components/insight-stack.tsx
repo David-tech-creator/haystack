@@ -44,7 +44,9 @@ export function InsightStack() {
       <div className="container grid gap-16 lg:grid-cols-[minmax(0,1.2fr),minmax(0,1fr)]">
         <div className="space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#cbbd9e]/80">Inside Haystack</p>
-          <h2 className="font-display text-3xl leading-tight md:text-4xl">AI-native stack, human judgment.</h2>
+          <h2 className="inline-block rounded-full bg-[#f6d891] px-5 py-2 font-display text-3xl leading-tight text-[#1f2640] shadow-[0_12px_30px_rgba(15,18,30,0.45)] md:text-4xl">
+            AI-native stack, human judgment.
+          </h2>
           <p className="max-w-xl text-base text-[#f8f0d9]/80">
             We pair senior operators with an automation-first toolkit so every sprint moves with conviction. Here’s the
             operating system that keeps us days ahead.
