@@ -75,14 +75,15 @@ export function SiteHeader() {
           })}
         </nav>
         <div className="hidden items-center gap-4 md:flex">
-          <Button variant="ghost" size="sm" className="text-primary/80 hover:text-primary">
-            Login
+          <Button variant="ghost" size="sm" className="text-primary/80 hover:text-primary" asChild>
+            <Link href={"/roles" as Route}>See open roles</Link>
           </Button>
           <Button
             size="sm"
             className="rounded-full bg-[#1f2640] px-6 text-[#fefbf4] hover:bg-[#1f2640]/90"
+            asChild
           >
-            Request a sprint
+            <Link href={"/contact" as Route}>Request a sprint</Link>
           </Button>
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
