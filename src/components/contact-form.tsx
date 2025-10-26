@@ -67,7 +67,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="rounded-3xl border border-navy-100/60 bg-white p-8 shadow-soft-lg backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40"
+      className="rounded-3xl border border-navy-100/60 bg-[#fef8ec] p-8 shadow-soft-lg backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40"
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="grid gap-6">

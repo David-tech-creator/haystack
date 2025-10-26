@@ -46,7 +46,7 @@ export default function ProcessPage() {
         <div className="space-y-6">
           <Accordion type="single" collapsible className="space-y-4">
             {sections.map((section) => (
-              <AccordionItem key={section.title} value={section.title} className="rounded-2xl border border-navy-100/60 bg-white/90 backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
+              <AccordionItem key={section.title} value={section.title} className="rounded-2xl border border-navy-100/60 bg-[#fef8ec]/92 backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
                 <AccordionTrigger className="px-6 py-4 text-left text-lg font-semibold text-navy-900 dark:text-wheat-100">
                   {section.title}
                 </AccordionTrigger>
@@ -57,7 +57,7 @@ export default function ProcessPage() {
             ))}
           </Accordion>
         </div>
-        <aside className="space-y-4 rounded-3xl border border-navy-100/60 bg-white/80 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/30">
+        <aside className="space-y-4 rounded-3xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/30">
           <h2 className="text-lg font-semibold text-navy-900 dark:text-wheat-50">Sprint highlights</h2>
           <ul className="space-y-3">
             <li>Dedicated talent partner & market mapper</li>

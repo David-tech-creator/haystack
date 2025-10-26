@@ -60,7 +60,7 @@ export function InsightStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+                className="rounded-3xl border border-white/10 bg-[#fefbf4]/10 p-6 backdrop-blur"
               >
                 <div className="flex items-center justify-between">
                   <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">{tool.name}</p>
@@ -79,7 +79,7 @@ export function InsightStack() {
             ))}
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <div className="rounded-3xl border border-white/10 bg-[#fefbf4]/10 p-6 backdrop-blur">
             <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Advisor Bench</p>
             <h3 className="mt-3 font-display text-xl text-white">Technical signal review</h3>
             <p className="mt-3 text-sm text-[#f8f0d9]/80">
@@ -98,7 +98,7 @@ export function InsightStack() {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur">
+          <div className="rounded-[2rem] border border-white/10 bg-[#fefbf4]/10 p-8 backdrop-blur">
             <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Why it matters</p>
             <h3 className="mt-3 font-display text-2xl text-white">Better signals, faster decisions.</h3>
             <p className="mt-3 text-sm text-[#f8f0d9]/80">
@@ -115,7 +115,7 @@ export function InsightStack() {
             </ul>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur">
+          <div className="rounded-[2rem] border border-white/10 bg-[#fefbf4]/10 p-8 backdrop-blur">
             <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Beyond the stack</p>
             <h3 className="mt-3 font-display text-2xl text-white">What’s next</h3>
             <p className="mt-3 text-sm text-[#f8f0d9]/80">

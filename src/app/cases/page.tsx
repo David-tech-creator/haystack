@@ -26,7 +26,7 @@ export default async function CasesPage() {
       </div>
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {cases.map(({ meta }) => (
-          <Card key={meta.slug} className="border border-navy-100/60 bg-white/80 backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/30">
+          <Card key={meta.slug} className="border border-navy-100/60 bg-[#fef8ec]/85 backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/30">
             <CardHeader>
               <CardTitle className="text-2xl text-navy-900 dark:text-wheat-50">
                 {meta.title}

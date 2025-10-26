@@ -7,7 +7,7 @@ interface JobListProps {
 export function JobList({ jobs }: JobListProps) {
   if (!jobs.length) {
     return (
-      <div className="rounded-2xl border border-dashed border-navy-200/60 bg-white/80 p-8 text-center text-sm text-muted-foreground dark:border-navy-700/60 dark:bg-navy-900/30">
+      <div className="rounded-2xl border border-dashed border-navy-200/60 bg-[#fef8ec]/85 p-8 text-center text-sm text-muted-foreground dark:border-navy-700/60 dark:bg-navy-900/30">
         No roles posted yet. Check back soon.
       </div>
     )

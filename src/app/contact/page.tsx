@@ -20,7 +20,7 @@ export default function ContactPage() {
           <p className="text-lg text-muted-foreground">
             Share your timeline and the talent signals you care about. We respond within one business day with an intake session invite.
           </p>
-          <div className="rounded-2xl border border-navy-100/60 bg-white/80 p-6 text-sm text-muted-foreground shadow-sm dark:border-navy-800/60 dark:bg-navy-900/40">
+          <div className="rounded-2xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm dark:border-navy-800/60 dark:bg-navy-900/40">
             <p className="font-semibold text-foreground">What to expect</p>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>Snapshot of current pipelines & market map</li>

@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 function TableOfContents({ toc }: { toc: TocItem[] }) {
   if (!toc.length) return null
   return (
-    <nav className="rounded-2xl border border-navy-100/60 bg-white/70 p-4 text-sm shadow-sm backdrop-blur dark:border-navy-700/60 dark:bg-navy-900/30">
+    <nav className="rounded-2xl border border-navy-100/60 bg-[#fef8ec]/75 p-4 text-sm shadow-sm backdrop-blur dark:border-navy-700/60 dark:bg-navy-900/30">
       <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
       <ul className="mt-3 space-y-2">
         {toc.map((item) => (
@@ -65,7 +65,7 @@ export default async function JobPage({ params }: { params: { slug: string } }) 
       </div>
       <aside className="sticky top-24 space-y-4">
         <TableOfContents toc={toc} />
-        <div className="rounded-2xl border border-navy-100/70 bg-white/80 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-700/60 dark:bg-navy-900/40">
+        <div className="rounded-2xl border border-navy-100/70 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-700/60 dark:bg-navy-900/40">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Apply</p>
           <p className="text-base text-foreground">
             Interested? Send your resume and context to our team or use the apply link below.

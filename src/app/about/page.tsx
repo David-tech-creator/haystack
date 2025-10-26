@@ -57,7 +57,7 @@ export default function AboutPage() {
         </h2>
         <div className="grid gap-6 md:grid-cols-3">
           {principles.map((principle) => (
-            <div key={principle.title} className="rounded-3xl border border-navy-100/60 bg-white/80 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
+            <div key={principle.title} className="rounded-3xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
               <h3 className="text-lg font-semibold text-navy-900 dark:text-wheat-50">
                 {principle.title}
               </h3>
@@ -73,7 +73,7 @@ export default function AboutPage() {
         </h2>
         <div className="grid gap-6 md:grid-cols-3">
           {team.map((member) => (
-            <div key={member.name} className="rounded-3xl border border-navy-100/60 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
+            <div key={member.name} className="rounded-3xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
               <h3 className="text-lg font-semibold text-navy-900 dark:text-wheat-50">
                 {member.name}
               </h3>
