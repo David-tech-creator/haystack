@@ -9,6 +9,8 @@ export type ContactPayload = {
 }
 
 const resendKey = process.env.RESEND_API_KEY
+const resendFrom = process.env.CONTACT_FORM_FROM ?? "Haystack <david.v@haystack.agency>"
+const resendTo = process.env.CONTACT_FORM_TO ?? "david.v@haystack.agency"
 const resend = resendKey ? new Resend(resendKey) : null
 
 export async function sendContactMessage(payload: ContactPayload) {
@@ -20,11 +22,19 @@ export async function sendContactMessage(payload: ContactPayload) {
 
   try {
     await resend.emails.send({
-      from: "Haystack <hello@haystack.example>",
-      to: "hello@haystack.example",
+      from: resendFrom,
+      to: [resendTo],
       replyTo: payload.email,
       subject: `New sprint request from ${payload.name}`,
-      text: `Name: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company}\nRoles: ${payload.roles}\n\nMessage:\n${payload.message}`,
+      text: `Name: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company ?? ""}\nRoles: ${payload.roles ?? ""}\n\nMessage:\n${payload.message}`,
+      html: `
+        <p><strong>Name:</strong> ${payload.name}</p>
+        <p><strong>Email:</strong> <a href="mailto:${payload.email}">${payload.email}</a></p>
+        ${payload.company ? `<p><strong>Company:</strong> ${payload.company}</p>` : ""}
+        ${payload.roles ? `<p><strong>Roles:</strong> ${payload.roles}</p>` : ""}
+        <p><strong>Message:</strong></p>
+        <p>${payload.message.replace(/\n/g, "<br/>")}</p>
+      `,
     })
     return { success: true }
   } catch (error) {
