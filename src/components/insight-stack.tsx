@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
 
 const tools = [
   {
@@ -63,14 +62,14 @@ export function InsightStack() {
               >
                 <div className="flex items-center justify-between">
                   <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">{tool.name}</p>
-                  <Link
-                    href={tool.url as string}
+                  <a
+                    href={tool.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs text-[#f6d891] underline"
                   >
                     Learn
-                  </Link>
+                  </a>
                 </div>
                 <h3 className="mt-3 font-display text-xl text-white">{tool.headline}</h3>
                 <p className="mt-3 text-sm text-[#f8f0d9]/80">{tool.description}</p>
