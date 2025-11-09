@@ -90,10 +90,6 @@ export default function AboutPage() {
               fast without the saturation: a young workforce, cloud-certified specialists, and incentives that let teams
               grow with discipline instead of churn.
             </p>
-            <p>
-              Swiss direction, Albanian delivery, global reach—that mix keeps velocity high while giving clients the
-              continuity they can’t find in overheated markets.
-            </p>
           </div>
           <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
             {[
