@@ -1,3 +1,5 @@
+import Image from "next/image"
+import Link from "next/link"
 import type { Metadata } from "next"
 
 const foundations = [
@@ -90,6 +92,14 @@ export default function AboutPage() {
               fast without the saturation: a young workforce, cloud-certified specialists, and incentives that let teams
               grow with discipline instead of churn.
             </p>
+            <Link
+              href="https://duranatechpark.com/who-we-are"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center text-sm font-semibold text-[#1f2640] underline-offset-4 transition hover:underline"
+            >
+              Learn more about Durana Technology &amp; Science Park
+            </Link>
           </div>
           <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
             {[
@@ -105,6 +115,16 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="overflow-hidden rounded-3xl border border-[#e3d7be] bg-[#fefbf4] shadow-sm">
+          <Image
+            src="/Durana.jpg"
+            alt="Durana Technology & Science Park campus"
+            width={1600}
+            height={900}
+            className="h-full w-full object-cover"
+            priority={false}
+          />
         </div>
       </section>
 
