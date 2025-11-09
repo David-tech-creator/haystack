@@ -37,7 +37,7 @@ export function Hero() {
             className="max-w-2xl text-lg text-[#1f2640]/70"
           >
             <Balancer>
-              Prepare the future with clear hiring signals and defined ambitions. Haystack delivers calibrated shortlists, weekly intelligence, and a partner who scales with you.
+              Prepare the future ...
             </Balancer>
           </motion.p>
           <motion.div
