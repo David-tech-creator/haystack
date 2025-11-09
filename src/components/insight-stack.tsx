@@ -24,6 +24,13 @@ const tools = [
       "YC-backed ATS + CRM that unifies pipeline, experiments, and candidate intelligence in one workspace.",
     url: "https://spott.io/",
   },
+  {
+    name: "Wispr Flow",
+    headline: "Voice-first execution",
+    description:
+      "Voice-to-text automation that turns spoken context into clean updates across apps, keeping hiring ops moving at thought-speed.",
+    url: "https://wisprflow.ai/",
+  },
 ]
 
 const advisors = [
@@ -52,7 +59,7 @@ export function InsightStack() {
             operating system that keeps us days ahead.
           </p>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {tools.map((tool, index) => (
               <motion.div
                 key={tool.name}
