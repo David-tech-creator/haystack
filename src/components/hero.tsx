@@ -94,7 +94,7 @@ export function Hero() {
               {
                 title: "Recruitment sprints",
                 copy:
-                  "Swiss-led search programs that surface decisive AI and data talent with signal-rich evidence, not volume.",
+            "Swiss-led search programs that surface decisive talent with signal-rich evidence, not volume.",
               },
               {
                 title: "Outsourcing IT services",
