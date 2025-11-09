@@ -59,7 +59,7 @@ export function InsightStack() {
             operating system that keeps us days ahead.
           </p>
 
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
             {tools.map((tool, index) => (
               <motion.div
                 key={tool.name}
