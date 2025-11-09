@@ -103,8 +103,8 @@ export function Hero() {
               },
               {
                 title: "Nearshore delivery hub",
-                copy:
-                  "Embedded team in Tirana’s new Durana Technology & Science Park, multilingual, cloud-certified, and ready to scale when saturated markets can’t.",
+          copy:
+            "Embedded team in Tirana’s new Durana Technology & Science Park, multilingual, senior specialists, and ready to scale when saturated markets can’t.",
               },
             ].map((item) => (
               <div

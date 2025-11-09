@@ -105,7 +105,7 @@ export default function AboutPage() {
             {[
               "Nearshore office inside Durana Technology & Science Park, Albania’s flagship innovation campus linking global investors, academia, and startups.",
               "3,500+ engineering graduates a year and a tech sector growing 12.7% CAGR (2020–2027).",
-              "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals certified on AWS, Azure, or GCP.",
+            "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals holding globally recognised technical certifications.",
               "Tirana is a two-hour flight from major EU capitals, enabling real-time collaboration and low attrition.",
               "Multilingual delivery across Italian, English, German, and French, built into every squad.",
             ].map((line) => (
