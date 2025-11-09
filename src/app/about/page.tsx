@@ -1,74 +1,115 @@
 import type { Metadata } from "next"
 
+const foundations = [
+  {
+    title: "Swiss engineering roots",
+    description:
+      "Years spent alongside Lausanne and Zürich engineering teams—consultancies, product launches, startup labs, and late-night debugging sessions—shaped how we work.",
+  },
+  {
+    title: "Embedded networks",
+    description:
+      "EPFL, ETH Zürich, HSG incubators, and the clusters across Romandy and Zürich are our home turf. We stay close to the labs, founders, and technologists building what’s next.",
+  },
+  {
+    title: "Global reach",
+    description:
+      "The engineers who train here go on to lead teams across Europe, the US, and Asia. Our relationships travel with them, giving clients access to deep-tech talent worldwide.",
+  },
+]
+
 const principles = [
   {
     title: "Signal first",
-    description: "We index on quality evidence, not volume. Every candidate is benchmarked against real-world delivery and context." ,
+    description: "Quality evidence over volume. Every shortlist is benchmarked against hands-on delivery and practical context.",
   },
   {
     title: "Transparency",
-    description: "We give hiring teams the same visibility we expect internally—clear dashboards, straightforward expectations, honest readouts." ,
+    description: "Clients see what we see: clear dashboards, straightforward expectations, honest readouts.",
   },
   {
     title: "Momentum",
-    description: "When teams move fast, hiring has to keep pace. We design sprints that compound and keep talent engaged." ,
+    description: "Hiring has to match product velocity. Our sprints compound progress and keep talent engaged.",
   },
+]
+
+const evaluation = [
+  "How candidates have built things—not just what they list.",
+  "Why they made specific technical or product choices.",
+  "What impact the work delivered and who relied on it.",
+  "Whether you’d want them next to you when something breaks at 3 AM.",
 ]
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Meet the team building Haystack and the principles guiding our sprints.",
+  description: "Learn how Haystack’s Swiss roots, embedded networks, and signal-first principles support AI-native hiring.",
 }
 
 export default function AboutPage() {
   return (
-    <div className="container py-16 sm:py-24">
-      <div className="max-w-3xl space-y-4">
-        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">About Haystack</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
-          Why Haystack exists
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Haystack is an AI-native recruitment firm built for companies shipping machine learning into production. We combine technical recruiting experience with signal-rich tooling to help you close key hires faster.
-        </p>
-        <p className="text-lg text-muted-foreground">
-          Haystack didn’t appear out of nowhere. It grew from years spent working side-by-side with engineers in Switzerland; consulting engagements, product launches, startup experiments, late-night debugging sessions, and the kinds of conversations you only have with people who genuinely care about their craft.
-        </p>
-        <p className="text-lg text-muted-foreground">
-          Switzerland produces an unusual concentration of top-tier engineers. You feel it inside EPFL, ETH Zürich, HSG’s tech incubators, and across the clusters around Lausanne and Zürich: strong math foundations, deep engineering rigor, and the discipline that comes from research-driven programs. Those people go on to shape teams in Europe, the US, Asia—everywhere.
-        </p>
-        <p className="text-lg text-muted-foreground">
-          This is our home turf. We are embedded in the networks, labs, and startup circles where the next generation of AI, robotics, distributed systems, and applied deep-tech talent comes from. Being part of that ecosystem gives us a living map of the people who take their work seriously.
-        </p>
-        <p className="text-lg text-muted-foreground">
-          We don’t chase every CV or push people into roles that don’t fit. We look for substance: engineers who take responsibility for what they ship and who can explain how they think.
-        </p>
-        <ul className="space-y-2 text-lg text-muted-foreground">
-          <li>• How they’ve built things, not just what they list.</li>
-          <li>• Why they made certain choices and the impact that followed.</li>
-          <li>• Whether they’re the person you want next to you when something breaks at 3 AM.</li>
-        </ul>
-        <p className="text-lg text-muted-foreground">
-          That approach saves everyone time, keeps teams focused, and compounds the global network we can activate for every search.
-        </p>
+    <div className="space-y-20 bg-[#f6f0e2] py-16 sm:py-24">
+      <div className="container">
+        <div className="rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:p-14">
+          <div className="max-w-3xl space-y-5">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#1f2640]/50">About Haystack</p>
+            <h1 className="text-4xl font-semibold tracking-tight text-[#1f2640] md:text-5xl">Why Haystack exists</h1>
+            <p className="text-lg text-[#1f2640]/70">
+              Haystack is an AI-native recruitment partner for teams shipping machine learning into production. We blend
+              technical recruiting experience with signal-rich tooling so ambitious companies land decisive hires faster.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <section className="mt-12 space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
-          Principles
-        </h2>
+      <section className="container">
         <div className="grid gap-6 md:grid-cols-3">
-          {principles.map((principle) => (
-            <div key={principle.title} className="rounded-3xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
-              <h3 className="text-lg font-semibold text-navy-900 dark:text-wheat-50">
-                {principle.title}
-              </h3>
-              <p className="mt-3">{principle.description}</p>
+          {foundations.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/75 shadow-sm"
+            >
+              <h3 className="font-display text-xl text-[#1f2640]">{item.title}</h3>
+              <p className="mt-3 leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
+      <section className="container">
+        <div className="grid gap-10 rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:grid-cols-[minmax(0,1.15fr),minmax(0,0.85fr)] md:p-14">
+          <div className="space-y-4 text-lg text-[#1f2640]/75">
+            <h2 className="font-display text-2xl text-[#1f2640]">How we evaluate talent</h2>
+            <p>
+              We don’t chase every CV or push people into roles that don’t fit. We look for substance—engineers who take
+              responsibility for what they ship and can explain how they think.
+            </p>
+            <p>That lens keeps teams focused and compounds the global network we activate for every search.</p>
+          </div>
+          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
+            {evaluation.map((line) => (
+              <li key={line} className="flex items-start gap-3">
+                <span className="mt-1 inline-flex size-2 rounded-full bg-[#f4ca64]" aria-hidden />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="container space-y-6">
+        <h2 className="font-display text-2xl text-[#1f2640]">Principles</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {principles.map((principle) => (
+            <div
+              key={principle.title}
+              className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/75 shadow-sm"
+            >
+              <h3 className="text-lg font-semibold text-[#1f2640]">{principle.title}</h3>
+              <p className="mt-3 leading-relaxed">{principle.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   )
 }
