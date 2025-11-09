@@ -52,9 +52,9 @@ export default function AboutPage() {
       <div className="container">
         <div className="rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:p-14">
           <div className="max-w-3xl space-y-5">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#1f2640]/50">About Haystack</p>
-            <h1 className="text-4xl font-semibold tracking-tight text-[#1f2640] md:text-5xl">Why Haystack exists</h1>
-            <p className="text-lg text-[#1f2640]/70">
+            <p className="text-xs uppercase tracking-[0.2em] text-primary/50">About Haystack</p>
+            <h1 className="text-4xl font-semibold tracking-tight text-primary md:text-5xl">Why Haystack exists</h1>
+            <p className="text-lg text-primary/70">
               Haystack is an AI-native full-service provider for business and technology solutions. We blend recruitment
               sprints, outsourcing capacity, and a nearshore delivery hub to help ambitious teams build and scale with
               conviction.
@@ -68,9 +68,9 @@ export default function AboutPage() {
           {foundations.map((item) => (
             <div
               key={item.title}
-              className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/75 shadow-sm"
+              className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-primary/75 shadow-sm"
             >
-              <h3 className="font-display text-xl text-[#1f2640]">{item.title}</h3>
+              <h3 className="font-display text-xl text-primary">{item.title}</h3>
               <p className="mt-3 leading-relaxed">{item.description}</p>
             </div>
           ))}
@@ -79,8 +79,8 @@ export default function AboutPage() {
 
       <section className="container">
         <div className="grid gap-10 rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:grid-cols-[minmax(0,1.15fr),minmax(0,0.85fr)] md:p-14">
-          <div className="space-y-4 text-lg text-[#1f2640]/75">
-            <h2 className="font-display text-2xl text-[#1f2640]">Outsourcing IT Services + Nearshore Delivery Hub</h2>
+          <div className="space-y-4 text-lg text-primary/75">
+            <h2 className="font-display text-2xl text-primary">Outsourcing IT Services + Nearshore Delivery Hub</h2>
             <p>
               We are a Swiss full-service partner for business and technology solutions. Alongside recruitment sprints we
               deliver managed engineering, data, and platform services from our Tirana, Albania hub, located inside the freshly
@@ -92,7 +92,7 @@ export default function AboutPage() {
               delivery teams stable rather than cycling through churn.
             </p>
           </div>
-          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
+          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-primary/80">
             {[
               "Nearshore office inside Durana Technology & Science Park, Albania’s flagship innovation campus linking global investors, academia, and startups.",
               "3,500+ engineering graduates a year and a tech sector growing 12.7% CAGR (2020–2027).",
@@ -121,8 +121,8 @@ export default function AboutPage() {
               priority={false}
             />
           </div>
-          <div className="space-y-4 text-sm text-[#1f2640]/75 md:text-base">
-            <h3 className="font-display text-xl text-[#1f2640]">Durana Technology &amp; Science Park</h3>
+          <div className="space-y-4 text-sm text-primary/75 md:text-base">
+            <h3 className="font-display text-xl text-primary">Durana Technology &amp; Science Park</h3>
             <p>
               Durana Tech Park is Albania’s first dedicated technology and science park, a hub where big tech companies,
               startups, universities, and research centres co-create new products and transfer knowledge across the region.
@@ -135,7 +135,7 @@ export default function AboutPage() {
               href="https://duranatechpark.com/who-we-are"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center text-sm font-semibold text-[#1f2640] underline-offset-4 transition hover:underline"
+              className="inline-flex items-center text-sm font-semibold text-primary underline-offset-4 transition hover:underline"
             >
               Explore the park
             </a>
@@ -145,15 +145,15 @@ export default function AboutPage() {
 
       <section className="container">
         <div className="grid gap-10 rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:grid-cols-[minmax(0,1.15fr),minmax(0,0.85fr)] md:p-14">
-          <div className="space-y-4 text-lg text-[#1f2640]/75">
-            <h2 className="font-display text-2xl text-[#1f2640]">How we evaluate talent</h2>
+          <div className="space-y-4 text-lg text-primary/75">
+            <h2 className="font-display text-2xl text-primary">How we evaluate talent</h2>
             <p>
               We don’t chase every CV or push people into roles that don’t fit. We look for substance: engineers who take
               responsibility for what they ship and can explain how they think.
             </p>
             <p>That lens keeps teams focused and compounds the global network we activate for every search.</p>
           </div>
-          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
+          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-primary/80">
             {evaluation.map((line) => (
               <li key={line} className="flex items-start gap-3">
                 <span className="mt-1 inline-flex size-2 rounded-full bg-[#f4ca64]" aria-hidden />
@@ -165,14 +165,14 @@ export default function AboutPage() {
       </section>
 
       <section className="container space-y-6">
-        <h2 className="font-display text-2xl text-[#1f2640]">Principles</h2>
+        <h2 className="font-display text-2xl text-primary">Principles</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {principles.map((principle) => (
             <div
               key={principle.title}
-              className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/75 shadow-sm"
+              className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-primary/75 shadow-sm"
             >
-              <h3 className="text-lg font-semibold text-[#1f2640]">{principle.title}</h3>
+              <h3 className="text-lg font-semibold text-primary">{principle.title}</h3>
               <p className="mt-3 leading-relaxed">{principle.description}</p>
             </div>
           ))}
