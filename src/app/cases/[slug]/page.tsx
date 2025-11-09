@@ -39,7 +39,7 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
     <article className="container grid gap-10 py-16 sm:py-24 lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
       <div className="space-y-6">
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Case study</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
+        <h1 className="text-4xl font-semibold tracking-tight text-primary">
           {meta.title}
         </h1>
         <div className="prose prose-slate max-w-none dark:prose-invert">{content}</div>
@@ -47,7 +47,7 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
       <aside className="space-y-4">
         <TableOfContents toc={toc} />
         <div className="rounded-3xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/40">
-          <h2 className="text-lg font-semibold text-navy-900 dark:text-wheat-50">Impact</h2>
+          <h2 className="text-lg font-semibold text-primary">Impact</h2>
           <ul className="mt-3 space-y-2">
             {meta.impact.map((item) => (
               <li key={item} className="flex items-center gap-2">

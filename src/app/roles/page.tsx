@@ -15,7 +15,7 @@ export default async function RolesPage() {
     <div className="container py-16 sm:py-24">
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Roles</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
+        <h1 className="text-4xl font-semibold tracking-tight text-primary">
           Open searches we’re sprinting on
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">

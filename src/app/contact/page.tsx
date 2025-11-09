@@ -14,7 +14,7 @@ export default function ContactPage() {
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr),minmax(0,420px)]">
         <div className="space-y-4">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Let’s sprint</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
+          <h1 className="text-4xl font-semibold tracking-tight text-primary">
             Ready to find the needle?
           </h1>
           <p className="text-lg text-muted-foreground">

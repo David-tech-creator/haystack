@@ -43,7 +43,7 @@ export default async function JobPage({ params }: { params: { slug: string } }) 
       <div className="space-y-6">
         <div className="space-y-3">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Role</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-navy-900 dark:text-wheat-100">
+          <h1 className="text-4xl font-semibold tracking-tight text-primary">
             {meta.title}
           </h1>
           <p className="text-sm text-muted-foreground">{meta.location}</p>
