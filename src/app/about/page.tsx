@@ -12,9 +12,9 @@ const foundations = [
       "EPFL, ETH Zürich, HSG incubators, and the clusters across Romandy and Zürich are our home turf. We stay close to the labs, founders, and technologists building what’s next.",
   },
   {
-    title: "Global reach",
+    title: "Global network, unsaturated talent",
     description:
-      "The engineers who train here go on to lead teams across Europe, the US, and Asia. Our relationships travel with them, giving clients access to deep-tech talent worldwide.",
+      "Swiss-led relationships follow alumni into leadership roles across Europe, the US, and Asia. While traditional hubs are saturated, our network opens new capacity without the churn.",
   },
 ]
 
@@ -72,6 +72,42 @@ export default function AboutPage() {
               <p className="mt-3 leading-relaxed">{item.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="container">
+        <div className="grid gap-10 rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:grid-cols-[minmax(0,1.15fr),minmax(0,0.85fr)] md:p-14">
+          <div className="space-y-4 text-lg text-[#1f2640]/75">
+            <h2 className="font-display text-2xl text-[#1f2640]">Outsourcing IT Services + Nearshore Delivery Hub</h2>
+            <p>
+              We are a Swiss full-service partner for business and technology solutions. Alongside recruitment sprints we
+              deliver managed engineering, data, and platform services anchored in our Tirana, Albania hub—built to stay
+              close, multilingual, and secure.
+            </p>
+            <p>
+              Traditional nearshore hotspots are crowded, expensive, and prone to turnover. Albania’s ecosystem is scaling
+              fast without the saturation: a young workforce, cloud-certified specialists, and incentives that let teams
+              grow with discipline instead of churn.
+            </p>
+            <p>
+              Swiss direction, Albanian delivery, global reach—that mix keeps velocity high while giving clients the
+              continuity they can’t find in overheated markets.
+            </p>
+          </div>
+          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
+            {[
+              "3,500+ engineering graduates a year and a tech sector growing 12.7% CAGR (2020–2027).",
+              "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals certified on AWS, Azure, or GCP.",
+              "Tirana is a two-hour flight from major EU capitals, enabling real-time collaboration and low attrition.",
+              "Multilingual delivery—Italian, English, German, French—built into every squad.",
+              "Government incentives: 15% corporate tax, 0% VAT on exported services, payroll rebates for graduate hires.",
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-3">
+                <span className="mt-1 inline-flex size-2 rounded-full bg-[#f4ca64]" aria-hidden />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

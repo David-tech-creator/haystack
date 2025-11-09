@@ -76,6 +76,47 @@ export function Hero() {
             className="h-full w-full object-cover"
           />
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.35 }}
+          className="rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-6 shadow-sm md:p-8"
+        >
+          <div className="mb-6 flex items-center justify-between gap-3">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#1f2640]/70">
+              How we partner
+            </h2>
+            <span className="h-px flex-1 bg-[#e3d7be]" aria-hidden />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                title: "Recruitment sprints",
+                copy:
+                  "Swiss-led search programs that surface decisive AI and data talent with signal-rich evidence, not volume.",
+              },
+              {
+                title: "Outsourcing IT services",
+                copy:
+                  "Project and managed-team capacity across software, data, and infrastructure from specialists who stay aligned.",
+              },
+              {
+                title: "Nearshore delivery hub",
+                copy:
+                  "Embedded team in Tirana, Albania—multilingual, cloud-certified, and ready to scale when saturated markets can’t.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-5 text-sm text-[#1f2640]/75"
+              >
+                <h3 className="font-display text-lg text-[#1f2640]">{item.title}</h3>
+                <p className="mt-2 leading-relaxed">{item.copy}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )
