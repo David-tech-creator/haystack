@@ -124,7 +124,7 @@ export default function AboutPage() {
           <div className="space-y-4 text-sm text-[#1f2640]/75 md:text-base">
             <h3 className="font-display text-xl text-[#1f2640]">Durana Technology &amp; Science Park</h3>
             <p>
-              Durana Tech Park is Albania’s first dedicated technology and science park—a hub where big tech companies,
+              Durana Tech Park is Albania’s first dedicated technology and science park, a hub where big tech companies,
               startups, universities, and research centres co-create new products and transfer knowledge across the region.
             </p>
             <p>
