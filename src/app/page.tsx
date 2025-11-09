@@ -78,7 +78,7 @@ function FinalCTA() {
       <div className="container relative flex flex-col items-center gap-6 rounded-[2.5rem] border border-white/10 bg-[#fefbf4]/16 px-10 py-12 text-center backdrop-blur-sm">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#e8d8b8]">Next sprint launches Monday</p>
         <h2 className="max-w-2xl font-display text-3xl leading-snug text-[#fefbf4] drop-shadow-[0_12px_28px_rgba(13,18,33,0.55)]">
-          Ready to find decisive AI talent? Book a Haystack sprint today.
+          Ready to find decisive talent? Book a Haystack sprint today.
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
