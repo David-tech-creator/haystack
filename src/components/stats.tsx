@@ -5,7 +5,7 @@ import { motion, useSpring, useTransform } from "framer-motion"
 const stats = [
   {
     label: "Time-to-shortlist",
-    value: 5,
+    value: 7,
     suffix: " days",
   },
   {
