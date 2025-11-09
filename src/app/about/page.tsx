@@ -54,8 +54,9 @@ export default function AboutPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-[#1f2640]/50">About Haystack</p>
             <h1 className="text-4xl font-semibold tracking-tight text-[#1f2640] md:text-5xl">Why Haystack exists</h1>
             <p className="text-lg text-[#1f2640]/70">
-              Haystack is an AI-native recruitment partner for teams shipping machine learning into production. We blend
-              technical recruiting experience with signal-rich tooling so ambitious companies land decisive hires faster.
+              Haystack is an AI-native full-service provider for business and technology solutions. We blend recruitment
+              sprints, outsourcing capacity, and a nearshore delivery hub to help ambitious teams build and scale with
+              conviction.
             </p>
           </div>
         </div>
