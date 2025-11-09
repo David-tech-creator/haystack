@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 import type { Metadata } from "next"
 
 const foundations = [
@@ -89,17 +88,9 @@ export default function AboutPage() {
             </p>
             <p>
               Traditional nearshore hotspots are crowded, expensive, and prone to turnover. Albania’s ecosystem is scaling
-              fast without the saturation: a young workforce, cloud-certified specialists, and incentives that let teams
-              grow with discipline instead of churn.
+              fast without the saturation: a young workforce, senior specialists, and incentives that let teams grow with
+              discipline instead of churn.
             </p>
-            <Link
-              href="https://duranatechpark.com/who-we-are"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center text-sm font-semibold text-[#1f2640] underline-offset-4 transition hover:underline"
-            >
-              Learn more about Durana Technology &amp; Science Park
-            </Link>
           </div>
           <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
             {[
@@ -116,15 +107,39 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
-        <div className="overflow-hidden rounded-3xl border border-[#e3d7be] bg-[#fefbf4] shadow-sm">
-          <Image
-            src="/Durana.jpg"
-            alt="Durana Technology & Science Park campus"
-            width={1600}
-            height={900}
-            className="h-full w-full object-cover"
-            priority={false}
-          />
+      </section>
+
+      <section className="container">
+        <div className="grid gap-8 items-center rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-8 shadow-sm md:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] md:p-12">
+          <div className="overflow-hidden rounded-2xl border border-[#e3d7be]/60 bg-[#fefbf4]">
+            <Image
+              src="/Durana.jpg"
+              alt="Durana Technology & Science Park campus"
+              width={1600}
+              height={900}
+              className="h-full w-full object-cover"
+              priority={false}
+            />
+          </div>
+          <div className="space-y-4 text-sm text-[#1f2640]/75 md:text-base">
+            <h3 className="font-display text-xl text-[#1f2640]">Durana Technology &amp; Science Park</h3>
+            <p>
+              Durana Tech Park is Albania’s first dedicated technology and science park—a hub where big tech companies,
+              startups, universities, and research centres co-create new products and transfer knowledge across the region.
+            </p>
+            <p>
+              Our nearshore office sits inside this campus so Haystack squads plug into shared labs, mentoring, and
+              investor networks while staying minutes from Tirana International Airport.
+            </p>
+            <a
+              href="https://duranatechpark.com/who-we-are"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center text-sm font-semibold text-[#1f2640] underline-offset-4 transition hover:underline"
+            >
+              Explore the park
+            </a>
+          </div>
         </div>
       </section>
 
