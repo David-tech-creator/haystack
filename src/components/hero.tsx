@@ -14,7 +14,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center rounded-full bg-[#e8d8b8] px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#1f2640]"
+            className="inline-flex items-center rounded-full bg-[#e8d8b8] px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary"
           >
             Haystack for AI-native teams
           </motion.span>
@@ -22,7 +22,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-            className="font-display text-5xl leading-tight text-[#1f2640] lg:text-[3.6rem]"
+            className="font-display text-5xl leading-tight text-primary lg:text-[3.6rem]"
           >
             <span className="relative inline-block">
               <span className="absolute inset-x-0 bottom-1 h-4 rounded-full bg-[#f4ca64]/80" aria-hidden />
@@ -34,7 +34,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: "easeOut", delay: 0.2 }}
-            className="max-w-2xl text-lg text-[#1f2640]/70"
+            className="max-w-2xl text-lg text-primary/70"
           >
             <Balancer>
               Prepare the future and find decisive talent without the guesswork. Calibrated shortlists backed by signal-rich insights every week.
@@ -48,13 +48,13 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-[#1f2640] px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#fefbf4] transition hover:bg-[#1f2640]/90"
+              className="inline-flex items-center rounded-full bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary-foreground transition hover:bg-primary/90"
             >
               Talk to an expert
             </Link>
             <Link
               href="/roles"
-              className="inline-flex items-center rounded-full border border-[#1f2640] px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#1f2640] transition hover:bg-[#1f2640]/10"
+              className="inline-flex items-center rounded-full border border-primary px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary transition hover:bg-primary/5"
             >
               See open roles
             </Link>
@@ -84,7 +84,7 @@ export function Hero() {
           className="rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-6 shadow-sm md:p-8"
         >
           <div className="mb-6 flex items-center justify-between gap-3">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#1f2640]/70">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-primary/70">
               How we partner
             </h2>
             <span className="h-px flex-1 bg-[#e3d7be]" aria-hidden />
@@ -109,9 +109,9 @@ export function Hero() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-5 text-sm text-[#1f2640]/75"
+                className="rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-5 text-sm text-primary/75"
               >
-                <h3 className="font-display text-lg text-[#1f2640]">{item.title}</h3>
+                <h3 className="font-display text-lg text-primary">{item.title}</h3>
                 <p className="mt-2 leading-relaxed">{item.copy}</p>
               </div>
             ))}

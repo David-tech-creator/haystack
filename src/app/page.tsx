@@ -73,8 +73,8 @@ function HowItWorks() {
 
 function FinalCTA() {
   return (
-    <section className="relative overflow-hidden bg-[#1f2640] py-20 text-[#fefbf4]">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1f2640] via-[#222b47] to-[#1f2640] opacity-90" aria-hidden />
+    <section className="relative overflow-hidden bg-primary py-20 text-[#fefbf4]">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#222b47] to-primary opacity-90" aria-hidden />
       <div className="container relative flex flex-col items-center gap-6 rounded-[2.5rem] border border-white/10 bg-[#fefbf4]/16 px-10 py-12 text-center backdrop-blur-sm">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#e8d8b8]">Next sprint launches Monday</p>
         <h2 className="max-w-2xl font-display text-3xl leading-snug text-[#fefbf4] drop-shadow-[0_12px_28px_rgba(13,18,33,0.55)]">
