@@ -4,11 +4,6 @@ import { motion, useSpring, useTransform } from "framer-motion"
 
 const stats = [
   {
-    label: "Interview → offer",
-    value: 3,
-    suffix: " interviews",
-  },
-  {
     label: "Offer acceptance",
     value: 92,
     suffix: "%",
