@@ -14,13 +14,13 @@ export default function ContactPage() {
       <div className="grid gap-12 md:grid-cols-[minmax(0,1fr),minmax(0,420px)]">
         <div className="space-y-4">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Let’s sprint</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-primary">
+          <h1 className="text-4xl font-semibold tracking-tight text-primary dark:text-wheat-100">
             Ready to find the needle?
           </h1>
           <p className="text-lg text-muted-foreground">
             Share your timeline and the talent signals you care about. We respond within one business day with an intake session invite.
           </p>
-          <div className="rounded-2xl border border-navy-100/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm dark:border-navy-800/60 dark:bg-navy-900/40">
+          <div className="rounded-2xl border border-[#e3d7be]/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm dark:border-[#cbbd9e]/30 dark:bg-navy-900/40">
             <p className="font-semibold text-foreground">What to expect</p>
             <ul className="mt-3 list-disc space-y-2 pl-5">
               <li>Snapshot of current pipelines & market map</li>

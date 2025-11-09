@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 function TableOfContents({ toc }: { toc: TocItem[] }) {
   if (!toc.length) return null
   return (
-    <nav className="rounded-2xl border border-navy-100/60 bg-[#fef8ec]/75 p-4 text-sm shadow-sm backdrop-blur dark:border-navy-700/60 dark:bg-navy-900/30">
+    <nav className="rounded-2xl border border-[#e3d7be]/60 bg-[#fef8ec]/75 p-4 text-sm shadow-sm backdrop-blur dark:border-[#cbbd9e]/30 dark:bg-navy-900/30">
       <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">On this page</p>
       <ul className="mt-3 space-y-2">
         {toc.map((item) => (
@@ -43,7 +43,7 @@ export default async function JobPage({ params }: { params: { slug: string } }) 
       <div className="space-y-6">
         <div className="space-y-3">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Role</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-primary">
+          <h1 className="text-4xl font-semibold tracking-tight text-primary dark:text-wheat-100">
             {meta.title}
           </h1>
           <p className="text-sm text-muted-foreground">{meta.location}</p>
@@ -65,7 +65,7 @@ export default async function JobPage({ params }: { params: { slug: string } }) 
       </div>
       <aside className="sticky top-24 space-y-4">
         <TableOfContents toc={toc} />
-        <div className="rounded-2xl border border-navy-100/70 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-navy-700/60 dark:bg-navy-900/40">
+        <div className="rounded-2xl border border-[#e3d7be]/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm backdrop-blur dark:border-[#cbbd9e]/30 dark:bg-navy-900/40">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Apply</p>
           <p className="text-base text-foreground">
             Interested? Send your resume and context to our team or use the apply link below.
@@ -79,7 +79,7 @@ export default async function JobPage({ params }: { params: { slug: string } }) 
             </Link>
             <Link
               href="#"
-              className="inline-flex h-10 items-center justify-center rounded-full border border-dashed border-navy-200 px-6 text-sm font-semibold text-navy-700 transition hover:border-navy-400 hover:text-navy-500 dark:border-navy-700 dark:text-wheat-100"
+              className="inline-flex h-10 items-center justify-center rounded-full border border-dashed border-[#e3d7be]/80 px-6 text-sm font-semibold text-primary transition hover:border-primary/70 hover:text-primary/80 dark:border-[#cbbd9e]/40 dark:text-wheat-100"
             >
               Apply via webhook (coming soon)
             </Link>

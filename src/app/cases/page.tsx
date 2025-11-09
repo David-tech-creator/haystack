@@ -17,7 +17,7 @@ export default async function CasesPage() {
     <div className="container py-16 sm:py-24">
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Case studies</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-primary">
+        <h1 className="text-4xl font-semibold tracking-tight text-primary dark:text-wheat-100">
           Signal-led hiring outcomes
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
@@ -26,9 +26,12 @@ export default async function CasesPage() {
       </div>
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {cases.map(({ meta }) => (
-          <Card key={meta.slug} className="border border-navy-100/60 bg-[#fef8ec]/85 backdrop-blur dark:border-navy-800/60 dark:bg-navy-900/30">
+          <Card
+            key={meta.slug}
+            className="border border-[#e3d7be]/60 bg-[#fef8ec]/85 backdrop-blur dark:border-[#cbbd9e]/30 dark:bg-navy-900/30"
+          >
             <CardHeader>
-              <CardTitle className="text-2xl text-primary">
+              <CardTitle className="text-2xl text-primary dark:text-wheat-50">
                 {meta.title}
               </CardTitle>
               <p className="text-sm text-muted-foreground">{meta.summary}</p>
@@ -43,7 +46,7 @@ export default async function CasesPage() {
               </div>
               <Link
                 href={`/cases/${meta.slug}`}
-                className="inline-flex items-center text-sm font-semibold text-primary underline-offset-4 transition hover:text-primary/80 hover:underline"
+                className="inline-flex items-center text-sm font-semibold text-primary underline-offset-4 transition hover:text-primary/80 hover:underline dark:text-wheat-100 dark:hover:text-wheat-200"
               >
                 Read case study →
               </Link>
