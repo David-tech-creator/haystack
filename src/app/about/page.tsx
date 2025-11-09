@@ -31,6 +31,26 @@ export default function AboutPage() {
         <p className="text-lg text-muted-foreground">
           Haystack is an AI-native recruitment firm built for companies shipping machine learning into production. We combine technical recruiting experience with signal-rich tooling to help you close key hires faster.
         </p>
+        <p className="text-lg text-muted-foreground">
+          Haystack didn’t appear out of nowhere. It grew from years spent working side-by-side with engineers in Switzerland; consulting engagements, product launches, startup experiments, late-night debugging sessions, and the kinds of conversations you only have with people who genuinely care about their craft.
+        </p>
+        <p className="text-lg text-muted-foreground">
+          Switzerland produces an unusual concentration of top-tier engineers. You feel it inside EPFL, ETH Zürich, HSG’s tech incubators, and across the clusters around Lausanne and Zürich: strong math foundations, deep engineering rigor, and the discipline that comes from research-driven programs. Those people go on to shape teams in Europe, the US, Asia—everywhere.
+        </p>
+        <p className="text-lg text-muted-foreground">
+          This is our home turf. We are embedded in the networks, labs, and startup circles where the next generation of AI, robotics, distributed systems, and applied deep-tech talent comes from. Being part of that ecosystem gives us a living map of the people who take their work seriously.
+        </p>
+        <p className="text-lg text-muted-foreground">
+          We don’t chase every CV or push people into roles that don’t fit. We look for substance: engineers who take responsibility for what they ship and who can explain how they think.
+        </p>
+        <ul className="space-y-2 text-lg text-muted-foreground">
+          <li>• How they’ve built things, not just what they list.</li>
+          <li>• Why they made certain choices and the impact that followed.</li>
+          <li>• Whether they’re the person you want next to you when something breaks at 3 AM.</li>
+        </ul>
+        <p className="text-lg text-muted-foreground">
+          That approach saves everyone time, keeps teams focused, and compounds the global network we can activate for every search.
+        </p>
       </div>
 
       <section className="mt-12 space-y-6">
