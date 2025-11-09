@@ -11,7 +11,7 @@ const sections = [
   {
     title: "SLA",
     content:
-      "Five business days to first shortlist, weekly signal update thereafter. Intake on Monday, shortlist by Friday, offers by day 21.",
+      "Weekly signal update from kickoff onward. Intake on Monday, shortlist by Friday, offers by day 21.",
   },
   {
     title: "Scorecards",
