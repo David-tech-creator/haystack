@@ -26,13 +26,6 @@ const footerLinks: { heading: string; links: FooterLink[] }[] = [
       { href: "/contact", label: "Contact" },
     ],
   },
-  {
-    heading: "Resources",
-    links: [
-      { href: "https://www.whoz.com/en/solutions-small-medium-companies/", label: "Inspiration", external: true },
-      { href: "mailto:hello@haystack.example", label: "Email", external: true },
-    ],
-  },
 ]
 
 export function SiteFooter() {
