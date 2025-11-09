@@ -37,7 +37,7 @@ export function Hero() {
             className="max-w-2xl text-lg text-[#1f2640]/70"
           >
             <Balancer>
-              Prepare the future ...
+              Prepare the future and find decisive talent without the guesswork. Calibrated shortlists backed by signal-rich insights every week.
             </Balancer>
           </motion.p>
           <motion.div
