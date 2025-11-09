@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Haystack",
   url: "https://haystack.ai",
   description:
-    "Haystack helps AI and data leaders hire faster with curated search sprints, purpose-built assessments, and decisive candidate intel.",
+    "Haystack finds decisive talent the moment you need it.",
   keywords: [
     "AI recruiting",
     "data talent",
