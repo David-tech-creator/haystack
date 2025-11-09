@@ -40,7 +40,7 @@ export function SiteFooter() {
               Haystack
             </Link>
             <p className="mt-3 max-w-sm text-sm text-primary/70">
-              Find decisive AI talent without the guesswork. Calibrated shortlists backed by signal-rich insights every week.
+              Find decisive talent without the guesswork. Calibrated shortlists backed by signal-rich insights every week.
             </p>
           </div>
           <div className="flex gap-4 text-sm text-primary/70">
