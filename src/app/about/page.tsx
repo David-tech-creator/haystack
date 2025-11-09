@@ -82,8 +82,8 @@ export default function AboutPage() {
             <h2 className="font-display text-2xl text-[#1f2640]">Outsourcing IT Services + Nearshore Delivery Hub</h2>
             <p>
               We are a Swiss full-service partner for business and technology solutions. Alongside recruitment sprints we
-              deliver managed engineering, data, and platform services anchored in our Tirana, Albania hub built to stay
-              close, multilingual, and secure.
+              deliver managed engineering, data, and platform services from our Tirana, Albania hub, located inside the freshly
+              opened Durana Technology & Science Park to stay close, multilingual, and secure.
             </p>
             <p>
               Traditional nearshore hotspots are crowded, expensive, and prone to turnover. Albania’s ecosystem is scaling
@@ -93,6 +93,7 @@ export default function AboutPage() {
           </div>
           <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
             {[
+              "Nearshore office inside Durana Technology & Science Park, Albania’s flagship innovation campus linking global investors, academia, and startups.",
               "3,500+ engineering graduates a year and a tech sector growing 12.7% CAGR (2020–2027).",
               "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals certified on AWS, Azure, or GCP.",
               "Tirana is a two-hour flight from major EU capitals, enabling real-time collaboration and low attrition.",
