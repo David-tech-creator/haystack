@@ -88,8 +88,8 @@ export default function AboutPage() {
             </p>
             <p>
               Traditional nearshore hotspots are crowded, expensive, and prone to turnover. Albania’s ecosystem is scaling
-              fast without the saturation: a young workforce, senior specialists, and incentives that let teams grow with
-              discipline instead of churn.
+              fast without the saturation: a young workforce paired with seasoned specialists, plus incentives that keep
+              delivery teams stable rather than cycling through churn.
             </p>
           </div>
           <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-[#1f2640]/80">
