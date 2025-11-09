@@ -97,7 +97,6 @@ export default function AboutPage() {
               "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals certified on AWS, Azure, or GCP.",
               "Tirana is a two-hour flight from major EU capitals, enabling real-time collaboration and low attrition.",
               "Multilingual delivery across Italian, English, German, and French, built into every squad.",
-              "Government incentives: 15% corporate tax, 0% VAT on exported services, payroll rebates for graduate hires.",
             ].map((line) => (
               <li key={line} className="flex items-start gap-3">
                 <span className="mt-1 inline-flex size-2 rounded-full bg-[#f4ca64]" aria-hidden />
