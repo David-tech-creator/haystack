@@ -29,7 +29,7 @@ function HowItWorks() {
     Profile:
       "Clarify your story, priorities, and success signals. We mirror your tone so candidates see the real pitch.",
     Sourcing:
-      "Map AI and data talent pools across operators, builders, and emerging leaders. Introduce discreetly where intent is high.",
+      "Map talent pools across operators, builders, and emerging leaders. Introduce discreetly where intent is high.",
     Signals:
       "Co-create scorecards, async work samples, and intent screens to filter noise and surface clarity.",
     Shortlist:
