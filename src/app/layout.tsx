@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
-    template: "%s — Haystack",
+    template: "%s | Haystack",
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteConfig.url,
-    title: "Haystack — Signal over noise for AI + data hiring",
+    title: "Haystack | Signal over noise for AI + data hiring",
     description: siteConfig.description,
     siteName: "Haystack",
     images: [
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/api/og`,
         width: 1200,
         height: 630,
-        alt: "Haystack—Find the needle. Faster.",
+        alt: "Haystack · Find the needle. Faster.",
       },
     ],
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@haystack_ai",
     creator: "@haystack_ai",
-    title: "Haystack — Signal over noise for AI + data hiring",
+    title: "Haystack | Signal over noise for AI + data hiring",
     description: siteConfig.description,
     images: [`${siteConfig.url}/api/og`],
   },

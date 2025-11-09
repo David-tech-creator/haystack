@@ -4,7 +4,7 @@ const foundations = [
   {
     title: "Swiss engineering roots",
     description:
-      "Years spent alongside Lausanne and Zürich engineering teams—consultancies, product launches, startup labs, and late-night debugging sessions—shaped how we work.",
+      "Years spent alongside Lausanne and Zürich engineering teams across consultancies, product launches, startup labs, and late-night debugging sessions shaped how we work.",
   },
   {
     title: "Embedded networks",
@@ -34,7 +34,7 @@ const principles = [
 ]
 
 const evaluation = [
-  "How candidates have built things—not just what they list.",
+  "How candidates have built things, not just what they list.",
   "Why they made specific technical or product choices.",
   "What impact the work delivered and who relied on it.",
   "Whether you’d want them next to you when something breaks at 3 AM.",
@@ -82,7 +82,7 @@ export default function AboutPage() {
             <h2 className="font-display text-2xl text-[#1f2640]">Outsourcing IT Services + Nearshore Delivery Hub</h2>
             <p>
               We are a Swiss full-service partner for business and technology solutions. Alongside recruitment sprints we
-              deliver managed engineering, data, and platform services anchored in our Tirana, Albania hub—built to stay
+              deliver managed engineering, data, and platform services anchored in our Tirana, Albania hub built to stay
               close, multilingual, and secure.
             </p>
             <p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
               "3,500+ engineering graduates a year and a tech sector growing 12.7% CAGR (2020–2027).",
               "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals certified on AWS, Azure, or GCP.",
               "Tirana is a two-hour flight from major EU capitals, enabling real-time collaboration and low attrition.",
-              "Multilingual delivery—Italian, English, German, French—built into every squad.",
+              "Multilingual delivery across Italian, English, German, and French, built into every squad.",
               "Government incentives: 15% corporate tax, 0% VAT on exported services, payroll rebates for graduate hires.",
             ].map((line) => (
               <li key={line} className="flex items-start gap-3">
@@ -113,7 +113,7 @@ export default function AboutPage() {
           <div className="space-y-4 text-lg text-[#1f2640]/75">
             <h2 className="font-display text-2xl text-[#1f2640]">How we evaluate talent</h2>
             <p>
-              We don’t chase every CV or push people into roles that don’t fit. We look for substance—engineers who take
+              We don’t chase every CV or push people into roles that don’t fit. We look for substance: engineers who take
               responsibility for what they ship and can explain how they think.
             </p>
             <p>That lens keeps teams focused and compounds the global network we activate for every search.</p>

@@ -64,7 +64,7 @@ export async function GET(request: Request) {
         >
           {title}
         </h1>
-        <p style={{ marginTop: 24, fontSize: 28, opacity: 0.7 }}>Haystack — Signal over noise for AI & data hiring.</p>
+        <p style={{ marginTop: 24, fontSize: 28, opacity: 0.7 }}>Haystack | Signal over noise for AI & data hiring.</p>
       </div>
     ),
     {

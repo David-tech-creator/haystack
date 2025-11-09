@@ -104,7 +104,7 @@ export function Hero() {
               {
                 title: "Nearshore delivery hub",
                 copy:
-                  "Embedded team in Tirana, Albania—multilingual, cloud-certified, and ready to scale when saturated markets can’t.",
+                  "Embedded team in Tirana, Albania, multilingual, cloud-certified, and ready to scale when saturated markets can’t.",
               },
             ].map((item) => (
               <div

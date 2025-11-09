@@ -26,7 +26,7 @@ const sections = [
   {
     title: "Weekly signal reports",
     content:
-      "You will receive dashboards summarizing candidate pipeline, signal strengths, risk alerts, and recommended next actions. No inbox chaos—just clarity.",
+      "You will receive dashboards summarizing candidate pipeline, signal strengths, risk alerts, and recommended next actions. No inbox chaos, just clarity.",
   },
 ]
 
