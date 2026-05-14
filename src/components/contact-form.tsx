@@ -22,7 +22,7 @@ const ContactSchema = z.object({
   name: z.string().min(2, "Please add your name"),
   email: z.string().email("Use a valid email"),
   company: z.string().optional(),
-  roles: z.string().optional(),
+  project: z.string().optional(),
   message: z.string().min(10, "Tell us a little more"),
 })
 
@@ -39,7 +39,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
       name: "",
       email: "",
       company: "",
-      roles: "",
+      project: "",
       message: "",
     },
   })
@@ -115,12 +115,12 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
             />
             <FormField
               control={form.control}
-              name="roles"
+              name="project"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Role(s) hiring</FormLabel>
+                  <FormLabel>Project type</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Staff ML, Analytics Engineer" {...field} />
+                    <Input placeholder="e.g. AI agent, RPA, mobile app, DX program" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,9 +132,9 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>What does a successful sprint look like?</FormLabel>
+                <FormLabel>What does success look like?</FormLabel>
                 <FormControl>
-                  <Textarea rows={5} placeholder="Share your goals, timelines, or team context" {...field} />
+                  <Textarea rows={5} placeholder="Share your goals, constraints, timeline, and what good would look like in 90 days" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

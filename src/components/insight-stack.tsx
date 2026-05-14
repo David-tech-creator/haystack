@@ -4,45 +4,41 @@ import { motion } from "framer-motion"
 
 const tools = [
   {
-    name: "Superhuman",
-    headline: "Inbox velocity",
+    name: "Coding agents",
+    headline: "AI-pair on every PR",
     description:
-      "Every candidate thread gets handled in real-time with snippets, reminders, and AI triage. No drift, no ghosting.",
-    url: "https://superhuman.com/",
+      "Production-grade LLM coding assistants generate boilerplate, components, and tests. Senior engineers review, refactor, and harden — no code reaches main without two human signatures.",
   },
   {
-    name: "Juicebox.ai",
-    headline: "AI-native sourcing",
+    name: "Automated QC",
+    headline: "Test scripts written for you",
     description:
-      "Purpose-built search tuned to AI talent signals, with conversation-ready summaries for hiring managers.",
-    url: "https://juicebox.ai/",
+      "AI predicts edge cases from the spec and authors automated test scripts. QC engineers run exploratory, performance, and security testing on top — evidence-based releases, every time.",
   },
   {
-    name: "Spott",
-    headline: "ATS built for AI teams",
+    name: "Architecture copilots",
+    headline: "Design before code",
     description:
-      "YC-backed ATS + CRM that unifies pipeline, experiments, and candidate intelligence in one workspace.",
-    url: "https://spott.io/",
+      "System options, API contracts, and UI mockups generated upfront so the architecture is settled before a single line of production code ships.",
   },
   {
-    name: "Wispr Flow",
-    headline: "Voice-first execution",
+    name: "Ops automation",
+    headline: "Runbooks that run themselves",
     description:
-      "Voice-to-text automation that turns spoken context into clean updates across apps, keeping hiring ops moving at thought-speed.",
-    url: "https://wisprflow.ai/",
+      "Generated deployment scripts, observability wiring, and incident runbooks. The handover document is a system, not a PDF.",
   },
 ]
 
 const advisors = [
-  "Staffing leads from European unicorns",
-  "Heads of AI at venture-backed scale-ups",
-  "Specialists leading technical interviews and use-case design",
+  "Lead engineers from enterprise-grade AI deployments across regulated sectors",
+  "Architects with production track records in fintech, manufacturing, and healthcare",
+  "Specialists in LLM safety, RAG architectures, and on-premise AI for sensitive data",
 ]
 
 const differentiators = [
-  "Proprietary signal library that scores intent, velocity, and hands-on depth",
-  "Dedicated research pod feeding market intel into every sprint",
-  "Async talent briefings so hiring teams make decisions in hours, not weeks",
+  "AI agents embedded at every production stage — not bolted on as a marketing layer",
+  "Senior engineering review on every commit, every architecture decision, every release",
+  "ISO/IEC 27001 controls across the production estate, audit-grade by default",
 ]
 
 export function InsightStack() {
@@ -52,11 +48,10 @@ export function InsightStack() {
         <div className="space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#cbbd9e]/80">Inside Haystack</p>
           <h2 className="inline-block rounded-full bg-[#f6d891] px-5 py-2 font-display text-3xl leading-tight text-primary shadow-[0_12px_30px_rgba(15,18,30,0.45)] md:text-4xl">
-            AI-native stack, human judgment.
+            AI-native production. Human judgment.
           </h2>
           <p className="max-w-xl text-base text-[#f8f0d9]/80">
-            We pair senior operators with an automation-first toolkit so every sprint moves with conviction. Here’s the
-            operating system that keeps us days ahead.
+            AI agents do the keystroke-heavy work. Senior engineers do the thinking. Here’s the production system that lets us move with conviction.
           </p>
 
           <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
@@ -69,17 +64,7 @@ export function InsightStack() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
                 className="rounded-3xl border border-white/10 bg-[#fefbf4]/10 p-6 backdrop-blur"
               >
-                <div className="flex items-center justify-between">
-                  <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">{tool.name}</p>
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-[#f6d891] underline"
-                  >
-                    Learn
-                  </a>
-                </div>
+                <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">{tool.name}</p>
                 <h3 className="mt-3 font-display text-xl text-white">{tool.headline}</h3>
                 <p className="mt-3 text-sm text-[#f8f0d9]/80">{tool.description}</p>
               </motion.div>
@@ -87,11 +72,10 @@ export function InsightStack() {
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-[#fefbf4]/10 p-6 backdrop-blur">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Advisor Bench</p>
-            <h3 className="mt-3 font-display text-xl text-white">Technical signal review</h3>
+            <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Senior advisors</p>
+            <h3 className="mt-3 font-display text-xl text-white">Architecture review on the hard problems</h3>
             <p className="mt-3 text-sm text-[#f8f0d9]/80">
-              Senior advisors embedded in Europe’s top AI startups and scale-ups evaluate our recommendations, join
-              technical interviews, and stress-test use cases before they reach your panel.
+              For systems that can’t be wrong — regulated data, on-premise AI, mission-critical operations — senior advisors join the architecture review before code is written and stress-test the production design before launch.
             </p>
             <ul className="mt-4 space-y-2 text-sm text-[#f8f0d9]/70">
               {advisors.map((item) => (
@@ -107,10 +91,9 @@ export function InsightStack() {
         <div className="space-y-6">
           <div className="rounded-[2rem] border border-white/10 bg-[#fefbf4]/10 p-8 backdrop-blur">
             <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Why it matters</p>
-            <h3 className="mt-3 font-display text-2xl text-white">Better signals, faster decisions.</h3>
+            <h3 className="mt-3 font-display text-2xl text-white">Speed without slop. Quality without bureaucracy.</h3>
             <p className="mt-3 text-sm text-[#f8f0d9]/80">
-              AI-native infrastructure means less time on admin and more time aligning on conviction. Our internal kitchen
-              keeps data flowing so your team only sees high-intent, technically vetted finalists.
+              Most agencies pick one: fast and rough, or slow and polished. We use AI to remove the floor on velocity and keep senior engineering judgment as the ceiling on quality. The two compound.
             </p>
             <ul className="mt-4 space-y-3 text-sm text-[#f8f0d9]/75">
               {differentiators.map((line) => (
@@ -126,8 +109,7 @@ export function InsightStack() {
             <p className="text-xs uppercase tracking-[0.25em] text-[#cbbd9e]/80">Beyond the stack</p>
             <h3 className="mt-3 font-display text-2xl text-white">What’s next</h3>
             <p className="mt-3 text-sm text-[#f8f0d9]/80">
-              We continuously test emerging copilots, async code reviewers, and candidate-supplied demos to keep raising
-              the bar. If there’s a tool that compresses time to evidence, it lives in our kitchen before it hits yours.
+              We continuously evaluate emerging coding agents, autonomous QC pipelines, and on-prem LLM tooling. If something compresses the time-to-shipped without compromising the quality bar, it lives in our kitchen before it touches yours.
             </p>
           </div>
         </div>
@@ -135,5 +117,3 @@ export function InsightStack() {
     </section>
   )
 }
-
-

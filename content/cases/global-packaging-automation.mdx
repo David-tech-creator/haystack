@@ -1,0 +1,31 @@
+---
+title: "10× order processing for a global packaging group"
+slug: "global-packaging-automation"
+summary: "Manual order entry replaced with end-to-end automation. 2 minutes per order, 100% accuracy, 30% of operations staff reassigned to higher-value work."
+impact:
+  - "10× productivity"
+  - "2 min per order"
+  - "100% accuracy"
+  - "30% staff reallocated"
+---
+
+### Context
+
+A global packaging-solutions group was running its order intake the way it had since the 1990s: customers emailed PDFs and Excel files; operations staff opened each one, transcribed the line items into SAP by hand, fixed the inevitable typos, then forwarded the confirmation back. Each order took the better part of an hour. Errors compounded downstream into wrong shipments, credit notes, and tense customer calls.
+
+The operations leadership knew the process was broken but the standard answers — hiring more clerks, buying a generic RPA license, "let's review SAP next year" — were all losing battles. They needed automation that actually understood the documents, not a screen-scraper that would fall over on the first malformed PDF.
+
+### Approach
+
+We deployed our AI-powered order processing platform: a pipeline that ingests inbound documents (PDF, Excel, email body), uses LLMs to extract structured order data with field-level confidence scores, validates against business rules (customer master data, pricing tables, inventory thresholds), and writes the order directly into SAP with a full audit trail.
+
+Engineers from our team embedded with the operations group for the first six weeks — rewriting validation rules based on the actual error patterns we found in production data, not the ones documented in the SOP.
+
+### Outcome
+
+- **2 minutes per order.** Down from an average of 22 minutes manual processing. A 10× productivity improvement on the highest-volume task in the operation.
+- **~100% data accuracy.** Field-level validation and confidence-gated handoff to humans for the genuinely ambiguous cases meant the downstream wrong-shipment rate fell off a cliff.
+- **30% of operations staff reallocated.** Not to redundancy — to customer success, exception handling, and the work that actually needed human judgment.
+- **Audit-grade trail.** Every automated decision is logged with the source document, the extracted fields, the rule that fired, and the SAP write confirmation.
+
+The system now processes orders 24/7 across the group's regions. The operations team — smaller, smarter, less burned out — has moved up the value chain.

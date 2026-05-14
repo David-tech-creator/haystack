@@ -59,7 +59,7 @@ export default async function CaseStudyPage({ params }: { params: { slug: string
             href="/contact"
             className="mt-4 inline-flex h-10 items-center justify-center rounded-full bg-navy-800 px-6 text-sm font-semibold text-wheat-100 shadow-soft-lg transition hover:bg-navy-700"
           >
-            Start a sprint
+            Start a project
           </Link>
         </div>
       </aside>

@@ -11,18 +11,17 @@ type FooterLink = {
 
 const footerLinks: { heading: string; links: FooterLink[] }[] = [
   {
-    heading: "Company",
+    heading: "Work",
     links: [
-      { href: "/about", label: "About" },
+      { href: "/solutions", label: "Solutions" },
       { href: "/process", label: "Process" },
       { href: "/cases", label: "Case Studies" },
     ],
   },
   {
-    heading: "Talent",
+    heading: "Company",
     links: [
-      { href: "/roles", label: "Roles" },
-      { href: "/jobs", label: "Jobs" },
+      { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
     ],
   },
@@ -40,7 +39,7 @@ export function SiteFooter() {
               Haystack
             </Link>
             <p className="mt-3 max-w-sm text-sm text-primary/70">
-              Find decisive talent without the guesswork. Calibrated shortlists backed by signal-rich insights every week.
+              Geneva-anchored AI software agency. Japanese-quality engineering, AI-native production — shipped by our teams across Asia-Pacific.
             </p>
           </div>
           <div className="flex gap-4 text-sm text-primary/70">

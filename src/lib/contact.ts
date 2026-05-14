@@ -2,7 +2,7 @@ export type ContactPayload = {
   name: string
   email: string
   company?: string
-  roles?: string
+  project?: string
   message: string
 }
 
@@ -38,13 +38,13 @@ export async function sendContactMessage(payload: ContactPayload) {
         replyTo: {
           email: payload.email,
         },
-        subject: `New sprint request from ${payload.name}`,
-        textContent: `Name: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company ?? ""}\nRoles: ${payload.roles ?? ""}\n\nMessage:\n${payload.message}`,
+        subject: `New project enquiry from ${payload.name}`,
+        textContent: `Name: ${payload.name}\nEmail: ${payload.email}\nCompany: ${payload.company ?? ""}\nProject: ${payload.project ?? ""}\n\nMessage:\n${payload.message}`,
         htmlContent: `
           <p><strong>Name:</strong> ${payload.name}</p>
           <p><strong>Email:</strong> <a href="mailto:${payload.email}">${payload.email}</a></p>
           ${payload.company ? `<p><strong>Company:</strong> ${payload.company}</p>` : ""}
-          ${payload.roles ? `<p><strong>Roles:</strong> ${payload.roles}</p>` : ""}
+          ${payload.project ? `<p><strong>Project:</strong> ${payload.project}</p>` : ""}
           <p><strong>Message:</strong></p>
           <p>${payload.message.replace(/\n/g, "<br/>")}</p>
         `,

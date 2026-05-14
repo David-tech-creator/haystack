@@ -22,9 +22,9 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/", label: "Home" },
+  { href: "/solutions", label: "Solutions" },
   { href: "/process", label: "Process" },
   { href: "/cases", label: "Case Studies" },
-  { href: "/roles", label: "Roles" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ]
@@ -76,10 +76,10 @@ export function SiteHeader() {
         </nav>
         <div className="hidden items-center gap-4 md:flex">
           <Button variant="ghost" size="sm" className="text-primary/80 hover:text-primary" asChild>
-            <Link href={"/roles" as Route}>See open roles</Link>
+            <Link href={"/solutions" as Route}>Explore solutions</Link>
           </Button>
           <Button size="sm" className="rounded-full px-6" asChild>
-            <Link href={"/contact" as Route}>Request a sprint</Link>
+            <Link href={"/contact" as Route}>Start a project</Link>
           </Button>
         </div>
         <Sheet open={open} onOpenChange={setOpen}>
@@ -111,10 +111,10 @@ export function SiteHeader() {
             </div>
             <div className="mt-6 flex flex-col gap-2">
               <Button asChild onClick={() => setOpen(false)}>
-                <Link href={"/contact" as Route}>Book a sprint</Link>
+                <Link href={"/contact" as Route}>Start a project</Link>
               </Button>
               <Button variant="outline" asChild onClick={() => setOpen(false)}>
-                <Link href={"/roles" as Route}>See open roles</Link>
+                <Link href={"/solutions" as Route}>Explore solutions</Link>
               </Button>
             </div>
           </SheetContent>

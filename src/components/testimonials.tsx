@@ -14,21 +14,21 @@ import {
 const testimonials = [
   {
     quote:
-      "Haystack transformed a noisy search into three signal-rich candidates. Our staff ML hire came together in weeks, not months.",
-    name: "Priya Kapoor",
-    role: "VP Data, Gradient Labs",
+      "Most agencies pitch a senior, then ship juniors. Haystack pitched a senior and the same engineer was on every standup for ten months. The system landed on time and we extended the contract.",
+    name: "Operations Director",
+    role: "Global packaging group",
   },
   {
     quote:
-      "Weekly signal reports kept the founders aligned. We made a senior analytics hire in 18 days without expanding interview load.",
-    name: "Jake Morrison",
-    role: "Co-founder, Orbit Data",
+      "We needed an AI assistant for our internal knowledge base — on-prem, audit-trail, zero hallucinations. Three vendors said it was impossible. Haystack shipped a pilot in six weeks.",
+    name: "Head of IT",
+    role: "Regulated enterprise · EU",
   },
   {
     quote:
-      "Scorecards and work samples gave us clarity we hadn’t seen in previous searches. We closed two applied scientists back-to-back.",
-    name: "Linh Tran",
-    role: "Head of People, NovaOps",
+      "The discovery call was a senior engineer asking sharp questions, not a sales rep reading a slide. That was the moment we picked them. Eight months later, the product is in production and growing.",
+    name: "Co-founder & CTO",
+    role: "Series A startup · Silicon Valley",
   },
 ]
 
@@ -40,7 +40,7 @@ export function Testimonials() {
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60">Testimonials</p>
-          <h2 className="font-display text-3xl text-primary">Teams that scale with Haystack</h2>
+          <h2 className="font-display text-3xl text-primary">Operators who’ve shipped with us</h2>
         </div>
       </div>
       <div className="relative mt-10">

@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion"
 
-const placeholders = ["SignalIQ", "TensorMosaic", "Gradient Labs", "Orbit Data", "NovaOps"]
+const placeholders = ["Enterprise", "Manufacturing", "Healthcare", "Finance", "Logistics"]
 
 export function Logos() {
   return (
     <section className="container py-16">
       <div className="rounded-3xl border border-[#e3d7be] bg-[#fdf9ef] p-6 shadow-inner">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60">
-          Teams scaling faster with Haystack
+          Trusted across regulated enterprises and venture-backed startups
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-5">
           {placeholders.map((name, index) => (

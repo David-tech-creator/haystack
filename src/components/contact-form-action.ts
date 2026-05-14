@@ -6,7 +6,7 @@ export async function ContactFormAction(values: {
   name: string
   email: string
   company?: string
-  roles?: string
+  project?: string
   message: string
 }) {
   return sendContactMessage(values)

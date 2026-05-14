@@ -1,49 +1,56 @@
-import Image from "next/image"
 import type { Metadata } from "next"
 
 const foundations = [
   {
-    title: "Swiss engineering roots",
+    title: "Geneva-anchored",
     description:
-      "Years spent alongside Lausanne and Zürich engineering teams across consultancies, product launches, startup labs, and late-night debugging sessions shaped how we work.",
+      "Headquartered in Switzerland. Engagement governance, contracting, and client relationships operate to the standard our European and US enterprise clients expect.",
   },
   {
-    title: "Embedded networks",
+    title: "Japanese-quality engineering",
     description:
-      "EPFL, ETH Zürich, HSG incubators, and the clusters across Romandy and Zürich are our home turf. We stay close to the labs, founders, and technologists building what’s next.",
+      "Our delivery discipline is shaped by Japan’s most demanding market — specification-first, defect-averse, documentation-complete. ISO/IEC 27001 certified across the production estate.",
   },
   {
-    title: "Global network, unsaturated talent",
+    title: "AI-native production",
     description:
-      "Swiss-led relationships follow alumni into leadership roles across Europe, the US, and Asia. While traditional hubs are saturated, our network opens new capacity without the churn.",
+      "AI agents handle the keystroke-heavy work at every stage of the build. Senior engineers make the judgment calls. Velocity without slop.",
   },
 ]
 
-const principles = [
+const values = [
   {
-    title: "Signal first",
-    description: "Quality evidence over volume. Every shortlist is benchmarked against hands-on delivery and practical context.",
+    title: "Quality & Speed",
+    description: "We move fast without leaving defects behind. Every shipped deliverable carries a quality signature.",
   },
   {
-    title: "Transparency",
-    description: "Clients see what we see: clear dashboards, straightforward expectations, honest readouts.",
+    title: "Integrity & Transparency",
+    description: "Honest readouts, clear contracts, real numbers. No padded estimates, no surprise invoices.",
   },
   {
-    title: "Momentum",
-    description: "Hiring has to match product velocity. Our sprints compound progress and keep talent engaged.",
+    title: "Innovation & Courage",
+    description: "We propose what we’d build for ourselves — not the safest option, the right one.",
+  },
+  {
+    title: "Customer-Centricity",
+    description: "Deep understanding of your business comes before code. We embed, we listen, then we ship.",
+  },
+  {
+    title: "Respect & Collaboration",
+    description: "Senior engineers who treat your team as peers. No layered account managers, no agency theatre.",
   },
 ]
 
-const evaluation = [
-  "How candidates have built things, not just what they list.",
-  "Why they made specific technical or product choices.",
-  "What impact the work delivered and who relied on it.",
-  "Whether you’d want them next to you when something breaks at 3 AM.",
+const milestones = [
+  { year: "2019", note: "Engineering practice founded in Ho Chi Minh City." },
+  { year: "2024", note: "Tokyo office opens. Hanoi office opens. Japanese-quality program formalised." },
+  { year: "2025", note: "Melbourne office opens. Cross 130+ engineers." },
+  { year: "2026", note: "Geneva HQ, Silicon Valley presence. 200+ projects delivered." },
 ]
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn how Haystack’s Swiss roots, embedded networks, and signal-first principles support AI-native hiring.",
+  description: "Haystack is a Geneva-anchored AI software agency. Japanese-quality engineering, AI-native production, delivery teams across Asia-Pacific.",
 }
 
 export default function AboutPage() {
@@ -53,11 +60,12 @@ export default function AboutPage() {
         <div className="rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:p-14">
           <div className="max-w-3xl space-y-5">
             <p className="text-xs uppercase tracking-[0.2em] text-primary/50">About Haystack</p>
-            <h1 className="text-4xl font-semibold tracking-tight text-primary md:text-5xl">Why Haystack exists</h1>
+            <h1 className="text-4xl font-semibold tracking-tight text-primary md:text-5xl">Software, shipped with conviction.</h1>
             <p className="text-lg text-primary/70">
-              Haystack is an AI-native full-service provider for business and technology solutions. We blend recruitment
-              sprints, outsourcing capacity, and a nearshore delivery hub to help ambitious teams build and scale with
-              conviction.
+              Haystack is an AI-native software agency. We design, build, and operate the systems modern enterprises and venture-backed startups can’t afford to get wrong — from custom platforms and AI agents to end-to-end digital transformation programs.
+            </p>
+            <p className="text-lg text-primary/70">
+              Geneva governance. Japanese-quality engineering discipline. Senior delivery teams across Ho Chi Minh City, Hanoi, Tokyo, and Melbourne. Expanding to Silicon Valley by 2026.
             </p>
           </div>
         </div>
@@ -80,25 +88,25 @@ export default function AboutPage() {
       <section className="container">
         <div className="grid gap-10 rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:grid-cols-[minmax(0,1.15fr),minmax(0,0.85fr)] md:p-14">
           <div className="space-y-4 text-lg text-primary/75">
-            <h2 className="font-display text-2xl text-primary">Outsourcing IT Services + Nearshore Delivery Hub</h2>
+            <h2 className="font-display text-2xl text-primary">The internal kitchen</h2>
             <p>
-              We are a Swiss full-service partner for business and technology solutions. Alongside recruitment sprints we
-              deliver managed engineering, data, and platform services from our Tirana, Albania hub, located inside the freshly
-              opened Durana Technology & Science Park to stay close, multilingual, and secure.
+              Every great agency has an internal kitchen. Ours is an exclusive engineering partnership across Asia-Pacific — 130+ senior engineers, ISO/IEC 27001 certified, recruited directly from Vietnam’s top computer science programs and trained in Japanese-quality delivery practice.
             </p>
             <p>
-              Traditional nearshore hotspots are crowded, expensive, and prone to turnover. Albania’s ecosystem is scaling
-              fast without the saturation: a young workforce paired with seasoned specialists, plus incentives that keep
-              delivery teams stable rather than cycling through churn.
+              Average labour costs are a fraction of saturated EU and US hubs without the quality compromise that usually comes with it. Our engineers stay for years, not months. Most projects keep the same lead engineer from kickoff through handover.
+            </p>
+            <p className="text-sm italic text-primary/60">
+              200+ projects delivered. 130+ engineers. 7 years operating without a single security incident.
             </p>
           </div>
           <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-primary/80">
             {[
-              "Nearshore office inside Durana Technology & Science Park, Albania’s flagship innovation campus linking global investors, academia, and startups.",
-              "3,500+ engineering graduates a year and a tech sector growing 12.7% CAGR (2020–2027).",
-            "Average labour costs 30–50% below saturated EU hubs, with 85% of professionals holding globally recognised technical certifications.",
-              "Tirana is a two-hour flight from major EU capitals, enabling real-time collaboration and low attrition.",
-              "Multilingual delivery across Italian, English, German, and French, built into every squad.",
+              "Ho Chi Minh City — primary engineering hub, founded 2019",
+              "Hanoi — second engineering hub, opened 2024",
+              "Tokyo — client liaison and Japanese-quality program, opened 2024",
+              "Melbourne — APAC client relations, opened 2025",
+              "Geneva — agency HQ, engagement governance, EU/UK clients",
+              "Silicon Valley — US client relations, opening 2026",
             ].map((line) => (
               <li key={line} className="flex items-start gap-3">
                 <span className="mt-1 inline-flex size-2 rounded-full bg-[#f4ca64]" aria-hidden />
@@ -110,70 +118,29 @@ export default function AboutPage() {
       </section>
 
       <section className="container">
-        <div className="grid gap-8 items-center rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-8 shadow-sm md:grid-cols-[minmax(0,1.1fr),minmax(0,0.9fr)] md:p-12">
-          <div className="overflow-hidden rounded-2xl border border-[#e3d7be]/60 bg-[#fefbf4]">
-            <Image
-              src="/Durana.jpg"
-              alt="Durana Technology & Science Park campus"
-              width={1600}
-              height={900}
-              className="h-full w-full object-cover"
-              priority={false}
-            />
-          </div>
-          <div className="space-y-4 text-sm text-primary/75 md:text-base">
-            <h3 className="font-display text-xl text-primary">Durana Technology &amp; Science Park</h3>
-            <p>
-              Durana Tech Park is Albania’s first dedicated technology and science park, a hub where big tech companies,
-              startups, universities, and research centres co-create new products and transfer knowledge across the region.
-            </p>
-            <p>
-              Our nearshore office sits inside this campus so Haystack squads plug into shared labs, mentoring, and
-              investor networks while staying minutes from Tirana International Airport.
-            </p>
-            <a
-              href="https://duranatechpark.com/who-we-are"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center text-sm font-semibold text-primary underline-offset-4 transition hover:underline"
-            >
-              Explore the park
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="container">
-        <div className="grid gap-10 rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:grid-cols-[minmax(0,1.15fr),minmax(0,0.85fr)] md:p-14">
-          <div className="space-y-4 text-lg text-primary/75">
-            <h2 className="font-display text-2xl text-primary">How we evaluate talent</h2>
-            <p>
-              We don’t chase every CV or push people into roles that don’t fit. We look for substance: engineers who take
-              responsibility for what they ship and can explain how they think.
-            </p>
-            <p>That lens keeps teams focused and compounds the global network we activate for every search.</p>
-          </div>
-          <ul className="space-y-3 rounded-2xl border border-[#e3d7be]/70 bg-[#fef8ec] p-6 text-sm text-primary/80">
-            {evaluation.map((line) => (
-              <li key={line} className="flex items-start gap-3">
-                <span className="mt-1 inline-flex size-2 rounded-full bg-[#f4ca64]" aria-hidden />
-                <span>{line}</span>
-              </li>
+        <div className="rounded-3xl border border-[#e3d7be] bg-[#fefbf4] p-10 shadow-sm md:p-14">
+          <h2 className="font-display text-2xl text-primary">Journey</h2>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {milestones.map((m) => (
+              <div key={m.year} className="rounded-2xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-primary/80">
+                <p className="font-display text-3xl text-primary">{m.year}</p>
+                <p className="mt-2 leading-relaxed">{m.note}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
       <section className="container space-y-6">
-        <h2 className="font-display text-2xl text-primary">Principles</h2>
+        <h2 className="font-display text-2xl text-primary">Values</h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {principles.map((principle) => (
+          {values.map((value) => (
             <div
-              key={principle.title}
+              key={value.title}
               className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-6 text-sm text-primary/75 shadow-sm"
             >
-              <h3 className="text-lg font-semibold text-primary">{principle.title}</h3>
-              <p className="mt-3 leading-relaxed">{principle.description}</p>
+              <h3 className="text-lg font-semibold text-primary">{value.title}</h3>
+              <p className="mt-3 leading-relaxed">{value.description}</p>
             </div>
           ))}
         </div>

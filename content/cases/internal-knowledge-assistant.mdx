@@ -1,0 +1,31 @@
+---
+title: "Internal AI assistant for a regulated enterprise"
+slug: "internal-knowledge-assistant"
+summary: "An on-prem retrieval assistant that reads the company's documents, answers internal questions without hallucinating, and keeps the data on the perimeter."
+impact:
+  - "90% less manual search"
+  - "Zero hallucinations"
+  - "ISO 27001 controls"
+  - "On-prem deployment"
+---
+
+### Context
+
+A mid-large enterprise in a regulated sector had the problem every large operation has: institutional knowledge was scattered across thousands of PDFs, Word documents, Excel models, and internal wikis. Finding the right answer meant pinging colleagues on chat, hoping someone remembered which folder, and burning hours every week.
+
+The off-the-shelf options were either generic LLMs (good prose, wrong answers, data leaving the building) or expensive enterprise search products (no real understanding, just keyword matching with a chat skin). The compliance team had a hard line: no customer data could leave the perimeter, every query had to be auditable, and the system had to answer "I don't know" rather than make things up.
+
+### Approach
+
+We built an internal AI agent assistant: an on-premise retrieval pipeline that indexes the enterprise's document estate (PDFs, Word, Excel, web pages, internal manuals), serves answers through a chat interface, and refuses to hallucinate beyond the source material.
+
+The architecture put the LLM behind the firewall, with strict role-based access so employees only saw answers from documents they had permission to read. Every Q&A pair is logged with the source citations, the user, and the timestamp — turning the system into an auditable knowledge graph rather than a black box.
+
+### Outcome
+
+- **Manual document search time cut by ~90%.** What used to be a 20-minute hunt is now a 15-second question.
+- **Multi-format ingestion.** PDFs, Word, Excel, websites, technical manuals — normalised into one searchable knowledge base.
+- **Hallucination-resistant.** The system answers only from indexed sources, returns citations with every response, and explicitly says "I don't know" when the corpus doesn't cover the question.
+- **Security and access control.** Data stays in isolation, with role-based access controls and strict auditing of every Q&A interaction.
+
+The assistant has become the front door to the company's institutional memory — and the model for a wider rollout across the group.

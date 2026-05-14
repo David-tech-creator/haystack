@@ -7,7 +7,7 @@ import { getCaseStudies } from "@/lib/content"
 
 export const metadata: Metadata = {
   title: "Case Studies",
-  description: "Impact stories from AI-native teams hiring with Haystack.",
+  description: "How enterprises and operators ship faster, cheaper, and with less risk by building with Haystack.",
 }
 
 export default async function CasesPage() {
@@ -18,10 +18,10 @@ export default async function CasesPage() {
       <div className="space-y-4">
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Case studies</p>
         <h1 className="text-4xl font-semibold tracking-tight text-primary dark:text-wheat-100">
-          Signal-led hiring outcomes
+          Shipped systems, measured outcomes.
         </h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          Explore how AI and data teams closed critical roles faster with Haystack’s sprint model.
+          A selection of enterprise programs we’ve delivered — with the operational numbers, not the marketing ones.
         </p>
       </div>
       <div className="mt-12 grid gap-6 md:grid-cols-3">

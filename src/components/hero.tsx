@@ -16,7 +16,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="inline-flex items-center rounded-full bg-[#e8d8b8] px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary"
           >
-            Haystack for AI-native teams
+            Geneva &middot; Tokyo &middot; HCMC &middot; Melbourne
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -28,7 +28,7 @@ export function Hero() {
               <span className="absolute inset-x-0 bottom-1 h-4 rounded-full bg-[#f4ca64]/80" aria-hidden />
               <span className="relative font-script italic text-[1.05em]">Move the needle.</span>
             </span>{" "}
-            Haystack finds decisive talent the moment you need it.
+            We design, build, and ship the software you can&rsquo;t afford to get wrong.
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 24 }}
@@ -37,7 +37,7 @@ export function Hero() {
             className="max-w-2xl text-lg text-primary/70"
           >
             <Balancer>
-              Prepare the future and find decisive talent without the guesswork. Calibrated shortlists backed by signal-rich insights every week.
+              Haystack is an AI-native software agency. Japanese-quality engineering, AI agents in every production step, senior teams across Asia-Pacific &mdash; delivered with the discipline of an enterprise vendor and the velocity of a startup.
             </Balancer>
           </motion.p>
           <motion.div
@@ -50,13 +50,13 @@ export function Hero() {
               href="/contact"
               className="inline-flex items-center rounded-full bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary-foreground transition hover:bg-primary/90"
             >
-              Talk to an expert
+              Start a project
             </Link>
             <Link
-              href="/roles"
+              href="/solutions"
               className="inline-flex items-center rounded-full border border-primary px-8 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary transition hover:bg-primary/5"
             >
-              See open roles
+              Explore solutions
             </Link>
           </motion.div>
         </div>
@@ -85,26 +85,26 @@ export function Hero() {
         >
           <div className="mb-6 flex items-center justify-between gap-3">
             <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-primary/70">
-              How we partner
+              What we ship
             </h2>
             <span className="h-px flex-1 bg-[#e3d7be]" aria-hidden />
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               {
-                title: "Recruitment sprints",
+                title: "Custom systems",
                 copy:
-            "Swiss-led search programs that surface decisive talent with signal-rich evidence, not volume.",
+                  "Bespoke platforms, web and mobile applications, and integrations — designed for your business, built for the next decade.",
               },
               {
-                title: "Outsourcing IT services",
+                title: "AI & agents",
                 copy:
-                  "Project and managed-team capacity across software, data, and infrastructure from specialists who stay aligned.",
+                  "Production-grade AI agents, RPA, computer-vision, and LLM systems wired into the workflows that actually move revenue.",
               },
               {
-                title: "Nearshore delivery hub",
-          copy:
-            "Embedded team in Tirana’s new Durana Technology & Science Park, multilingual, senior specialists, and ready to scale when saturated markets can’t.",
+                title: "Digital transformation",
+                copy:
+                  "End-to-end DX programs: replace manual operations with measurable automation across ERP, CRM, and supply chain.",
               },
             ].map((item) => (
               <div

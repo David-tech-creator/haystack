@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteConfig.url,
-    title: "Haystack · Move the needle.",
+    title: "Haystack · Move the needle. Ship the product.",
     description: siteConfig.description,
     siteName: "Haystack",
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@haystack_ai",
     creator: "@haystack_ai",
-    title: "Haystack · Move the needle.",
+    title: "Haystack · Move the needle. Ship the product.",
     description: siteConfig.description,
     images: [`${siteConfig.url}/api/og`],
   },

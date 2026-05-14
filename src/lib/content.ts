@@ -13,7 +13,6 @@ import { visit } from "unist-util-visit"
 import { toString } from "mdast-util-to-string"
 import type { Root } from "mdast"
 
-const jobsDir = path.join(process.cwd(), "content/jobs")
 const casesDir = path.join(process.cwd(), "content/cases")
 
 const slugger = new GithubSlugger()
@@ -44,57 +43,10 @@ const mdxOptions = {
 
 export type TocItem = { slug: string; title: string; depth: number }
 
-export type JobMeta = {
-  title: string
-  slug: string
-  location: string
-  tags: string[]
-  level: string
-  salaryRange?: string
-  postedAt: string
-}
-
-export type JobContent = {
-  meta: JobMeta
-  content: React.ReactNode
-  toc: TocItem[]
-}
-
 async function compileWithToc(source: string) {
   const toc = buildToc(source)
   const mdx = await compileMDX({ source, options: mdxOptions })
   return { content: mdx.content, toc }
-}
-
-export async function getJobs(): Promise<JobContent[]> {
-  const files = await fs.readdir(jobsDir)
-  const jobs = await Promise.all(
-    files
-      .filter((file) => file.endsWith(".mdx"))
-      .map(async (file) => {
-        const source = await fs.readFile(path.join(jobsDir, file), "utf8")
-        const { content, data } = matter(source)
-        const mdx = await compileWithToc(content)
-        return {
-          meta: data as JobMeta,
-          content: mdx.content,
-          toc: mdx.toc,
-        }
-      }),
-  )
-
-  return jobs.sort((a, b) => (a.meta.postedAt < b.meta.postedAt ? 1 : -1))
-}
-
-export async function getJobBySlug(slug: string): Promise<JobContent> {
-  const source = await fs.readFile(path.join(jobsDir, `${slug}.mdx`), "utf8")
-  const { content, data } = matter(source)
-  const mdx = await compileWithToc(content)
-  return {
-    meta: data as JobMeta,
-    content: mdx.content,
-    toc: mdx.toc,
-  }
 }
 
 export type CaseStudyMeta = {
