@@ -66,16 +66,17 @@ export function InsightStack() {
   const motionInitial = reduce ? false : "hidden"
 
   return (
-    <section className="relative overflow-hidden bg-[#10162a] py-24 text-[#fefbf4] md:py-28">
-      {/* Ambient depth — two blurred orbs drift behind the content */}
+    <section className="relative overflow-hidden bg-[#10162a] py-20 text-[#fefbf4] md:py-24 lg:py-28">
+      {/* Ambient depth — two blurred orbs drift behind the content.
+          Smaller + lighter blur on mobile to keep GPU/battery cost down. */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <motion.div
-          className="absolute -top-32 left-[-10%] h-[28rem] w-[28rem] rounded-full bg-[#f6d891]/[0.08] blur-[120px]"
+          className="absolute -top-24 left-[-15%] h-64 w-64 rounded-full bg-[#f6d891]/[0.08] blur-[80px] md:-top-32 md:left-[-10%] md:h-[28rem] md:w-[28rem] md:blur-[120px]"
           animate={reduce ? undefined : { x: [0, 30, 0], y: [0, 20, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-[-10%] right-[-10%] h-[26rem] w-[26rem] rounded-full bg-[#4a6fd6]/[0.10] blur-[120px]"
+          className="absolute bottom-[-15%] right-[-15%] h-60 w-60 rounded-full bg-[#4a6fd6]/[0.10] blur-[80px] md:bottom-[-10%] md:right-[-10%] md:h-[26rem] md:w-[26rem] md:blur-[120px]"
           animate={reduce ? undefined : { x: [0, -25, 0], y: [0, -15, 0] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -102,10 +103,10 @@ export function InsightStack() {
 
           <motion.h2
             variants={rise}
-            className="mt-6 font-display text-[2.25rem] leading-[1.05] tracking-tight text-white md:text-5xl lg:text-[3.25rem]"
+            className="mt-6 font-display text-[2rem] leading-[1.05] tracking-tight text-white sm:text-[2.25rem] md:text-5xl lg:text-[3.25rem]"
           >
-            AI-native production.{" "}
-            <span className="bg-gradient-to-r from-[#f6d891] via-[#f8e6b6] to-[#f6d891] bg-clip-text text-transparent">
+            <span className="block">AI-native production.</span>
+            <span className="block bg-gradient-to-r from-[#f6d891] via-[#f8e6b6] to-[#f6d891] bg-clip-text text-transparent">
               Human judgment.
             </span>
           </motion.h2>
@@ -134,13 +135,14 @@ export function InsightStack() {
                   key={tool.name}
                   variants={rise}
                   whileHover={reduce ? undefined : { y: -4 }}
+                  whileTap={reduce ? undefined : { scale: 0.985 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-colors duration-300 hover:border-[#f6d891]/30 hover:bg-white/[0.06]"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur transition-colors duration-300 hover:border-[#f6d891]/30 hover:bg-white/[0.06] active:border-[#f6d891]/30 active:bg-white/[0.06] sm:p-6"
                 >
-                  {/* Hover glow — appears in the top-right corner */}
+                  {/* Corner glow — blooms on hover (desktop) and on tap (mobile) */}
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#f6d891]/0 blur-3xl transition-all duration-500 group-hover:bg-[#f6d891]/15"
+                    className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#f6d891]/0 blur-3xl transition-all duration-500 group-hover:bg-[#f6d891]/15 group-active:bg-[#f6d891]/15"
                   />
                   <div className="relative">
                     <div className="flex items-center gap-3">
@@ -166,7 +168,7 @@ export function InsightStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ type: "spring", stiffness: 120, damping: 22 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-6"
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#cbbd9e]/80">
                 Senior advisors
@@ -195,7 +197,7 @@ export function InsightStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ type: "spring", stiffness: 120, damping: 22 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur lg:p-8"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-6 lg:p-8"
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#cbbd9e]/80">
                 Why it matters
@@ -221,7 +223,7 @@ export function InsightStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ type: "spring", stiffness: 120, damping: 22, delay: 0.05 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur lg:p-8"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:p-6 lg:p-8"
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#cbbd9e]/80">
                 Beyond the stack
