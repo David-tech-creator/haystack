@@ -21,7 +21,8 @@ export default function PrivacyPage() {
 
           <h2>Who is responsible</h2>
           <p>
-            Haystack, Geneva, Switzerland. The quickest way to reach us about your data is the{" "}
+            Haystack is not yet a registered company. Until it is, the person responsible for your data is David
+            Vinkenroye, Geneva, Switzerland. The quickest way to reach us about your data is the{" "}
             <Link href="/contact">contact form</Link>; mention “privacy” and it reaches the right person.
           </p>
 
