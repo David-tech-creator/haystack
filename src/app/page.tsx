@@ -1,171 +1,205 @@
-"use client"
-
-import { Hero } from "@/components/hero"
-import { InsightStack } from "@/components/insight-stack"
-import { Logos } from "@/components/logos"
-import { Stats } from "@/components/stats"
-import { Testimonials } from "@/components/testimonials"
 import Link from "next/link"
-import { motion } from "framer-motion"
+
+import { StaticHaystack, StaticNeedle } from "@/components/particles"
+import { CtaSection, Eyebrow, FaqList, ready } from "@/components/sections"
+import { StructuredData } from "@/components/structured-data"
+import { HERO, INSIDE, LOOK_FOR, SHORTLIST, SPRINT, STEPS, WHAT_WE_DO } from "@/lib/content"
+import { homeJsonLd, pageMetadata } from "@/lib/seo"
+import { SITE } from "@/lib/site"
+
+export const metadata = pageMetadata({ absoluteTitle: SITE.title, description: SITE.description, path: "/" })
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
-      <Hero />
-      <Logos />
-      <ServicePillars />
-      <ProductionProcess />
-      <InsightStack />
-      <Stats />
-      <Testimonials />
-      <FinalCTA />
-    </div>
-  )
-}
+    <>
+      <StructuredData data={homeJsonLd()} />
 
-function ServicePillars() {
-  const services = [
-    {
-      title: "System Development",
-      copy: "Bespoke platforms, web and mobile applications, and integrations — designed, engineered, and operated to the standard your business depends on.",
-    },
-    {
-      title: "Digital Transformation",
-      copy: "Replace manual operations with measurable automation. We re-engineer the workflows that drain your margins.",
-    },
-    {
-      title: "AI, IoT, Cloud & Big Data",
-      copy: "Production AI agents, predictive systems, IoT telemetry, and cloud-native data platforms — built to ship, not to demo.",
-    },
-    {
-      title: "Blockchain & Web3",
-      copy: "Smart contracts, custody, on-chain settlement, and Web3 applications with security-first architecture.",
-    },
-    {
-      title: "IT Operations",
-      copy: "We don’t walk away at launch. Managed operations, SRE, and 24/7 support keep the system running and improving.",
-    },
-  ]
-
-  return (
-    <section className="relative overflow-hidden bg-[#fdf9ef] py-20">
-      <div className="container relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-2xl space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60">What we do</p>
-          <h2 className="font-display text-3xl text-primary">Five pillars. One delivery team.</h2>
-          <p className="text-base text-primary/70">
-            Most agencies pick a lane. We cover the full surface area &mdash; from greenfield product engineering to enterprise transformation programs &mdash; with the same senior team and the same quality bar.
-          </p>
+      {/* 1. The haystack: the logo mark, rebuilt from falling straw */}
+      <section data-formation="haystack" aria-labelledby="hero-title" className="fm fm-hero" style={ready("haystack", "150vh")}>
+        <div className="fm-stage">
+          <div className="wrap grid items-center gap-10 pt-16 lg:grid-cols-12 lg:pt-0">
+            {/* the hero copy never waits for the field: it is the first thing painted */}
+            <div className="fm-copy lg:col-span-7 xl:col-span-6" style={{ ["--ready" as string]: 1 }}>
+              <Eyebrow>{HERO.eyebrow}</Eyebrow>
+              <h1 id="hero-title" className="mt-5 text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-[3.6rem]">
+                <span className="needle-line">{HERO.accent}</span> {HERO.title}
+              </h1>
+              <p className="hero-sub mt-6 max-w-xl text-lg leading-relaxed text-primary/80">{HERO.sub}</p>
+              <div className="hero-ctas mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+                <Link href={HERO.primary.href} className="btn-solid">
+                  {HERO.primary.label}
+                </Link>
+                <Link href={HERO.secondary.href} className="btn-outline">
+                  {HERO.secondary.label}
+                </Link>
+              </div>
+            </div>
+            <StaticHaystack className="mx-auto w-full max-w-[18rem] sm:max-w-sm lg:col-span-5 lg:max-w-md" />
+          </div>
         </div>
-      </div>
-      <div className="container mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service, index) => (
-          <motion.div
-            key={service.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
-            className="rounded-3xl border border-[#e3d7be] bg-[#fef8ec] p-6 text-primary"
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/50">
-              Service 0{index + 1}
-            </span>
-            <h3 className="mt-3 font-display text-xl text-primary">{service.title}</h3>
-            <p className="mt-3 text-sm text-primary/70">{service.copy}</p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  )
-}
+      </section>
 
-function ProductionProcess() {
-  const phases = [
-    {
-      title: "Business Analysis",
-      items: ["AI drafts user stories, PRDs, data models", "Senior BA reviews, refines, validates scope", "Output: locked PRD & specs"],
-    },
-    {
-      title: "Architecture & Design",
-      items: ["AI generates system options, API specs, UI mockups", "Architect selects stack, finalizes prototype", "Output: approved tech stack & design"],
-    },
-    {
-      title: "AI-Assisted Build",
-      items: ["AI generates boilerplate, components, unit tests", "Engineers code-review, refactor, harden", "Output: clean source & unit coverage"],
-    },
-    {
-      title: "Rigorous Testing",
-      items: ["AI writes test scripts, predicts edge cases", "QC team runs exploratory, perf, security", "Output: test report & quality metrics"],
-    },
-    {
-      title: "Acceptance & Release",
-      items: ["AI generates deployment scripts & release notes", "Client UAT, final approval, go-live support", "Output: shipped product & ops handover"],
-    },
-  ]
-
-  return (
-    <section className="relative overflow-hidden bg-[#f6f0e2] py-20">
-      <div className="container relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="max-w-2xl space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/60">How we build</p>
-          <h2 className="font-display text-3xl text-primary">Top engineers &times; AI = superior products.</h2>
-          <p className="text-base text-primary/70">
-            AI agents handle the keystroke-heavy work at every stage. Senior engineers make the judgment calls. The result: speed without the slop, quality without the bureaucracy.
-          </p>
+      {/* 1b. What we do: the stack holds */}
+      <section data-formation="haystack" aria-labelledby="what-title" className="fm" style={ready("haystack", "120vh")}>
+        <div className="fm-stage">
+          <div className="wrap">
+            <div className="fm-copy max-w-xl">
+              <Eyebrow>{WHAT_WE_DO.eyebrow}</Eyebrow>
+              <h2 id="what-title" className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+                {WHAT_WE_DO.title}
+              </h2>
+              <p className="fm-lead mt-5 text-lg leading-relaxed text-primary/80">{WHAT_WE_DO.body}</p>
+              <div className="card mt-7 p-6">
+                <h3 className="text-xl">{WHAT_WE_DO.card.title}</h3>
+                <p className="mt-2 text-primary/80">{WHAT_WE_DO.card.body}</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="container mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-        {phases.map((phase, index) => (
-          <motion.div
-            key={phase.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
-            className="rounded-3xl border border-[#e3d7be] bg-[#fef8ec] p-6 text-primary"
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/50">Phase {index + 1}</span>
-            <h3 className="mt-3 font-display text-lg text-primary">{phase.title}</h3>
-            <ul className="mt-4 space-y-2">
-              {phase.items.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-primary/70">
-                  <span className="mt-1.5 inline-flex size-1.5 rounded-full bg-[#f4ca64]" aria-hidden />
-                  <span>{item}</span>
+      </section>
+
+      {/* 2. The sweep: a search line walks the five steps */}
+      <section data-formation="sweep" aria-labelledby="sprint-title" className="fm" style={ready("sweep", "340vh")}>
+        <div className="fm-stage">
+          <div className="wrap">
+            <div className="fm-copy sweep-copy">
+              <Eyebrow>{SPRINT.eyebrow}</Eyebrow>
+              <h2 id="sprint-title" className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+                {SPRINT.title}
+              </h2>
+              <p className="fm-lead fm-hide-short mt-5 max-w-xl text-lg leading-relaxed text-primary/80">{SPRINT.intro}</p>
+              <ol className="steps mt-8">
+                {STEPS.map((s, i) => (
+                  <li key={s.title} className="step">
+                    <div className="flex items-center gap-3">
+                      <span className="step-n" aria-hidden="true">
+                        {i + 1}
+                      </span>
+                      <h3 className="step-title text-xl">{s.title}</h3>
+                    </div>
+                    <div className="step-body">
+                      <p className="pt-3 leading-relaxed text-primary/80 [html[data-particles=on]_&]:pl-12">{s.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. The needle: the gold straw comes out of the pile */}
+      <section data-formation="needle" aria-labelledby="look-title" className="fm" style={ready("needle", "160vh")}>
+        <div className="fm-stage">
+          <div className="wrap grid items-center gap-10 lg:grid-cols-12">
+            <div className="fm-copy lg:col-span-6">
+              <Eyebrow>{LOOK_FOR.eyebrow}</Eyebrow>
+              <h2 id="look-title" className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+                {LOOK_FOR.title}
+              </h2>
+              <p className="fm-lead mt-5 text-lg leading-relaxed text-primary/80">{LOOK_FOR.body}</p>
+              <ul className="mt-6 space-y-3">
+                {LOOK_FOR.list.map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 flex-none rounded-full bg-gold" />
+                    <span className="text-primary/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <StaticNeedle className="mx-auto w-full max-w-xs lg:col-span-5 lg:col-start-8 lg:max-w-sm" />
+          </div>
+        </div>
+      </section>
+
+      {/* 4. The thread: a running stitch across the dark section */}
+      <section data-formation="thread" data-ink="dark" aria-labelledby="inside-title" className="band-dark fm-flow">
+        <div className="wrap">
+          <div className="max-w-2xl">
+            <Eyebrow>{INSIDE.eyebrow}</Eyebrow>
+            <h2 id="inside-title" className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+              <span className="inline rounded-2xl bg-gold-pill px-3 leading-[1.5] text-primary [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+                {INSIDE.title}
+              </span>
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-paper/85">{INSIDE.body}</p>
+          </div>
+          <div aria-hidden="true" className="thread-gap" />
+          <div className="grid gap-5 lg:grid-cols-[2fr_1fr]">
+            <ul className="grid gap-5 sm:grid-cols-2">
+              {INSIDE.tools.map((t) => (
+                <li key={t.name} className="rounded-3xl border border-white/10 bg-[#161d36]/90 p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-muted">{t.role}</p>
+                  <h3 className="mt-2 text-2xl">{t.name}</h3>
+                  <p className="mt-3 leading-relaxed text-paper/80">{t.body}</p>
+                  <a
+                    href={t.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex min-h-11 items-center gap-1 font-semibold text-gold-pill underline decoration-gold-pill/40 underline-offset-4 hover:decoration-gold-pill"
+                  >
+                    Visit {t.name}
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </li>
               ))}
             </ul>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function FinalCTA() {
-  return (
-    <section className="relative overflow-hidden bg-primary py-20 text-[#fefbf4]">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary via-[#222b47] to-primary opacity-90" aria-hidden />
-      <div className="container relative flex flex-col items-center gap-6 rounded-[2.5rem] border border-white/10 bg-[#fefbf4]/16 px-10 py-12 text-center backdrop-blur-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#e8d8b8]">Discovery call within one business day</p>
-        <h2 className="max-w-2xl font-display text-3xl leading-snug text-[#fefbf4] drop-shadow-[0_12px_28px_rgba(13,18,33,0.55)]">
-          Have a product to ship, a system to rebuild, or a workflow to automate? Tell us where it hurts.
-        </h2>
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/contact"
-            className="inline-flex items-center rounded-full bg-[#fefbf4] px-8 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-primary transition hover:bg-[#efe4cf]"
-          >
-            Start a project
-          </Link>
-          <Link
-            href="/process"
-            className="inline-flex items-center rounded-full border border-[#fefbf4] px-8 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#fefbf4] transition hover:bg-[#fefbf4]/10"
-          >
-            See our process
-          </Link>
+            <div className="grid content-start gap-5">
+              {INSIDE.side.map((s) => (
+                <div key={s.title} className="rounded-3xl border border-gold-pill/25 bg-[#1a2337]/90 p-6">
+                  <h3 className="text-xl text-gold-pill">{s.title}</h3>
+                  <p className="mt-3 leading-relaxed text-paper/80">{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* 5. The stitch: the thread sews around the three parts of a shortlist note */}
+      <section
+        data-formation="stitch"
+        data-outline-target={SHORTLIST.cards.map((c) => c.id).join(",")}
+        aria-labelledby="shortlist-title"
+        className="fm-flow"
+      >
+        <div className="wrap">
+          <div className="max-w-2xl">
+            <Eyebrow>{SHORTLIST.eyebrow}</Eyebrow>
+            <h2 id="shortlist-title" className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+              {SHORTLIST.title}
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-primary/80">{SHORTLIST.intro}</p>
+          </div>
+          <ol className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-3 lg:gap-12">
+            {SHORTLIST.cards.map((c, i) => (
+              <li key={c.id} id={c.id} className="card stitch-target p-7 lg:p-8">
+                <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-gold-ink">Question {i + 1}</p>
+                <h3 className="mt-3 text-2xl">{c.title}</h3>
+                <p className="mt-3 leading-relaxed text-primary/80">{c.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 6. Loose: the thread rolls into a ball while you read the FAQ */}
+      <section data-formation="loose" aria-labelledby="faq-title" className="fm-flow">
+        <div className="wrap">
+          <div className="max-w-3xl">
+            <Eyebrow>FAQ</Eyebrow>
+            <h2 id="faq-title" className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+              Questions we hear a lot
+            </h2>
+            <div className="mt-10">
+              <FaqList />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Contact: a stitched outline, a knot, the needle parked */}
+      <CtaSection />
+    </>
   )
 }

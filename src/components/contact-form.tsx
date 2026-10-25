@@ -1,160 +1,158 @@
 "use client"
 
-import { useState, useTransition } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { motion } from "framer-motion"
-import { z } from "zod"
+import Link from "next/link"
+import { useState, type FormEvent } from "react"
 
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+type Status = "idle" | "sending" | "sent" | "error"
+type Field = "name" | "email" | "message"
 
-const ContactSchema = z.object({
-  name: z.string().min(2, "Please add your name"),
-  email: z.string().email("Use a valid email"),
-  company: z.string().optional(),
-  project: z.string().optional(),
-  message: z.string().min(10, "Tell us a little more"),
-})
-
-type ContactFormValues = z.infer<typeof ContactSchema>
-
-type ContactFormProps = {
-  onSubmit: (values: ContactFormValues) => Promise<{ success: boolean }>
+const MESSAGES: Record<Field, string> = {
+  name: "Please add your name",
+  email: "That email looks off",
+  message: "Tell us a little more",
 }
 
-export function ContactForm({ onSubmit }: ContactFormProps) {
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(ContactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      company: "",
-      project: "",
-      message: "",
-    },
-  })
+function check(data: FormData): Partial<Record<Field, string>> {
+  const errors: Partial<Record<Field, string>> = {}
+  if (String(data.get("name") ?? "").trim().length < 2) errors.name = MESSAGES.name
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(data.get("email") ?? "").trim())) errors.email = MESSAGES.email
+  if (String(data.get("message") ?? "").trim().length < 10) errors.message = MESSAGES.message
+  return errors
+}
 
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
-  const [isPending, startTransition] = useTransition()
+/**
+ * Contact form. Real labels, 16px inputs (no iOS zoom), autocomplete hints.
+ * With JavaScript it posts JSON and answers inline; without, it posts the
+ * form to the same route, which redirects back with ?sent=1 or ?error=1.
+ */
+export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
+  const [status, setStatus] = useState<Status>(initial ?? "idle")
+  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({})
 
-  const handleSubmit = (values: ContactFormValues) => {
-    startTransition(async () => {
-      try {
-        const result = await onSubmit(values)
-        setStatus(result.success ? "success" : "error")
-        if (result.success) {
-          form.reset()
-        }
-      } catch (error) {
-        console.error(error)
-        setStatus("error")
-      }
-    })
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = new FormData(form)
+    const found = check(data)
+    setErrors(found)
+    if (Object.keys(found).length) {
+      const first = Object.keys(found)[0]
+      form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus()
+      return
+    }
+    setStatus("sending")
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(data)),
+      })
+      const json = (await res.json().catch(() => ({}))) as { success?: boolean }
+      if (res.ok && json.success) {
+        setStatus("sent")
+        form.reset()
+      } else setStatus("error")
+    } catch {
+      setStatus("error")
+    }
   }
 
+  if (status === "sent") {
+    return (
+      <div role="status" className="py-6 text-lg text-primary">
+        Thanks. We will get back to you within one business day.
+      </div>
+    )
+  }
+
+  const field = (name: Field) =>
+    errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {}
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="rounded-3xl border border-[#e3d7be]/60 bg-[#fef8ec] p-8 shadow-soft-lg backdrop-blur dark:border-[#cbbd9e]/30 dark:bg-navy-900/40"
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="grid gap-6">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="you@company.com" type="email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="company"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Company</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Company" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="project"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Project type</FormLabel>
-                  <FormControl>
-                    <Input placeholder="e.g. AI agent, RPA, mobile app, DX program" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>What does success look like?</FormLabel>
-                <FormControl>
-                  <Textarea rows={5} placeholder="Share your goals, constraints, timeline, and what good would look like in 90 days" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+    <form action="/api/contact" method="post" noValidate onSubmit={onSubmit} className="relative grid gap-5">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="field">
+          <span className="field-label">Name</span>
+          <input name="name" type="text" required autoComplete="name" placeholder="Your name" className="input" {...field("name")} />
+          {errors.name && (
+            <span id="name-error" className="field-error">
+              {errors.name}
+            </span>
+          )}
+        </label>
+        <label className="field">
+          <span className="field-label">Email</span>
+          <input
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            inputMode="email"
+            placeholder="you@company.com"
+            className="input"
+            {...field("email")}
           />
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button type="submit" size="lg" disabled={isPending}>
-              {isPending ? "Sending…" : "Send message"}
-            </Button>
-            {status === "success" && (
-              <p className="text-sm text-primary dark:text-wheat-100">
-                Thank you. We’ll get back within one business day.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-sm text-destructive">Something went wrong. Please try again.</p>
-            )}
-          </div>
-        </form>
-      </Form>
-    </motion.div>
+          {errors.email && (
+            <span id="email-error" className="field-error">
+              {errors.email}
+            </span>
+          )}
+        </label>
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="field">
+          <span className="field-label">
+            Company <span className="font-normal text-primary/70">(optional)</span>
+          </span>
+          <input name="company" type="text" autoComplete="organization" placeholder="Company" className="input" />
+        </label>
+        <label className="field">
+          <span className="field-label">
+            Role(s) you are hiring for <span className="font-normal text-primary/70">(optional)</span>
+          </span>
+          <input name="roles" type="text" placeholder="e.g. Senior backend engineer, Head of data" className="input" />
+        </label>
+      </div>
+      <label className="field">
+        <span className="field-label">What would a great hire look like?</span>
+        <textarea
+          name="message"
+          required
+          rows={6}
+          placeholder="The team, the timeline, the first thing you would love this person to fix"
+          className="input min-h-40 resize-y"
+          {...field("message")}
+        />
+        {errors.message && (
+          <span id="message-error" className="field-error">
+            {errors.message}
+          </span>
+        )}
+      </label>
+      {/* honeypot: hidden from people and assistive tech */}
+      <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden">
+        <label>
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <button type="submit" disabled={status === "sending"} className="btn-solid w-full sm:w-auto">
+          {status === "sending" ? "Sending…" : "Send"}
+        </button>
+        <p className="text-sm text-primary/75">
+          We use your details only to reply to you. See the{" "}
+          <Link href="/privacy" className="link">
+            privacy notice
+          </Link>
+          .
+        </p>
+      </div>
+      {status === "error" && (
+        <p role="alert" className="text-sm font-semibold text-[#9b2c1f]">
+          That did not go through. Please try again in a minute.
+        </p>
+      )}
+    </form>
   )
 }

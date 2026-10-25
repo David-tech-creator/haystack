@@ -1,0 +1,20 @@
+/* Haystack particle stage. Imported by ParticleStage. */
+
+.pf-stage {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  contain: strict;
+}
+
+.pf-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Static fallbacks are hidden once the WebGL field is running. */
+html[data-particles="on"] .pf-static {
+  display: none;
+}

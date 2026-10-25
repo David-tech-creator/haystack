@@ -1,94 +1,81 @@
 import type { Metadata, Viewport } from "next"
+import { Cormorant_Garamond, Mulish, Outfit } from "next/font/google"
 
-import { SiteFooter } from "@/components/layout/site-footer"
-import { SiteHeader } from "@/components/layout/site-header"
-import { Providers } from "@/components/providers"
-import { siteConfig } from "@/lib/site-config"
-import { cn } from "@/lib/utils"
-import { cormorant, mulish, outfit } from "@/styles/fonts"
+import { ParticleStage } from "@/components/particles"
+import { SiteFooter } from "@/components/site/site-footer"
+import { SiteHeader } from "@/components/site/site-header"
+import { KEYWORDS, SITE, SITE_URL } from "@/lib/site"
 
 import "./globals.css"
 
+const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-outfit", display: "swap" })
+const mulish = Mulish({ subsets: ["latin"], variable: "--font-mulish", display: "swap" })
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: "%s · Haystack",
-  },
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: siteConfig.authors,
-  creator: "Haystack",
-  icons: {
-    icon: [
-      { url: "/haystack-icon.png", type: "image/png", sizes: "32x32" },
-      { url: "/haystack-icon.png", type: "image/png", sizes: "192x192" },
-      { url: "/favicon.ico", rel: "icon" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/haystack-icon.png",
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/haystack-icon.png",
-        color: "#1f2640",
-      },
-    ],
-  },
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE.title, template: `%s · ${SITE.name}` },
+  description: SITE.description,
+  keywords: KEYWORDS,
+  applicationName: SITE.name,
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "business",
+  formatDetection: { telephone: false, address: false, email: false },
   openGraph: {
     type: "website",
-    url: siteConfig.url,
-    title: "Haystack · Move the needle. Ship the product.",
-    description: siteConfig.description,
-    siteName: "Haystack",
-    images: [
-      {
-        url: `${siteConfig.url}/api/og`,
-        width: 1200,
-        height: 630,
-        alt: "Haystack · Move the needle.",
-      },
-    ],
+    url: SITE_URL,
+    siteName: SITE.name,
+    title: SITE.title,
+    description: SITE.description,
+    locale: SITE.locale,
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@haystack_ai",
-    creator: "@haystack_ai",
-    title: "Haystack · Move the needle. Ship the product.",
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/api/og`],
+  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1a2337" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1221" },
-  ],
+  themeColor: SITE.colors.cream,
+  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+  // edge to edge on notched phones; .wrap, the header and the footer pad
+  // themselves with env(safe-area-inset-*)
+  viewportFit: "cover",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+/**
+ * Sets data-particles="on" before first paint when the field will run, so the
+ * sticky formation layout is in place from the start instead of shifting after
+ * hydration (CLS). ParticleStage still switches it to "off" on any failure.
+ */
+const PARTICLES_BOOT = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'WebGL2RenderingContext' in window){document.documentElement.setAttribute('data-particles','on')}}catch(e){}`
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background text-foreground font-sans",
-          mulish.variable,
-          cormorant.variable,
-          outfit.variable,
-        )}
-      >
-        <Providers>
-          <div className="flex min-h-screen flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-        </Providers>
+    <html lang="en" className={`${outfit.variable} ${mulish.variable} ${cormorant.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PARTICLES_BOOT }} />
+      </head>
+      <body className="font-sans text-[17px] leading-relaxed text-primary antialiased">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        {/* One fixed particle field behind every page (decoration, aria-hidden). */}
+        <ParticleStage />
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   )

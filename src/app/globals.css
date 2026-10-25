@@ -2,77 +2,708 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Haystack: cream paper, navy ink, one gold straw. Light only.
+ * Hex tokens for hand-written CSS, HSL triplets for the Tailwind names.
+ */
 @layer base {
   :root {
+    color-scheme: light;
+    --cream: #f6f0e2;
+    --paper: #fefbf4;
+    --navy: #1f2640;
+    --deep: #10162a;
+    --gold: #c9a046;
+    --line: #e3d7be;
+
     --background: 42 60% 96%;
     --foreground: 231 44% 14%;
-    --muted: 36 52% 90%;
-    --muted-foreground: 232 16% 38%;
-    --card: 42 60% 96%;
-    --card-foreground: 231 44% 14%;
-    --popover: 42 60% 96%;
-    --popover-foreground: 231 44% 14%;
     --primary: 232 45% 18%;
-    --primary-foreground: 40 70% 92%;
+    --primary-foreground: 40 70% 96%;
     --secondary: 42 92% 72%;
-    --secondary-foreground: 232 45% 18%;
-    --accent: 35 70% 86%;
-    --accent-foreground: 232 45% 18%;
-    --destructive: 7 78% 48%;
-    --destructive-foreground: 42 100% 96%;
-    --border: 35 40% 84%;
-    --input: 35 40% 84%;
-    --ring: 232 45% 18%;
     --radius: 0.875rem;
+
+    --header-h: 64px;
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --header-h: 72px;
+    }
   }
 
-  .dark {
-    --background: 232 45% 12%;
-    --foreground: 42 60% 94%;
-    --muted: 233 30% 20%;
-    --muted-foreground: 42 40% 80%;
-    --card: 232 45% 12%;
-    --card-foreground: 42 60% 94%;
-    --popover: 232 45% 12%;
-    --popover-foreground: 42 60% 94%;
-    --primary: 42 92% 72%;
-    --primary-foreground: 232 45% 14%;
-    --secondary: 230 36% 20%;
-    --secondary-foreground: 42 60% 94%;
-    --accent: 230 32% 26%;
-    --accent-foreground: 42 60% 94%;
-    --destructive: 7 80% 56%;
-    --destructive-foreground: 42 100% 96%;
-    --border: 230 32% 28%;
-    --input: 230 32% 28%;
-    --ring: 42 92% 72%;
-  }
-}
-
-@layer base {
   * {
-    @apply border-border;
+    border-color: var(--line);
+  }
+
+  /*
+   * The page colour lives on <html> only. The particle canvas is fixed at
+   * z-index -1: an opaque body background would paint over it.
+   */
+  html {
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    background: #fbf6ec;
+    color: var(--navy);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply min-h-screen bg-background text-foreground font-sans antialiased;
+    background: transparent;
+    overflow-x: clip;
+    min-height: 100vh;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display font-medium tracking-tight text-primary;
+    font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
   }
 
   ::selection {
-    background-color: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
+    background: #f6d891;
+    color: var(--navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .band-dark :focus-visible {
+    outline-color: #f6d891;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  @media (min-width: 640px) {
+    .wrap {
+      padding-left: max(1.5rem, env(safe-area-inset-left));
+      padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+  }
+  @media (min-width: 1024px) {
+    .wrap {
+      padding-left: max(2.5rem, env(safe-area-inset-left));
+      padding-right: max(2.5rem, env(safe-area-inset-right));
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    transform: translateY(-200%);
+    z-index: 60;
+    border-radius: 9999px;
+    background: var(--navy);
+    color: var(--paper);
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    transform: translateY(calc(env(safe-area-inset-top) + 0.75rem));
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: rgb(31 38 64 / 0.75);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--gold);
+  }
+  @media (max-width: 399px) {
+    .eyebrow {
+      letter-spacing: 0.18em;
+    }
+  }
+  .band-dark .eyebrow {
+    color: #cbbd9e;
+  }
+
+  .btn-solid,
+  .btn-outline {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.6rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.25;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .btn-solid {
+    background: var(--navy);
+    color: var(--paper);
+  }
+  .btn-solid:hover {
+    background: #2b3456;
+  }
+  .btn-solid:active,
+  .btn-outline:active {
+    transform: scale(0.98);
+  }
+  .btn-solid:disabled {
+    opacity: 0.7;
+  }
+  .btn-outline {
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+  }
+  .btn-outline:hover {
+    background: rgb(31 38 64 / 0.07);
+  }
+  .btn-sm {
+    min-height: 44px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.75rem;
+  }
+  .band-dark .btn-outline {
+    border-color: #f6d891;
+    color: var(--paper);
+  }
+
+  .link {
+    text-decoration: underline;
+    text-decoration-color: rgb(31 38 64 / 0.35);
+  }
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Script accent with the gold highlight bar under it. */
+  .needle-line {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.08em;
+    letter-spacing: -0.01em;
+    z-index: 0;
+  }
+  .needle-line::after {
+    content: "";
+    position: absolute;
+    left: -0.05em;
+    right: -0.05em;
+    bottom: 0.08em;
+    height: 0.32em;
+    border-radius: 9999px;
+    background: rgb(244 202 100 / 0.8);
+    z-index: -1;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    background: rgb(254 248 236 / 0.9);
+  }
+
+  /* Header -------------------------------------------------------------- */
+  .site-header {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 40;
+    padding-top: env(safe-area-inset-top);
+    border-bottom: 1px solid transparent;
+    transition:
+      transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+      background-color 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .header-bar {
+    height: var(--header-h);
+  }
+  .site-header[data-state="shown"],
+  .site-header[data-state="hidden"] {
+    background: rgb(246 240 226 / 0.88);
+    border-bottom-color: var(--line);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    backdrop-filter: blur(12px) saturate(1.2);
+  }
+  .site-header[data-state="hidden"] {
+    transform: translateY(-100%);
+  }
+  .site-header:has(details[open]) {
+    transform: none;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgb(31 38 64 / 0.8);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--navy);
+    background: rgb(31 38 64 / 0.06);
+  }
+  .nav-link[aria-current="page"] {
+    color: var(--navy);
+    background: #efe4cf;
+  }
+
+  .menu-link {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    border-radius: 0.875rem;
+    padding: 0 0.75rem;
+    margin-inline: -0.75rem;
+    font-family: var(--font-outfit), sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .menu-link[aria-current="page"] {
+    background: #efe4cf;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-weight: 600;
+  }
+  .footer-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Forms --------------------------------------------------------------- */
+  .field {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .field-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .input {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #d9caa9;
+    border-radius: 0.875rem;
+    background: var(--paper);
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+    color: var(--navy);
+  }
+  .input::placeholder {
+    color: rgb(31 38 64 / 0.5);
+  }
+  .input:focus {
+    outline: 2px solid var(--navy);
+    outline-offset: 1px;
+  }
+  .input[aria-invalid="true"] {
+    border-color: #9b2c1f;
+  }
+  .field-error {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #9b2c1f;
+  }
+
+  /* Accordions (FAQ, process): the whole row is the tap target. -------- */
+  .qa {
+    border-bottom: 1px solid var(--line);
+  }
+  .qa > summary {
+    display: flex;
+    min-height: 56px;
+    cursor: pointer;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    font-family: var(--font-outfit), sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .qa > summary::-webkit-details-marker {
+    display: none;
+  }
+  .qa > summary::after {
+    content: "+";
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: #efe4cf;
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  .qa[open] > summary::after {
+    transform: rotate(45deg);
+  }
+  .qa > div {
+    padding: 0 0 1.25rem;
+    max-width: 44rem;
+    color: rgb(31 38 64 / 0.82);
+    line-height: 1.65;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Formation sections (see src/components/particles). Without the field the    */
+/* page is a normal document.                                                 */
+/* -------------------------------------------------------------------------- */
+
+.fm {
+  position: relative;
+  padding-block: 5rem;
+}
+@media (min-width: 1024px) {
+  .fm {
+    padding-block: 7rem;
+  }
+}
+
+.fm-stage {
+  display: flex;
+  align-items: center;
+}
+
+/* Copy that fades in once its shape has formed. --ready is set per section to
+   var(--<formation>-ready, 1); without the engine it resolves to 1. */
+.fm-copy {
+  opacity: var(--ready, 1);
+  transform: translate3d(0, calc((1 - var(--ready, 1)) * 18px), 0);
+  will-change: opacity, transform;
+}
+
+html[data-particles="on"] .fm {
+  min-height: var(--fm-h, 160vh);
+  padding-block: 0;
+}
+
+html[data-particles="on"] .fm-stage {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: var(--header-h);
+}
+
+/* Portrait screens: the shape sits in the upper part of the screen, so the
+   copy goes to the lower part. */
+@media (max-aspect-ratio: 9/10) {
+  html[data-particles="on"] .fm-stage {
+    align-items: flex-end;
+    padding-bottom: calc(7vh + env(safe-area-inset-bottom));
+  }
+  html[data-particles="on"] .fm-hero .fm-stage {
+    padding-bottom: calc(4vh + env(safe-area-inset-bottom));
+  }
+}
+
+/* Portrait phones: the copy is longer than half a phone screen, so the stage
+   does not pin. Each section opens with a window at the top where its shape
+   forms, and the copy follows on a sheet of paper that slides over the field
+   as you read. The engine fits each shape into that window. */
+@media (max-aspect-ratio: 9/10) and (max-width: 599px) {
+  html[data-particles="on"] .fm {
+    min-height: 0;
+    padding-block: 0 3.5rem;
+  }
+  html[data-particles="on"] .fm-stage {
+    position: relative;
+    display: block;
+    min-height: 0;
+    padding-top: 46svh;
+    padding-bottom: 0;
+  }
+  html[data-particles="on"] .fm-hero .fm-stage {
+    padding-top: calc(var(--header-h) + 34svh);
+    padding-bottom: 0;
+  }
+  html[data-particles="on"] .fm-stage > .wrap {
+    padding-top: 0;
+  }
+  html[data-particles="on"] .fm-copy {
+    opacity: 1;
+    transform: none;
+    border-radius: 1.5rem;
+    background: rgb(251 246 236 / 0.94);
+    padding: 1.25rem 1rem 1.5rem;
+    margin-inline: -1rem;
+  }
+}
+
+/* Phones held sideways (and other very short screens): the copy is taller
+   than the screen, so it scrolls normally instead of pinning, shows without
+   waiting for its shape, and the shape forms beside it. */
+@media (orientation: landscape) and (max-height: 559px) {
+  html[data-particles="on"] .fm {
+    min-height: 0;
+  }
+  html[data-particles="on"] .fm-stage {
+    position: relative;
+    min-height: 0;
+    padding-block: 5.5rem 4rem;
+  }
+  html[data-particles="on"] .fm-copy {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Flowing sections (long content): the field holds its shape behind them. */
+.fm-flow {
+  position: relative;
+  padding-block: 5rem;
+}
+@media (min-width: 1024px) {
+  .fm-flow {
+    padding-block: 8rem;
+  }
+}
+
+/* The dark section. Its colour is painted by a pseudo-element at z-index -2,
+   under the particle canvas (-1) and over the page: so the field shows on it.
+   No ancestor of a .band-dark may create a stacking context. */
+.band-dark {
+  position: relative;
+  color: var(--paper);
+}
+.band-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--deep);
+  z-index: -2;
+}
+.band-dark h2,
+.band-dark h3 {
+  color: var(--paper);
+}
+
+html[data-particles="on"] .sweep-copy {
+  max-width: 34rem;
+}
+
+/* Inside Haystack: with the field, the thread runs through this gap. */
+.thread-gap {
+  height: 3rem;
+}
+html[data-particles="on"] .thread-gap {
+  height: 44vh;
+}
+
+/* Sprint steps. Without the field: a grid of cards. With it: a list beside
+   the haystack where the step under the search line opens. */
+.steps {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .steps {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+.step {
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: rgb(254 248 236 / 0.92);
+  padding: 1.5rem;
+}
+.step-n {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #efe4cf;
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 600;
+  color: var(--navy);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+.step-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.step-body > p {
+  overflow: hidden;
+}
+
+html[data-particles="on"] .steps {
+  grid-template-columns: none;
+  gap: 0.25rem;
+}
+html[data-particles="on"] .step {
+  border: 0;
+  background: none;
+  padding: 0.35rem 0;
+}
+html[data-particles="on"] .step-body {
+  grid-template-rows: 0fr;
+}
+html[data-particles="on"] .step-title {
+  color: rgb(31 38 64 / 0.7);
+  transition: color 0.3s ease;
+}
+html[data-particles="on"] [data-formation="sweep"]:not([data-step]) .step:nth-child(1) .step-body,
+html[data-particles="on"] [data-formation="sweep"][data-step="0"] .step:nth-child(1) .step-body,
+html[data-particles="on"] [data-formation="sweep"][data-step="1"] .step:nth-child(2) .step-body,
+html[data-particles="on"] [data-formation="sweep"][data-step="2"] .step:nth-child(3) .step-body,
+html[data-particles="on"] [data-formation="sweep"][data-step="3"] .step:nth-child(4) .step-body,
+html[data-particles="on"] [data-formation="sweep"][data-step="4"] .step:nth-child(5) .step-body {
+  grid-template-rows: 1fr;
+}
+html[data-particles="on"] [data-formation="sweep"]:not([data-step]) .step:nth-child(1) .step-n,
+html[data-particles="on"] [data-formation="sweep"][data-step="0"] .step:nth-child(1) .step-n,
+html[data-particles="on"] [data-formation="sweep"][data-step="1"] .step:nth-child(2) .step-n,
+html[data-particles="on"] [data-formation="sweep"][data-step="2"] .step:nth-child(3) .step-n,
+html[data-particles="on"] [data-formation="sweep"][data-step="3"] .step:nth-child(4) .step-n,
+html[data-particles="on"] [data-formation="sweep"][data-step="4"] .step:nth-child(5) .step-n {
+  background: var(--navy);
+  color: var(--paper);
+}
+html[data-particles="on"] [data-formation="sweep"]:not([data-step]) .step:nth-child(1) .step-title,
+html[data-particles="on"] [data-formation="sweep"][data-step="0"] .step:nth-child(1) .step-title,
+html[data-particles="on"] [data-formation="sweep"][data-step="1"] .step:nth-child(2) .step-title,
+html[data-particles="on"] [data-formation="sweep"][data-step="2"] .step:nth-child(3) .step-title,
+html[data-particles="on"] [data-formation="sweep"][data-step="3"] .step:nth-child(4) .step-title,
+html[data-particles="on"] [data-formation="sweep"][data-step="4"] .step:nth-child(5) .step-title {
+  color: var(--navy);
+}
+html[data-particles="on"] [data-formation="sweep"][data-step="3"] .step:nth-child(4) .step-n {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+/* Outlines the field draws: without it, a CSS stitch. */
+.stitch-target {
+  border: 1.5px dashed var(--gold);
+}
+html[data-particles-live] .stitch-target {
+  border-color: transparent;
+}
+.outline-target {
+  outline: 1.5px dashed rgb(201 160 70 / 0.9);
+  outline-offset: 8px;
+}
+html[data-particles-live] .outline-target {
+  outline-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .fm-copy {
+    opacity: 1;
+    transform: none;
+  }
+  .site-header[data-state="hidden"] {
+    transform: none;
+  }
+}
+
+/* Portrait phones: the steps stay cards (the stage does not pin); the one
+   under the search line gets a navy edge. */
+@media (max-aspect-ratio: 9/10) and (max-width: 599px) {
+  html[data-particles="on"] .steps {
+    gap: 0.75rem;
+  }
+  html[data-particles="on"] .step {
+    border: 1px solid var(--line);
+    background: rgb(254 248 236 / 0.92);
+    padding: 1.25rem;
+    transition: border-color 0.3s ease;
+  }
+  html[data-particles="on"] .step .step-body {
+    grid-template-rows: 1fr !important;
+  }
+  html[data-particles="on"] .step .step-body > p {
+    padding-left: 0 !important;
+  }
+  html[data-particles="on"] .step .step-title {
+    color: var(--navy);
+  }
+  html[data-particles="on"] [data-formation="sweep"][data-step="0"] .step:nth-child(1),
+  html[data-particles="on"] [data-formation="sweep"][data-step="1"] .step:nth-child(2),
+  html[data-particles="on"] [data-formation="sweep"][data-step="2"] .step:nth-child(3),
+  html[data-particles="on"] [data-formation="sweep"][data-step="3"] .step:nth-child(4),
+  html[data-particles="on"] [data-formation="sweep"][data-step="4"] .step:nth-child(5) {
+    border-color: var(--navy);
   }
 }

@@ -1,36 +1,52 @@
-import type { Metadata } from "next"
-
 import { ContactForm } from "@/components/contact-form"
-import { ContactFormAction } from "@/components/contact-form-action"
+import { Eyebrow } from "@/components/sections"
+import { StructuredData } from "@/components/structured-data"
+import { CONTACT } from "@/lib/content"
+import { contactJsonLd, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Start a project with Haystack. AI-native software engineering, delivered with Japanese-quality discipline.",
-}
+const DESCRIPTION =
+  "Start a recruitment sprint with Haystack. Tell us about the role and we will reply within one business day."
 
-export default function ContactPage() {
+export const metadata = pageMetadata({ title: "Contact", description: DESCRIPTION, path: "/contact" })
+
+export default function ContactPage({ searchParams }: { searchParams: { sent?: string; error?: string } }) {
+  const initial = searchParams.sent ? "sent" : searchParams.error ? "error" : undefined
   return (
-    <div className="container py-16 sm:py-24">
-      <div className="grid gap-12 md:grid-cols-[minmax(0,1fr),minmax(0,420px)]">
-        <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Let&rsquo;s build</p>
-          <h1 className="text-4xl font-semibold tracking-tight text-primary dark:text-wheat-100">
-            Ready to find the needle?
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Share the problem you&rsquo;re trying to solve. We respond within one business day with a scoped discovery call &mdash; no decks, no boilerplate, just engineers who&rsquo;ve shipped your kind of system before.
-          </p>
-          <div className="rounded-2xl border border-[#e3d7be]/60 bg-[#fef8ec]/85 p-6 text-sm text-muted-foreground shadow-sm dark:border-[#cbbd9e]/30 dark:bg-navy-900/40">
-            <p className="font-semibold text-foreground">What to expect</p>
-            <ul className="mt-3 list-disc space-y-2 pl-5">
-              <li>30-minute discovery call with a senior engineer &mdash; not a sales rep</li>
-              <li>Scoped proposal with timeline, team composition, and acceptance criteria</li>
-              <li>Pilot sprint available within two weeks of kickoff</li>
-            </ul>
+    <>
+      <StructuredData data={contactJsonLd(DESCRIPTION)} />
+      {/* the thread stitches around the form, the needle parks at its corner */}
+      <section
+        data-formation="contact"
+        data-outline-target="contact-form-box"
+        aria-labelledby="contact-title"
+        className="pb-20 pt-[calc(var(--header-h)+3rem)] lg:pb-28 lg:pt-[calc(var(--header-h)+5rem)]"
+      >
+        <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
+          <div>
+            <Eyebrow>{CONTACT.eyebrow}</Eyebrow>
+            <h1 id="contact-title" className="mt-5 text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-6xl">
+              {CONTACT.title}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary/80">{CONTACT.body}</p>
+            <div className="card mt-8 p-6">
+              <h2 className="text-xl">{CONTACT.expectTitle}</h2>
+              <ul className="mt-4 space-y-3">
+                {CONTACT.expect.map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 flex-none rounded-full bg-gold" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div id="form" className="scroll-mt-28">
+            <div id="contact-form-box" className="card outline-target bg-paper/95 p-6 sm:p-8">
+              <ContactForm initial={initial} />
+            </div>
           </div>
         </div>
-        <ContactForm onSubmit={ContactFormAction} />
-      </div>
-    </div>
+      </section>
+    </>
   )
 }
