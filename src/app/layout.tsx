@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next"
-import { Cormorant_Garamond, Mulish, Outfit } from "next/font/google"
+import { Instrument_Serif, Inter, Inter_Tight } from "next/font/google"
 
-import { ParticleStage } from "@/components/particles"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
 import { KEYWORDS, SITE, SITE_URL } from "@/lib/site"
 
 import "./globals.css"
 
-const outfit = Outfit({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-outfit", display: "swap" })
-const mulish = Mulish({ subsets: ["latin"], variable: "--font-mulish", display: "swap" })
-const cormorant = Cormorant_Garamond({
+const display = Inter_Tight({ subsets: ["latin"], variable: "--font-display", display: "swap" })
+// Body face is not preloaded so the display face (the LCP h1) gets the bandwidth first.
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap", preload: false })
+const serif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: "400",
   style: ["italic"],
-  variable: "--font-cormorant",
+  variable: "--font-serif",
   display: "swap",
 })
 
@@ -54,25 +54,13 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 }
 
-/**
- * Sets data-particles="on" before first paint when the field will run, so the
- * sticky formation layout is in place from the start instead of shifting after
- * hydration (CLS). ParticleStage still switches it to "off" on any failure.
- */
-const PARTICLES_BOOT = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'WebGL2RenderingContext' in window){document.documentElement.setAttribute('data-particles','on')}}catch(e){}`
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${mulish.variable} ${cormorant.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: PARTICLES_BOOT }} />
-      </head>
-      <body className="font-sans text-[17px] leading-relaxed text-primary antialiased">
+    <html lang="en" className={`${display.variable} ${sans.variable} ${serif.variable}`}>
+      <body className="bg-paper font-sans text-body text-ink antialiased">
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        {/* One fixed particle field behind every page (decoration, aria-hidden). */}
-        <ParticleStage />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

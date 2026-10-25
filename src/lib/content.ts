@@ -9,8 +9,10 @@
 export const HERO = {
   eyebrow: "Tech recruitment in Geneva",
   accent: "Move the needle.",
-  title: "We search the whole haystack, so you only meet the people worth meeting.",
-  sub: "Haystack is a small Swiss recruitment agency for engineering, data and AI roles. We read every profile ourselves, write a note on each finalist and send you an update every week. Even the weeks when the honest update is “still digging”.",
+  title: "We search the whole haystack. You meet the few worth meeting.",
+  sub: "Haystack is a small Swiss recruitment agency for engineering, data and AI roles. We read every profile ourselves, write a note on every finalist and send you an update each week, even when the honest update is “still digging”.",
+  /** Small line under the hero image. */
+  caption: "One straw in gold. That is the one we bring you.",
   primary: { label: "Tell us about the role", href: "/contact" },
   secondary: { label: "How a search works", href: "/process" },
 }
@@ -18,7 +20,7 @@ export const HERO = {
 export const WHAT_WE_DO = {
   eyebrow: "What we do",
   title: "One thing, done properly",
-  body: "We do recruitment, and nothing else. A sprint is one role and one person on our side who knows the brief by heart. You get a shortlist built on evidence instead of a pile of CVs. Hiring for a second role? That one gets its own sprint and its own scorecard.",
+  body: "We do recruitment, and nothing else. A sprint is one role, with one person on our side who knows the brief by heart. You get a shortlist built on evidence instead of a pile of CVs. A second role gets its own sprint and its own scorecard.",
   card: {
     title: "Recruitment sprints",
     body: "Swiss-led searches that tell you a lot about a few people, rather than a little about a hundred.",
@@ -50,13 +52,13 @@ export const STEPS = [
 
 export const SPRINT = {
   eyebrow: "How it works",
-  title: "A sprint, step by step",
+  title: "Five steps. One role.",
   intro: "Five steps, and most of the straw goes in step two. You do the interviews that matter. We do the inbox, the scheduling and the chasing.",
 }
 
 export const LOOK_FOR = {
   eyebrow: "How we read a profile",
-  title: "What we look for",
+  title: "We read for evidence",
   body: "A CV tells you where someone sat. We want to know what they did there, so we look for people who own what they ship and can explain how they think.",
   list: [
     "How they built things, beyond the list of what they built.",
@@ -68,7 +70,7 @@ export const LOOK_FOR = {
 
 export const INSIDE = {
   eyebrow: "Inside Haystack",
-  title: "AI-native stack, human judgment.",
+  title: "Good tools. Human judgment.",
   body: "We are a small team, so we lean on good tools. Software does the sorting, the reminders and the note-taking. People do the reading, the calls and the deciding. Nobody gets turned down by a model.",
   tools: [
     {
@@ -111,7 +113,7 @@ export const INSIDE = {
 export const SHORTLIST = {
   eyebrow: "The shortlist",
   title: "What lands in your inbox",
-  intro: "The short pile, with a one-page note on every needle. Each note answers the same three questions.",
+  intro: "The short pile, with a one-page note on every needle. Every note answers the same three questions.",
   cards: [
     {
       id: "note-built",
@@ -170,6 +172,11 @@ export const FAQ = [
   },
 ] as const
 
+export const FAQ_SECTION = {
+  eyebrow: "FAQ",
+  title: "Questions we hear a lot",
+}
+
 export const CTA = {
   eyebrow: "Hiring someone?",
   title: "Tell us who you are looking for. We will tell you honestly if we can find them.",
@@ -179,8 +186,10 @@ export const CTA = {
 
 export const PROCESS = {
   eyebrow: "Process",
-  title: "How a Haystack sprint runs",
-  intro: "Here is what happens from the first call to the first day, and what lands in your inbox along the way.",
+  title: "How a sprint runs",
+  intro: "What happens from the first call to the first day, and what lands in your inbox along the way.",
+  stepsTitle: "Five steps, one role",
+  detailsTitle: "Sprint details",
   details: [
     {
       title: "Timing",
@@ -216,6 +225,8 @@ export const PROCESS = {
 export const ABOUT = {
   eyebrow: "About Haystack",
   title: "Why Haystack exists",
+  foundationsTitle: "Foundations",
+  principlesTitle: "Principles",
   intro: "Haystack is a small recruitment agency in Geneva. We help teams hire engineers, data people and AI specialists, one role at a time.",
   story: "It grew out of years spent next to engineers in Switzerland: product launches, startup experiments, late-night debugging sessions, and long arguments about whether the rewrite was worth it. We started Haystack in 2025 to do the hiring part properly.",
   foundations: [
@@ -264,3 +275,28 @@ export const CONTACT = {
     "Weekly updates, then the shortlist",
   ],
 }
+
+export const NOT_FOUND = {
+  eyebrow: "404",
+  title: "Not in this haystack.",
+  body: "This page does not exist, or it moved.",
+  primary: { label: "Back home", href: "/" },
+  secondary: { label: "Contact us", href: "/contact" },
+}
+
+export const FOOTER = {
+  blurb: "A small recruitment agency in Geneva. Shortlists with a written note on every person, and an honest update every week.",
+  menuNote: "A small recruitment agency in Geneva.",
+  cta: "Start a sprint",
+}
+
+/** Captions under the editorial images (see src/lib/images.ts). Short, factual, no claims. */
+export const CAPTIONS = {
+  sorted: "Most of the straw goes in step two.",
+  stitch: "One thread, start to finish.",
+  eye: "How they built it, not only what.",
+  notes: "Three questions on every note.",
+  knot: "We stay close through the first weeks.",
+  spool: "A scorecard before a single profile.",
+  light: "Geneva, Switzerland.",
+} as const

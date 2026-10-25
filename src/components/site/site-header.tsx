@@ -1,26 +1,23 @@
 import Link from "next/link"
+import { ButtonLink } from "@/components/ui/button"
+import { HaystackMark } from "@/components/ui/haystack-mark"
+import { FOOTER } from "@/lib/content"
 import { NAV } from "@/lib/site"
 import { HeaderShell, NavLink } from "./header-shell"
 import { MobileMenu } from "./mobile-menu"
 
-/**
- * Site header: transparent over the top of the page, then a slim blurred
- * cream bar that slides away while you read down and comes back the moment
- * you scroll up (HeaderShell). The phone menu is a <details> element, so it
- * works without JavaScript (MobileMenu).
- */
+/** Mark + wordmark, nav (lg+), one primary action; the phone menu below lg. */
 export function SiteHeader() {
   return (
     <HeaderShell>
-      <div className="header-bar wrap flex items-center justify-between gap-4">
-        <Link href="/" className="flex min-h-11 items-center gap-2.5" aria-label="Haystack, home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/haystack-mark-128.png" alt="" width={40} height={40} className="h-9 w-9 lg:h-10 lg:w-10" />
-          <span className="font-display text-xl font-medium tracking-tight text-primary lg:text-2xl">Haystack</span>
+      <div className="header-bar wrap flex items-center justify-between gap-6">
+        <Link href="/" className="-ml-1 flex min-h-11 items-center gap-2.5 px-1" aria-label="Haystack, home">
+          <HaystackMark className="h-7 w-7" />
+          <span className="font-display text-[1.25rem] font-semibold tracking-[-0.02em] text-ink">Haystack</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+        <nav aria-label="Main" className="ml-auto hidden lg:block">
+          <ul className="flex items-center">
             {NAV.map((item) => (
               <li key={item.href}>
                 <NavLink href={item.href} className="nav-link">
@@ -31,13 +28,11 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="hidden lg:block">
-          <Link href="/contact" className="btn-solid btn-sm">
-            Start a sprint
-          </Link>
-        </div>
+        <ButtonLink href="/contact" size="sm" className="hidden lg:inline-flex">
+          {FOOTER.cta}
+        </ButtonLink>
 
-        <MobileMenu items={NAV} />
+        <MobileMenu items={NAV} note={FOOTER.menuNote} cta={FOOTER.cta} />
       </div>
     </HeaderShell>
   )

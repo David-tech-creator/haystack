@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  images: { formats: ["image/avif", "image/webp"] },
   experimental: {
     typedRoutes: false,
   },

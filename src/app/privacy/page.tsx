@@ -1,4 +1,7 @@
 import Link from "next/link"
+import { Container } from "@/components/ui/container"
+import { Eyebrow } from "@/components/ui/eyebrow"
+import { Section } from "@/components/ui/section"
 import { pageMetadata } from "@/lib/seo"
 
 export const metadata = pageMetadata({
@@ -9,12 +12,19 @@ export const metadata = pageMetadata({
 
 export default function PrivacyPage() {
   return (
-    <section className="pb-24 pt-[calc(var(--header-h)+3rem)] lg:pt-[calc(var(--header-h)+5rem)]">
-      <div className="wrap">
-        <article className="prose prose-lg max-w-3xl prose-headings:font-display prose-headings:font-medium prose-headings:text-primary prose-p:text-primary/85 prose-li:text-primary/85">
-          <p className="eyebrow not-prose">Privacy</p>
-          <h1>Privacy notice</h1>
-          <p>
+    <Section spacing="tight" labelledBy="privacy-title">
+      <Container className="grid-12 gap-y-8">
+        <aside className="col-span-12 lg:col-span-3">
+          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
+            <Eyebrow>Privacy</Eyebrow>
+            <p className="mt-3 text-small text-ink-mute">Last updated: 25 October 2026.</p>
+          </div>
+        </aside>
+        <article className="prose prose-lg col-span-12 max-w-none lg:col-span-7 lg:col-start-4 prose-headings:text-ink prose-h2:mt-12 prose-h2:border-t prose-h2:border-line prose-h2:pt-8 prose-h2:font-display prose-h2:text-h3 prose-h2:font-semibold prose-p:max-w-[38rem] prose-p:text-ink-soft prose-li:text-ink-soft prose-strong:text-ink">
+          <h1 id="privacy-title" className="!mb-0 font-display text-display font-medium">
+            Privacy notice
+          </h1>
+          <p className="lead !mt-6 text-lead">
             This notice explains what happens to the details you send us. It follows the Swiss Federal Act on Data
             Protection (revFADP / nDSG). Short version: we use them to reply to you, and that is it.
           </p>
@@ -68,10 +78,8 @@ export default function PrivacyPage() {
             through the <Link href="/contact">contact form</Link>. You can also contact the Federal Data Protection and
             Information Commissioner (FDPIC).
           </p>
-
-          <p className="text-sm">Last updated: 25 October 2026.</p>
         </article>
-      </div>
-    </section>
+      </Container>
+    </Section>
   )
 }

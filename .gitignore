@@ -45,3 +45,6 @@ next-env.d.ts
 AIPOWER*.pdf
 AI POWER*.pdf
 Albania-Nearshore.pdf
+
+# raw image generations (large PNGs); only the optimised WebP files are published
+scripts/images/raw/

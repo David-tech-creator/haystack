@@ -59,30 +59,47 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
 
   if (status === "sent") {
     return (
-      <div role="status" className="py-6 text-lg text-primary">
-        Thanks. We will get back to you within one business day.
+      <div role="status" className="card-stitch rounded-md px-6 py-8 sm:px-8">
+        <h3 className="font-display text-h3 font-semibold">Thanks.</h3>
+        <p className="mt-3 text-lead text-ink-soft">We will get back to you within one business day.</p>
       </div>
     )
+  }
+
+  // Clear a field's error as soon as the person edits it.
+  const clearError = (e: FormEvent<HTMLFormElement>) => {
+    const name = (e.target as HTMLInputElement).name as Field
+    if (!errors[name]) return
+    setErrors((prev) => {
+      const next = { ...prev }
+      delete next[name]
+      return next
+    })
   }
 
   const field = (name: Field) =>
     errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {}
 
   return (
-    <form action="/api/contact" method="post" noValidate onSubmit={onSubmit} className="relative grid gap-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <label className="field">
-          <span className="field-label">Name</span>
-          <input name="name" type="text" required autoComplete="name" placeholder="Your name" className="input" {...field("name")} />
+    <form action="/api/contact" method="post" noValidate onSubmit={onSubmit} onInput={clearError} className="relative grid gap-6">
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="field">
+          <label htmlFor="cf-name" className="field-label">
+            Name
+          </label>
+          <input id="cf-name" name="name" type="text" required autoComplete="name" placeholder="Your name" className="input" {...field("name")} />
           {errors.name && (
             <span id="name-error" className="field-error">
               {errors.name}
             </span>
           )}
-        </label>
-        <label className="field">
-          <span className="field-label">Email</span>
+        </div>
+        <div className="field">
+          <label htmlFor="cf-email" className="field-label">
+            Email
+          </label>
           <input
+            id="cf-email"
             name="email"
             type="email"
             required
@@ -97,30 +114,33 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
               {errors.email}
             </span>
           )}
-        </label>
+        </div>
       </div>
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2">
         <label className="field">
           <span className="field-label">
-            Company <span className="font-normal text-primary/70">(optional)</span>
+            Company <span className="font-normal text-ink-mute">(optional)</span>
           </span>
           <input name="company" type="text" autoComplete="organization" placeholder="Company" className="input" />
         </label>
         <label className="field">
           <span className="field-label">
-            Role(s) you are hiring for <span className="font-normal text-primary/70">(optional)</span>
+            Role(s) you are hiring for <span className="font-normal text-ink-mute">(optional)</span>
           </span>
           <input name="roles" type="text" placeholder="e.g. Senior backend engineer, Head of data" className="input" />
         </label>
       </div>
-      <label className="field">
-        <span className="field-label">What would a great hire look like?</span>
+      <div className="field">
+        <label htmlFor="cf-message" className="field-label">
+          What would a great hire look like?
+        </label>
         <textarea
+          id="cf-message"
           name="message"
           required
           rows={6}
           placeholder="The team, the timeline, the first thing you would love this person to fix"
-          className="input min-h-40 resize-y"
+          className="input"
           {...field("message")}
         />
         {errors.message && (
@@ -128,7 +148,7 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
             {errors.message}
           </span>
         )}
-      </label>
+      </div>
       {/* honeypot: hidden from people and assistive tech */}
       <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden">
         <label>
@@ -136,11 +156,11 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
           <input name="website" type="text" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" disabled={status === "sending"} className="btn-solid w-full sm:w-auto">
+      <div className="flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <button type="submit" disabled={status === "sending"} className="btn btn-primary w-full flex-none sm:w-auto">
           {status === "sending" ? "Sending…" : "Send"}
         </button>
-        <p className="text-sm text-primary/75">
+        <p className="max-w-[24rem] text-small text-ink-mute">
           We use your details only to reply to you. See the{" "}
           <Link href="/privacy" className="link">
             privacy notice
@@ -149,7 +169,7 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
         </p>
       </div>
       {status === "error" && (
-        <p role="alert" className="text-sm font-semibold text-[#9b2c1f]">
+        <p role="alert" className="field-error">
           That did not go through. Please try again in a minute.
         </p>
       )}

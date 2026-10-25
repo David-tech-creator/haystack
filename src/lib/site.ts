@@ -23,12 +23,18 @@ export const SITE = {
   region: "GE",
   country: "CH",
   founded: "2025",
+  /** Brand tokens (DESIGN.md). cream is the page colour and the browser theme colour. */
   colors: {
-    cream: "#f6f0e2",
-    background: "#fbf6ec",
-    navy: "#1f2640",
-    deep: "#10162a",
-    gold: "#c9a046",
+    cream: "#F6F1E7",
+    background: "#F6F1E7",
+    paper: "#FBF8F2",
+    linen: "#EDE5D3",
+    line: "#DDD2BC",
+    navy: "#1A2136",
+    deep: "#10152A",
+    gold: "#C29A3E",
+    goldInk: "#7E5B12",
+    goldLight: "#E6C77A",
   },
 } as const
 

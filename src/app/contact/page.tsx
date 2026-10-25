@@ -1,7 +1,12 @@
 import { ContactForm } from "@/components/contact-form"
-import { Eyebrow } from "@/components/sections"
 import { StructuredData } from "@/components/structured-data"
+import { Card } from "@/components/ui/card"
+import { Container } from "@/components/ui/container"
+import { Frame } from "@/components/ui/frame"
+import { Section } from "@/components/ui/section"
+import { SectionHeading } from "@/components/ui/section-heading"
 import { CONTACT } from "@/lib/content"
+import { IMG } from "@/lib/images"
 import { contactJsonLd, pageMetadata } from "@/lib/seo"
 
 const DESCRIPTION =
@@ -9,44 +14,55 @@ const DESCRIPTION =
 
 export const metadata = pageMetadata({ title: "Contact", description: DESCRIPTION, path: "/contact" })
 
+const n = (i: number) => String(i + 1).padStart(2, "0")
+
 export default function ContactPage({ searchParams }: { searchParams: { sent?: string; error?: string } }) {
   const initial = searchParams.sent ? "sent" : searchParams.error ? "error" : undefined
   return (
     <>
       <StructuredData data={contactJsonLd(DESCRIPTION)} />
-      {/* the thread stitches around the form, the needle parks at its corner */}
-      <section
-        data-formation="contact"
-        data-outline-target="contact-form-box"
-        aria-labelledby="contact-title"
-        className="pb-20 pt-[calc(var(--header-h)+3rem)] lg:pb-28 lg:pt-[calc(var(--header-h)+5rem)]"
-      >
-        <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
-          <div>
-            <Eyebrow>{CONTACT.eyebrow}</Eyebrow>
-            <h1 id="contact-title" className="mt-5 text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-6xl">
-              {CONTACT.title}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-primary/80">{CONTACT.body}</p>
-            <div className="card mt-8 p-6">
-              <h2 className="text-xl">{CONTACT.expectTitle}</h2>
-              <ul className="mt-4 space-y-3">
-                {CONTACT.expect.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 flex-none rounded-full bg-gold" />
-                    <span>{item}</span>
+      <Section spacing="tight" labelledBy="contact-title">
+        <Container className="grid-12 gap-y-12">
+          <div className="col-span-12 lg:col-span-5">
+            <SectionHeading
+              as="h1"
+              size="display"
+              eyebrow={CONTACT.eyebrow}
+              title={CONTACT.title}
+              titleId="contact-title"
+              lead={CONTACT.body}
+            />
+
+            <div className="mt-10 lg:mt-12">
+              <h2 className="font-display text-h3 font-semibold">{CONTACT.expectTitle}</h2>
+              <ol className="mt-5">
+                {CONTACT.expect.map((item, i) => (
+                  <li
+                    key={item}
+                    className="grid grid-cols-[3rem_1fr] items-baseline border-t border-line py-4 last:border-b"
+                  >
+                    <span className="step-n">{n(i)}</span>
+                    <span className="text-ink">{item}</span>
                   </li>
                 ))}
-              </ul>
+              </ol>
             </div>
+
+            <Frame
+              image={IMG["envelope-thread"]}
+              ratio="4/3"
+              sizes="(min-width:1280px) 460px, 34vw"
+              className="mt-12 hidden lg:block"
+            />
           </div>
-          <div id="form" className="scroll-mt-28">
-            <div id="contact-form-box" className="card outline-target bg-paper/95 p-6 sm:p-8">
+
+          <div id="form" className="col-span-12 scroll-mt-28 lg:col-span-6 lg:col-start-7">
+            <Card padding="lg" className="shadow-raise">
               <ContactForm initial={initial} />
-            </div>
+            </Card>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </>
   )
 }

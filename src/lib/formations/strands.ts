@@ -1,9 +1,8 @@
 /**
  * The Haystack mark, rebuilt from numbers: vertical straws clipped to a
  * circle, slight tilts, a few gaps, and one gold straw right of centre where
- * the logo has it. Deterministic, so the particle field (shapes.ts) and the
- * server-rendered SVG fallback (components/particles/static.tsx) draw the
- * same haystack.
+ * the logo has it. Deterministic, so the SVG mark (components/ui/haystack-mark.tsx)
+ * and the Open Graph images (lib/og.tsx) draw the same haystack.
  *
  * Coordinates are in a unit circle (radius 1, y up).
  */

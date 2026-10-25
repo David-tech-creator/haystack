@@ -1,7 +1,15 @@
-import { StaticHaystack } from "@/components/particles"
-import { CtaSection, Eyebrow, ready } from "@/components/sections"
+import { CtaSection } from "@/components/sections"
 import { StructuredData } from "@/components/structured-data"
-import { PROCESS, STEPS } from "@/lib/content"
+import { CheckList } from "@/components/ui/check-list"
+import { Container } from "@/components/ui/container"
+import { Frame } from "@/components/ui/frame"
+import { Reveal } from "@/components/ui/reveal"
+import { Section } from "@/components/ui/section"
+import { SectionHeading } from "@/components/ui/section-heading"
+import { StepList } from "@/components/ui/step-list"
+import { Stitch } from "@/components/ui/stitch"
+import { CAPTIONS, PROCESS, STEPS } from "@/lib/content"
+import { IMG } from "@/lib/images"
 import { pageMetadata, processJsonLd } from "@/lib/seo"
 
 const DESCRIPTION =
@@ -14,79 +22,79 @@ export default function ProcessPage() {
     <>
       <StructuredData data={processJsonLd(DESCRIPTION)} />
 
-      {/* the search line stands on the gold straw */}
-      <section
-        data-formation="sweep"
-        data-sweep="still"
-        aria-labelledby="process-title"
-        className="fm fm-hero fm-inner"
-        style={ready("sweep", "115vh")}
-      >
-        <div className="fm-stage">
-          <div className="wrap grid items-center gap-10 pt-16 lg:grid-cols-12 lg:pt-0">
-            <div className="fm-copy lg:col-span-6" style={{ ["--ready" as string]: 1 }}>
-              <Eyebrow>{PROCESS.eyebrow}</Eyebrow>
-              <h1 id="process-title" className="mt-5 text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-6xl">
-                {PROCESS.title}
-              </h1>
-              <p className="hero-sub fm-lead mt-6 max-w-xl text-lg leading-relaxed text-primary/80">{PROCESS.intro}</p>
-            </div>
-            <StaticHaystack className="mx-auto w-full max-w-[16rem] sm:max-w-xs lg:col-span-5 lg:col-start-8" />
+      {/* Hero: the thread runs from the spool into even stitches */}
+      <Section spacing="tight" labelledBy="process-title">
+        <Container>
+          <div className="grid-12 gap-y-10 lg:items-center">
+            <SectionHeading
+              as="h1"
+              size="display"
+              eyebrow={PROCESS.eyebrow}
+              title={PROCESS.title}
+              titleId="process-title"
+              lead={PROCESS.intro}
+              className="col-span-12 lg:col-span-7"
+            />
+            <Frame
+              image={IMG["spool-stitches"]}
+              ratio="4/3"
+              ratioLg="1/1"
+              priority
+              sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw"
+              caption={CAPTIONS.spool}
+              label="Fig. 01"
+              className="enter enter-3 col-span-12 lg:col-span-5 lg:col-start-8"
+            />
           </div>
-        </div>
-      </section>
+          <Stitch className="mt-16 lg:mt-24" />
+        </Container>
+      </Section>
 
-      <section aria-labelledby="steps-title" className="fm-flow">
-        <div className="wrap">
-          <h2 id="steps-title" className="text-3xl leading-tight sm:text-4xl">
-            Five steps, one role
-          </h2>
-          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {STEPS.map((s, i) => (
-              <li key={s.title} className="card p-6">
-                <span className="step-n" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <h3 className="mt-4 text-xl">{s.title}</h3>
-                <p className="mt-2 leading-relaxed text-primary/80">{s.body}</p>
-              </li>
+      {/* Steps */}
+      <Section spacing="flush-top" labelledBy="steps-title">
+        <Container>
+          <SectionHeading title={PROCESS.stepsTitle} titleId="steps-title" />
+          <StepList steps={STEPS} variant="grid" className="mt-[var(--block-gap)]" />
+        </Container>
+      </Section>
+
+      {/* Details: read without clicking */}
+      <Section rule labelledBy="details-title">
+        <Container className="grid-12 gap-y-10">
+          <div className="col-span-12 lg:col-span-4">
+            <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
+              <SectionHeading title={PROCESS.detailsTitle} titleId="details-title" />
+            </div>
+          </div>
+          <dl className="col-span-12 lg:col-span-7 lg:col-start-6">
+            {PROCESS.details.map((d) => (
+              <Reveal
+                key={d.title}
+                className="grid gap-2 border-t border-line py-6 last:border-b sm:grid-cols-[1fr_2fr] sm:gap-8 lg:py-8"
+              >
+                <dt className="font-display text-h3 font-semibold">{d.title}</dt>
+                <dd className="max-w-prose-tight text-ink-soft">{d.body}</dd>
+              </Reveal>
             ))}
-          </ol>
-        </div>
-      </section>
+          </dl>
+        </Container>
+      </Section>
 
-      <section aria-labelledby="details-title" className="fm-flow pt-0 lg:pt-0">
-        <div className="wrap grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
-          <div>
-            <h2 id="details-title" className="text-3xl leading-tight sm:text-4xl">
-              Sprint details
-            </h2>
-            <div className="mt-8 border-t border-line">
-              {PROCESS.details.map((d, i) => (
-                <details key={d.title} className="qa" open={i === 0}>
-                  <summary>{d.title}</summary>
-                  <div>
-                    <p>{d.body}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-          <aside aria-labelledby="includes-title" className="card h-fit p-7 lg:sticky lg:top-28">
-            <h2 id="includes-title" className="text-2xl">
-              {PROCESS.includesTitle}
-            </h2>
-            <ul className="mt-5 space-y-3">
-              {PROCESS.includes.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 flex-none rounded-full bg-gold" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </div>
-      </section>
+      {/* Includes: the one dark band on this page */}
+      <Section tone="deep" labelledBy="includes-title">
+        <Container className="grid-12 gap-y-10">
+          <SectionHeading
+            title={PROCESS.includesTitle}
+            titleId="includes-title"
+            className="col-span-12 lg:col-span-5"
+          />
+          <CheckList
+            items={PROCESS.includes}
+            marker="needle"
+            className="col-span-12 space-y-5 text-lead lg:col-span-6 lg:col-start-7 lg:pt-2"
+          />
+        </Container>
+      </Section>
 
       <CtaSection eyebrow="Next step" title={PROCESS.cta} secondary={{ label: "About Haystack", href: "/about" }} />
     </>
