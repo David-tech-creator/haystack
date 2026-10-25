@@ -23,9 +23,14 @@ export function Inside() {
         </div>
 
         <div className="mt-[var(--block-gap)] grid gap-6 lg:grid-cols-[2fr_1fr] lg:gap-10">
-          <ul className="grid gap-6 sm:grid-cols-2">
-            {INSIDE.tools.map((t, i) => (
-              <Reveal as="li" key={t.name} delay={(i % 4) as 0 | 1 | 2 | 3}>
+          {/* Phones: a swipeable row, so four cards do not stack into a tower. */}
+          <Reveal className="min-w-0">
+          <ul
+            aria-label="Tools we use"
+            className="-mx-4 flex [contain:paint] snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+          >
+            {INSIDE.tools.map((t) => (
+              <li key={t.name} className="w-[82%] flex-none snap-start sm:w-auto">
                 <Card tone="deep" className="flex h-full flex-col">
                   <p className="font-display text-label font-semibold uppercase text-gold-light">{t.role}</p>
                   <h3 className="mt-3 text-h3 font-semibold">{t.name}</h3>
@@ -37,9 +42,10 @@ export function Inside() {
                     </ButtonLink>
                   </div>
                 </Card>
-              </Reveal>
+              </li>
             ))}
           </ul>
+          </Reveal>
           <div className="grid content-start gap-8">
             {INSIDE.side.map((s, i) => (
               <Reveal key={s.title} delay={(i % 4) as 0 | 1 | 2 | 3} className="border-t border-deep-line pt-6">

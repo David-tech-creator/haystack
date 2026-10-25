@@ -7,7 +7,7 @@ import { KEYWORDS, SITE, SITE_URL } from "@/lib/site"
 
 import "./globals.css"
 
-const display = Inter_Tight({ subsets: ["latin"], variable: "--font-display", display: "swap" })
+const display = Inter_Tight({ subsets: ["latin"], variable: "--font-display", display: "optional" })
 // Body face is not preloaded so the display face (the LCP h1) gets the bandwidth first.
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap", preload: false })
 const serif = Instrument_Serif({
@@ -15,7 +15,7 @@ const serif = Instrument_Serif({
   weight: "400",
   style: ["italic"],
   variable: "--font-serif",
-  display: "swap",
+  display: "optional",
 })
 
 export const metadata: Metadata = {

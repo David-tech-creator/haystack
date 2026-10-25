@@ -44,7 +44,7 @@ export function HomeHero() {
             className="col-span-12 lg:col-span-5 lg:col-start-8"
           />
         </div>
-        <Stitch className="mt-16 lg:mt-24" />
+        <Stitch className="mt-10 sm:mt-16 lg:mt-24" />
       </Container>
     </Section>
   )
