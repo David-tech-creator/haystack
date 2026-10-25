@@ -44,14 +44,14 @@ export const STEPS = [
   },
   {
     title: "Offer",
-    body: "We help with the offer, the references and the run-up to day one. The goal is a yes that still feels like a yes in month three.",
+    body: "We help with the offer, the references and the run-up to day one. We stay in touch through the notice period and the first weeks, because that is when a signed offer can still come undone.",
   },
 ] as const
 
 export const SPRINT = {
   eyebrow: "How it works",
   title: "A sprint, step by step",
-  intro: "Five steps. You do the interviews that matter. We do the inbox, the scheduling and the chasing.",
+  intro: "Five steps, and most of the straw goes in step two. You do the interviews that matter. We do the inbox, the scheduling and the chasing.",
 }
 
 export const LOOK_FOR = {
@@ -111,7 +111,7 @@ export const INSIDE = {
 export const SHORTLIST = {
   eyebrow: "The shortlist",
   title: "What lands in your inbox",
-  intro: "Every person on a Haystack shortlist comes with a one-page note. Each note answers the same three questions.",
+  intro: "The short pile, with a one-page note on every needle. Each note answers the same three questions.",
   cards: [
     {
       id: "note-built",
@@ -180,7 +180,7 @@ export const CTA = {
 export const PROCESS = {
   eyebrow: "Process",
   title: "How a Haystack sprint runs",
-  intro: "Sourcing, screening and closing, packed into one focused search. Here is what happens once we start working together, and what you get from us along the way.",
+  intro: "Here is what happens from the first call to the first day, and what lands in your inbox along the way.",
   details: [
     {
       title: "Timing",
@@ -216,8 +216,8 @@ export const PROCESS = {
 export const ABOUT = {
   eyebrow: "About Haystack",
   title: "Why Haystack exists",
-  intro: "Haystack is a small recruitment agency in Geneva. We help teams hire engineers, data people and AI specialists, and we try to be careful enough to be right and quick enough to be useful.",
-  story: "It grew out of years spent next to engineers in Switzerland: product launches, startup experiments, late-night debugging sessions, and the kind of conversation you only have with people who care about their craft. We started Haystack in 2025 to do the hiring part properly.",
+  intro: "Haystack is a small recruitment agency in Geneva. We help teams hire engineers, data people and AI specialists, one role at a time.",
+  story: "It grew out of years spent next to engineers in Switzerland: product launches, startup experiments, late-night debugging sessions, and long arguments about whether the rewrite was worth it. We started Haystack in 2025 to do the hiring part properly.",
   foundations: [
     {
       title: "Swiss engineering roots",
@@ -229,13 +229,13 @@ export const ABOUT = {
     },
     {
       title: "Wider than it looks",
-      body: "People who train here go on to lead teams across Europe and further. A Swiss network is rarely only Swiss.",
+      body: "People who trained at EPFL or ETH now run teams in Berlin, London and San Francisco, and plenty of them still answer a message from Geneva.",
     },
   ],
   evaluate: {
     title: "How we evaluate talent",
-    body: "We do not chase every CV or push people into roles that do not fit them. We look for substance: people who take responsibility for what they ship and can explain how they think.",
-    closing: "That lens keeps searches focused, and each one makes the next a little easier.",
+    body: "We read fewer CVs and read them properly. The people we put forward own what they ship and can walk you through how they think.",
+    closing: "Every search adds a few more engineers to our notes, and the next brief starts from there.",
   },
   principles: [
     {

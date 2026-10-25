@@ -41,9 +41,12 @@ export function defaultPlace(name: FormationName, aspect: number, mode: LayoutMo
       case "needle":
         return { x: 0, y: 0.42, s: Math.min(0.5, a * 0.7) }
       case "thread":
-        return { x: 0, y: -0.2, s: 1 }
+        // portrait tablets: the crest sits in the empty band between the
+        // intro and the cards; phones keep it low, under their longer intro
+        return { x: 0, y: a > 0.6 ? 0.3 : -0.2, s: 1 }
       case "loose":
-        return { x: 0.62, y: 0.74, s: Math.min(0.34, a * 0.48) }
+        // in the window the FAQ opens with on phones (see globals.css)
+        return { x: 0.34, y: 0.63, s: Math.min(0.34, a * 0.56) }
       default:
         return { x: 0, y: 0, s: 1 }
     }
@@ -58,7 +61,7 @@ export function defaultPlace(name: FormationName, aspect: number, mode: LayoutMo
       case "thread":
         return { x: 0, y: 0, s: 1 }
       case "loose":
-        return { x: 0.68, y: 0.12, s: 0.6 }
+        return { x: 0.74, y: 0.12, s: 0.6 }
       default:
         return { x: 0, y: 0, s: 1 }
     }

@@ -492,6 +492,24 @@ html[data-particles="on"] .fm-stage {
   }
 }
 
+/* Portrait tablets, inner pages: the headline is the content there, so the
+   shape gets a window of about 45vh and the H1 stays above the fold. */
+@media (max-aspect-ratio: 9/10) and (min-width: 600px) {
+  html[data-particles="on"] .fm-inner .fm-stage {
+    min-height: 0;
+    padding-top: calc(var(--header-h) + 40svh);
+    padding-bottom: 4vh;
+  }
+}
+
+/* Portrait phones: the FAQ opens with a small window where the ball of
+   thread sits, clear of the heading and the first question. */
+@media (max-aspect-ratio: 9/10) and (max-width: 599px) {
+  html[data-particles="on"] .faq-window {
+    padding-top: 34svh;
+  }
+}
+
 /* Phones held sideways (and other very short screens): the copy is taller
    than the screen, so it scrolls normally instead of pinning, shows without
    waiting for its shape, and the shape forms beside it. */

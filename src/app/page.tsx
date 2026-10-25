@@ -184,7 +184,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. Loose: the thread rolls into a ball while you read the FAQ */}
-      <section data-formation="loose" aria-labelledby="faq-title" className="fm-flow">
+      <section data-formation="loose" aria-labelledby="faq-title" className="fm-flow faq-window">
         <div className="wrap">
           <div className="max-w-3xl">
             <Eyebrow>FAQ</Eyebrow>

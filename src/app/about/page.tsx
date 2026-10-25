@@ -19,7 +19,7 @@ export default function AboutPage() {
         data-formation="needle"
         data-needle="still"
         aria-labelledby="about-title"
-        className="fm fm-hero"
+        className="fm fm-hero fm-inner"
         style={ready("needle", "115vh")}
       >
         <div className="fm-stage">

@@ -19,7 +19,7 @@ export default function ProcessPage() {
         data-formation="sweep"
         data-sweep="still"
         aria-labelledby="process-title"
-        className="fm fm-hero"
+        className="fm fm-hero fm-inner"
         style={ready("sweep", "115vh")}
       >
         <div className="fm-stage">

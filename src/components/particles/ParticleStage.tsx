@@ -70,9 +70,10 @@ export function ParticleStage({ count = 40000, tabletCount = 24000, mobileCount 
       root.setAttribute("data-particles", "off")
       root.removeAttribute("data-particles-live")
     }
-    // the boot script in the root layout already vouched for WebGL2: skip a
-    // second throwaway context (a failure to create the real one falls back below)
-    if (reduced || !(root.getAttribute("data-particles") === "on" || webglAvailable())) {
+    // the boot script only checks that WebGL2 exists in this browser; probe a
+    // real context before pulling in three.js, so a machine with WebGL turned
+    // off goes straight to the static field without downloading the engine
+    if (reduced || !webglAvailable()) {
       off()
       return
     }

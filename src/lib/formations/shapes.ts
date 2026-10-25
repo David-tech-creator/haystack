@@ -438,8 +438,8 @@ export function buildLoose(out: Float32Array, count: number, rng: Rng) {
   for (let i = nBall; i < nBall + nTail; i++) {
     const o = i * 4
     const t = rng()
-    out[o] = -R * 0.7 - t * 0.7
-    out[o + 1] = -R * 0.75 - Math.sin(t * Math.PI) * 0.16 - t * 0.22
+    out[o] = -R * 0.7 - t * 0.45
+    out[o + 1] = -R * 0.75 - Math.sin(t * Math.PI) * 0.12 - t * 0.16
     out[o + 2] = gauss(rng) * 0.004
     out[o + 3] = pack(0.3 + rng() * 0.1, 1)
   }
@@ -450,7 +450,11 @@ export function buildLoose(out: Float32Array, count: number, rng: Rng) {
 /* 7. contact: a stitched outline, a gold knot and the needle parked   */
 /* ------------------------------------------------------------------ */
 
-export function buildContact(out: Float32Array, count: number, rng: Rng, box: RoundRect) {
+/**
+ * flip: no room to the right of the box (phones), so the needle parks under
+ * the box instead, lying almost flat and pointing left.
+ */
+export function buildContact(out: Float32Array, count: number, rng: Rng, box: RoundRect, flip = false) {
   const perim = roundRectPerimeter(box)
   const nLine = Math.floor(count * 0.6)
   const nKnot = Math.floor(count * 0.07)
@@ -481,9 +485,9 @@ export function buildContact(out: Float32Array, count: number, rng: Rng, box: Ro
   }
   // a short tail from the knot down to the needle's eye
   const len = 0.2
-  const ang = -2.25
-  const ex = kx + 0.05
-  const ey = ky - 0.05
+  const ang = flip ? 1.671 : -2.25
+  const ex = flip ? kx - 0.03 : kx + 0.05
+  const ey = flip ? ky - 0.012 : ky - 0.05
   for (; i < nLine + nKnot + nTail; i++) {
     const o = i * 4
     const t = rng()

@@ -390,10 +390,13 @@ export function createEngine(opts: EngineOptions): Engine {
       h: ((q.height + pad * 2) / vh) * 2,
       r: ((radiusOf(el, q) + pad) / vh) * 2,
     }
-    const key = [box.w, box.h, box.r].map((v) => Math.round(v * 400)).join(",")
+    // the parked needle reaches about 0.2 world units right of the box; on
+    // narrow screens that runs off the edge, so it lies under the box instead
+    const flip = vw - q.right - pad < 0.22 * (vh / 2)
+    const key = [box.w, box.h, box.r].map((v) => Math.round(v * 400)).join(",") + (flip ? "f" : "")
     if (key !== contactF.key || !built[C]) {
       contactF.key = key
-      buildContact(targets[C], count, createRng(37), box)
+      buildContact(targets[C], count, createRng(37), box, flip)
       targetAttrs[C].needsUpdate = true
       built[C] = true
     }

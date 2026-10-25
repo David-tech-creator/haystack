@@ -6,7 +6,7 @@ const intro = `# Haystack
 
 > Haystack is a small tech recruitment agency in Geneva, Switzerland. It runs recruitment sprints: focused searches for one engineering, data or AI role at a time, with a scorecard agreed up front, a weekly written update, and a shortlist where every candidate comes with a one-page note.
 
-Haystack does recruitment only. It does not offer outsourcing, software development or nearshore teams.
+Haystack does recruitment and nothing else: we find and help hire people for our clients' own teams.
 
 ## Pages
 - [Home](${SITE_URL}/): what Haystack does, the five-step sprint, what a shortlist note contains, FAQ
