@@ -22,9 +22,8 @@ export function WhatWeDo() {
         </div>
         <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7">
           <Frame
-            image={IMG["panelists-sharing-a-laugh"]}
+            image={IMG["hiring-brief-notebook-geneva"]}
             ratio="3/2"
-            position="45% 50%"
             sizes="(min-width:1280px) 580px, (min-width:1024px) 46vw, 100vw"
           />
         </Reveal>

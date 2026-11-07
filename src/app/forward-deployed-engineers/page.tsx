@@ -38,7 +38,7 @@ export const metadata = pageMetadata({
   ],
 })
 
-const HERO_IMG = IMG["speaker-quantum-slide-long-tables"]
+const HERO_IMG = IMG["engineer-with-specialist-pharma-lab"]
 const n = (i: number) => String(i + 1).padStart(2, "0")
 
 export default function FdeHubPage() {
@@ -81,7 +81,6 @@ export default function FdeHubPage() {
             ratioLg="21/9"
             priority
             sizes="(min-width:1280px) 1200px, 100vw"
-            caption={h.photoCaption}
             label="Fig. 01"
             className="mt-12 lg:mt-16"
           />
@@ -98,10 +97,9 @@ export default function FdeHubPage() {
           </div>
           <Reveal className="col-span-12 sm:col-span-8 sm:col-start-3 lg:col-span-5 lg:col-start-8">
             <Frame
-              image={IMG["engineer-presenting-ai-drug-discovery"]}
+              image={IMG["engineer-demo-bank-operations-team"]}
               ratio="4/5"
               sizes="(min-width:1024px) 34vw, (min-width:640px) 66vw, 100vw"
-              caption={h.photoCaption}
             />
           </Reveal>
           <ul className="col-span-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
@@ -168,10 +166,9 @@ export default function FdeHubPage() {
           </div>
           <Reveal className="col-span-12 lg:col-span-5 lg:col-start-8">
             <Frame
-              image={IMG["presenter-explaining-ai-models-slide"]}
+              image={IMG["engineer-with-underwriter-open-office"]}
               ratio="4/3"
               sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw"
-              caption={h.photoCaption}
             />
           </Reveal>
         </Container>
@@ -253,7 +250,7 @@ export default function FdeHubPage() {
           </div>
           <Reveal className="col-span-12 lg:col-span-4 lg:col-start-9">
             <Frame
-              image={IMG["classical-vs-quantum-computing-talk"]}
+              image={IMG["engineer-with-operator-factory-floor"]}
               ratio="1/1"
               sizes="(min-width:1024px) 30vw, 100vw"
               className="hidden lg:block"

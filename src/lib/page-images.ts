@@ -8,29 +8,29 @@ import { FDE_GUIDE_PATH, FDE_PATH } from "./site"
 
 type PhotoId = keyof typeof IMG
 
-const CTA: PhotoId = "networking-conversation-evening"
+const CTA: PhotoId = "candidate-and-manager-coffee"
 
 export const PAGE_IMAGES: Record<string, readonly PhotoId[]> = {
   "/": [
-    "tech-leaders-panel-discussion-screen",
-    "panelists-sharing-a-laugh",
-    "speaker-smiling-front-row",
-    "close-conversation-engineering-leaders",
-    "attentive-audience-sunlit-room",
-    "three-people-talking-at-table",
-    "packed-salon-tech-leaders-discussion",
+    "tech-team-whiteboard-lake-geneva",
+    "hiring-brief-notebook-geneva",
+    "team-planning-wall-sticky-notes",
+    "pair-programming-explaining-code",
+    "small-team-studio-office-tools",
+    "hiring-manager-reading-shortlist",
+    "engineers-gathered-around-laptop",
     CTA,
   ],
   [FDE_PATH]: [
-    "speaker-quantum-slide-long-tables",
-    "engineer-presenting-ai-drug-discovery",
-    "presenter-explaining-ai-models-slide",
-    "classical-vs-quantum-computing-talk",
+    "engineer-with-specialist-pharma-lab",
+    "engineer-demo-bank-operations-team",
+    "engineer-with-underwriter-open-office",
+    "engineer-with-operator-factory-floor",
   ],
-  [FDE_GUIDE_PATH]: ["speaker-no-ai-without-ia-slide"],
-  "/process": ["networking-under-pendant-lights", CTA],
-  "/about": ["speaker-stage-engaged-audience-hall", "host-presenting-community-slide", CTA],
-  "/contact": ["two-tech-leaders-laughing"],
+  [FDE_GUIDE_PATH]: ["team-around-laptop-logistics-office"],
+  "/process": ["engineer-work-sample-home-desk", CTA],
+  "/about": ["engineers-campus-terrace-conversation", "robotics-engineer-lab-smiling", CTA],
+  "/contact": ["phone-call-window-lake-geneva"],
 }
 
 /** The page's primary photo (the first one listed). */

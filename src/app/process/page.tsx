@@ -8,7 +8,7 @@ import { Section } from "@/components/ui/section"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { StepList } from "@/components/ui/step-list"
 import { Stitch } from "@/components/ui/stitch"
-import { CAPTIONS, PROCESS, STEPS } from "@/lib/content"
+import { PROCESS, STEPS } from "@/lib/content"
 import { IMG } from "@/lib/images"
 import { pageMetadata, processJsonLd } from "@/lib/seo"
 
@@ -36,13 +36,11 @@ export default function ProcessPage() {
               className="col-span-12 lg:col-span-7"
             />
             <Frame
-              image={IMG["networking-under-pendant-lights"]}
+              image={IMG["engineer-work-sample-home-desk"]}
               ratio="4/3"
               ratioLg="1/1"
               priority
-              position="40% 55%"
               sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw"
-              caption={CAPTIONS.event}
               label="Fig. 01"
               className="col-span-12 lg:col-span-5 lg:col-start-8"
             />

@@ -1,6 +1,6 @@
 import { OG_SIZE, ogImage } from "@/lib/og"
 
-export const alt = "What is a forward deployed engineer? A guide from FDE Club Switzerland, with a photo from a Romandy CTO evening"
+export const alt = "What is a forward deployed engineer? A guide from FDE Club Switzerland"
 export const size = OG_SIZE
 export const contentType = "image/jpeg"
 

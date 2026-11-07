@@ -8,7 +8,7 @@ import { Frame } from "@/components/ui/frame"
 import { Reveal } from "@/components/ui/reveal"
 import { Section } from "@/components/ui/section"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { ABOUT, CAPTIONS, LOOK_FOR } from "@/lib/content"
+import { ABOUT, LOOK_FOR } from "@/lib/content"
 import { IMG } from "@/lib/images"
 import { aboutJsonLd, pageMetadata } from "@/lib/seo"
 
@@ -24,7 +24,7 @@ export default function AboutPage() {
     <>
       <StructuredData data={aboutJsonLd(DESCRIPTION)} />
 
-      {/* Hero: text first, then a wide Romandy CTO event photo */}
+      {/* Hero: text first, then a wide image */}
       <Section spacing="tight" labelledBy="about-title">
         <Container>
           <div className="grid-12 gap-y-6">
@@ -48,13 +48,11 @@ export default function AboutPage() {
             </SectionHeading>
           </div>
           <Frame
-            image={IMG["speaker-stage-engaged-audience-hall"]}
+            image={IMG["engineers-campus-terrace-conversation"]}
             ratio="16/9"
             ratioLg="21/9"
             priority
-            position="55% 20%"
             sizes="(min-width:1280px) 1200px, 100vw"
-            caption={CAPTIONS.event}
             label="Fig. 01"
             className="mt-12 lg:mt-16"
           />
@@ -84,9 +82,8 @@ export default function AboutPage() {
         <Container className="grid-12 items-center gap-y-12">
           <Reveal className="order-2 col-span-12 sm:col-span-8 sm:col-start-3 lg:order-1 lg:col-span-5 lg:col-start-1">
             <Frame
-              image={IMG["host-presenting-community-slide"]}
+              image={IMG["robotics-engineer-lab-smiling"]}
               ratio="4/5"
-              position="30% 50%"
               sizes="(min-width:1024px) 34vw, (min-width:640px) 66vw, 100vw"
             />
           </Reveal>

@@ -35,7 +35,7 @@ export const metadata = pageMetadata({
   article: { publishedTime: FDE_GUIDE.published, modifiedTime: FDE_UPDATED },
 })
 
-const PHOTO = IMG["speaker-no-ai-without-ia-slide"]
+const PHOTO = IMG["team-around-laptop-logistics-office"]
 const g = FDE_GUIDE
 const [origin, dayToDay, skills, whyNow, switzerland, become] = g.sections
 
@@ -123,7 +123,6 @@ export default function FdeGuidePage() {
               ratio="16/9"
               priority
               sizes="(min-width:1280px) 780px, (min-width:1024px) 64vw, 100vw"
-              caption={g.photoCaption}
               label="Fig. 01"
               className="mt-10"
             />

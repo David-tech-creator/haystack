@@ -1,7 +1,7 @@
 import { getFieldNote, getFieldNotes } from "@/lib/field-notes"
 import { OG_SIZE, ogImage } from "@/lib/og"
 
-export const alt = "A Field notes post by David Vinkenroye, Haystack, with a photo from a Romandy CTO evening"
+export const alt = "A Field notes post by David Vinkenroye, Haystack"
 export const size = OG_SIZE
 export const contentType = "image/jpeg"
 export const dynamicParams = false

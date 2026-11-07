@@ -12,7 +12,7 @@ export function CtaSection({
   title = CTA.title,
   body,
   secondary = CTA.secondary,
-  image = IMG["networking-conversation-evening"],
+  image = IMG["candidate-and-manager-coffee"],
 }: {
   eyebrow?: string
   title?: string

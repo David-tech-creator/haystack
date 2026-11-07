@@ -44,19 +44,19 @@ Newsletter: when the newsletter box on the FDE Club form is ticked, `/api/fde-cl
 - `src/components/ui/`: small server components (`Section`, `Container`, `SectionHeading`, `Frame`, `Button`, `Card`, `StepList`, `CheckList`, `Faq`, `Stitch`, `Reveal`, `HaystackMark`).
 - `src/components/site/`: header, footer, phone menu and nav links.
 - `src/lib/formations/strands.ts` (with `random.ts`): rebuilds the logo mark from numbers. The SVG mark and the Open Graph images both draw from it.
-- `src/lib/og.tsx`: the Open Graph image template (a full-bleed event photo under a navy gradient, the mark, the page title, the brand line, and a small visible credit "Photo: a Romandy CTO evening."). Cards are re-encoded as JPEG with sharp so they stay well under the size limits of WhatsApp and Slack previews.
+- `src/lib/og.tsx`: the Open Graph image template (a full-bleed editorial image under a navy gradient, the mark, the page title and the brand line). Cards are re-encoded as JPEG with sharp so they stay well under the size limits of WhatsApp and Slack previews.
 
 ## Images
 
-Every photograph on the site is real event photography from Romandy CTO evenings (a community of tech leaders in Romandy): people, talks, panels and conversations. These are not Haystack or FDE Club events, so a photo is never captioned as one. Where a caption describes the scene it reads "A Romandy CTO evening." (`CAPTIONS.event` in `src/lib/content.ts`), with no city, date or names, and alt text never names a person. Photos are served through `next/image` (AVIF or WebP, responsive `sizes`, blur placeholders). Each page has one priority image; everything else is lazy.
+Every image on the site is an editorial illustration in one documentary daylight style: people at work in Swiss offices, labs, plants and campuses, generated with fal.ai `fal-ai/nano-banana-pro` and chosen by David on 7 November 2026 after the Romandy CTO event photos and the earlier still lifes. They show no real clients, candidates or events, so they carry no captions, and alt text describes the scene only. Photos are served through `next/image` (AVIF or WebP, responsive `sizes`, blur placeholders). Each page has one priority image; everything else is lazy.
 
 The pipeline lives in `scripts/images/`:
 
-1. `photos.json` lists each photo: `id` (a descriptive slug, which is also the file name), the absolute path of the full-resolution original (7008x4672 Sony JPEGs in `~/Pictures/Romandy CTO <date>/` and `~/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/`; they are not in git), the slot it fills, its alt text, its focal point `position` (CSS object-position), and for the two Open Graph photos an `og` name. A shared `grade` (a touch of warmth toward the cream palette, slightly eased saturation) keeps the set consistent without touching skin tones.
+1. `photos.json` lists each photo: `id` (a descriptive slug, which is also the file name), the absolute path of the 2K PNG original (in `~/Pictures/Haystack site 2026-11/`, not in git), the slot it fills, its alt text, its focal point `position` (CSS object-position), and for the two Open Graph photos an `og` name. The `grade` is neutral: the images are already in palette.
 2. `node scripts/images/photos.cjs` (from the repo root, on a machine that has the originals) applies the EXIF orientation, resizes to 2400px on the long edge, grades, strips metadata and writes `public/images/site/<id>.webp` (quality 78), the 1200x630 crops `og-default.jpg` and `og-fde.jpg`, and regenerates `src/lib/images.ts` (sizes, alt text, focal points, blur placeholders, `OG_IMAGES`). Do not edit `images.ts` by hand.
-3. `<Frame>` uses the photo's `position` unless a page passes its own, and takes `overlay="navy"` or `overlay="navy-strong"` when text sits on or next to the photo. `ogImage(title, "fde")` in `src/lib/og.tsx` picks the FDE photo; the default is the packed room.
+3. `<Frame>` uses the photo's `position` unless a page passes its own, and takes `overlay="navy"` or `overlay="navy-strong"` when text sits on or next to the photo. `ogImage(title, "fde")` in `src/lib/og.tsx` picks the FDE photo; the default is the meetup around a laptop.
 
-To swap a photo: point its entry at another original (or add an entry), rerun the script, then check the crop at every ratio the slot uses.
+To swap an image: generate a new one in the same style, point its entry at it (or add an entry), rerun the script, then check the crop at every ratio the slot uses.
 
 The earlier generated still lifes (`prompts.json`, `generate.py`, `selection.json`, `optimize.cjs`) are kept for reference only. Do not run `optimize.cjs`: it would overwrite `images.ts` with ids the site no longer uses.
 

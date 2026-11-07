@@ -13,10 +13,9 @@ export function Shortlist() {
       <Container>
         <Reveal>
           <Frame
-            image={IMG["three-people-talking-at-table"]}
+            image={IMG["hiring-manager-reading-shortlist"]}
             ratio="16/9"
             ratioLg="21/9"
-            position="55% 30%"
             sizes="(min-width:1280px) 1200px, 100vw"
           />
         </Reveal>

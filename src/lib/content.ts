@@ -11,8 +11,6 @@ export const HERO = {
   accent: "Move the needle.",
   title: "We search the whole haystack. You meet the few worth meeting.",
   sub: "Haystack is a small Swiss recruitment agency for engineering, data and AI roles. We read every profile ourselves, write a note on every finalist and send you an update each week, even when the honest update is “still digging”.",
-  /** Small line under the hero photo. The photo is from a Romandy CTO evening, so the caption says so. */
-  caption: "A Romandy CTO evening.",
   primary: { label: "Tell us about the role", href: "/contact" },
   secondary: { label: "How a search works", href: "/process" },
 }
@@ -304,20 +302,9 @@ export const FOOTER = {
   cta: "Start a sprint",
 }
 
-/**
- * Photo captions (see src/lib/images.ts). Every photo on the site is from a
- * Romandy CTO evening, not a Haystack or FDE Club event, so a caption that
- * describes the scene says exactly that: no city, no date, no names. Most
- * frames carry no caption at all; the needle metaphor stays in the headlines.
- */
-export const CAPTIONS = {
-  event: "A Romandy CTO evening.",
-} as const
-
 /* ------------------------------------------------------------------------ */
 /* FDE Club Switzerland                                                     */
-/* Every claim below comes from a source listed in FDE_SOURCES. Photos on   */
-/* these pages are from Romandy CTO evenings, not FDE Club events.          */
+/* Every claim below comes from a source listed in FDE_SOURCES. */
 /* ------------------------------------------------------------------------ */
 
 /**
@@ -428,7 +415,6 @@ export const FDE_HUB = {
     title: "Join FDE Club Switzerland",
     body: "Tell us who you are. We will send the first meetup invitation to members before anyone else.",
   },
-  photoCaption: "A Romandy CTO evening.",
 }
 
 export const FDE_CLUB_FAQ = [
@@ -468,7 +454,6 @@ export const FDE_GUIDE = {
   title: "What is a forward deployed engineer?",
   byline: "By Haystack, Geneva",
   published: "2026-11-07",
-  photoCaption: "A Romandy CTO evening.",
   sections: [
     {
       id: "origin",

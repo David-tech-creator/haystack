@@ -91,8 +91,6 @@ const organization = {
     url: `${SITE_URL}/images/site/og-default.jpg`,
     width: 1200,
     height: 630,
-    caption: "A Romandy CTO evening.",
-    creditText: "Romandy CTO",
   },
   slogan: SITE.tagline,
   description: SITE.description,
@@ -192,17 +190,16 @@ function breadcrumbs(trail: { name: string; path: string }[]) {
   }
 }
 
-/** ImageObject for a Romandy CTO photo. Credited and captioned as what it is. */
-export function photoObject(img: ImageEntry, caption = "A Romandy CTO evening.") {
+/** ImageObject for a site image. */
+export function photoObject(img: ImageEntry, caption?: string) {
   return {
     "@type": "ImageObject",
     contentUrl: `${SITE_URL}${img.src}`,
     url: `${SITE_URL}${img.src}`,
     width: img.width,
     height: img.height,
-    caption,
+    ...(caption ? { caption } : {}),
     description: img.alt,
-    creditText: "Romandy CTO",
   }
 }
 

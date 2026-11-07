@@ -5,7 +5,7 @@ import { Frame } from "@/components/ui/frame"
 import { Reveal } from "@/components/ui/reveal"
 import { Section } from "@/components/ui/section"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { CAPTIONS, HOME_FDE } from "@/lib/content"
+import { HOME_FDE } from "@/lib/content"
 import { IMG } from "@/lib/images"
 import { FDE_PATH } from "@/lib/site"
 
@@ -17,10 +17,9 @@ export function FdeHomeTeaser() {
         <Reveal className="order-2 col-span-12 lg:order-1 lg:col-span-5">
           <Link href={FDE_PATH} tabIndex={-1} aria-hidden="true" className="block">
             <Frame
-              image={IMG["packed-salon-tech-leaders-discussion"]}
+              image={IMG["engineers-gathered-around-laptop"]}
               ratio="4/3"
               sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw"
-              caption={CAPTIONS.event}
             />
           </Link>
         </Reveal>

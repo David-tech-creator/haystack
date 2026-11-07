@@ -1,138 +1,131 @@
 {
-  "_about": "Romandy CTO event photography (originals 7008x4672, Sony DSC). Photos are from Romandy CTO evenings, not Haystack or FDE Club events: never caption them as such, and never name people in alt text or captions. 'position' is the CSS object-position used by <Frame> and by the OG crops. Run: node scripts/images/photos.cjs",
+  "_about": "Editorial images generated with fal-ai/nano-banana-pro (documentary daylight direction chosen by David on 2026-11-07). Originals (2K PNG) live in ~/Pictures/Haystack site 2026-11/, not in git. They are illustrations, not photos of real Haystack clients, candidates or events: never caption them as real people or events. 'position' is the CSS object-position used by <Frame> and the OG crops. Run: node scripts/images/photos.cjs",
   "grade": {
-    "warmth": 0.025,
-    "saturation": 0.97,
-    "brightness": 1.01
+    "warmth": 0.0,
+    "saturation": 1.0,
+    "brightness": 1.0
   },
   "photos": [
     {
-      "id": "tech-leaders-panel-discussion-screen",
+      "id": "tech-team-whiteboard-lake-geneva",
       "slot": "home-hero",
-      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04267.JPG",
-      "position": "45% 50%",
-      "alt": "A panelist gestures mid answer beside a presentation screen while tech leaders listen in the foreground"
-    },
-    {
-      "id": "speaker-quantum-slide-long-tables",
-      "slot": "fde-hero",
-      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00213.JPG",
-      "position": "45% 55%",
-      "alt": "A speaker presents a quantum computing slide to engineers seated at long tables under round pendant lights"
-    },
-    {
-      "id": "engineer-presenting-ai-drug-discovery",
-      "slot": "fde-talks",
-      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00220.JPG",
-      "position": "30% 50%",
-      "alt": "A presenter raises a hand while explaining a slide on accelerating drug discovery with computing"
-    },
-    {
-      "id": "presenter-explaining-ai-models-slide",
-      "slot": "fde-builders",
-      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02675.JPG",
-      "position": "55% 45%",
-      "alt": "A presenter walks the room through a slide about AI models and modalities on a large screen"
-    },
-    {
-      "id": "classical-vs-quantum-computing-talk",
-      "slot": "og-fde",
-      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00209.JPG",
-      "position": "50% 40%",
-      "og": "og-fde",
-      "alt": "Attendees watch a presenter point at a slide comparing classical and quantum computers"
-    },
-    {
-      "id": "speaker-no-ai-without-ia-slide",
-      "slot": "guide (16:9 or 3:2 only, keeps the slide text)",
-      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04325.JPG",
-      "position": "55% 35%",
-      "alt": "A speaker raises both hands on stage in front of a slide reading no AI without IA"
-    },
-    {
-      "id": "packed-salon-tech-leaders-discussion",
-      "slot": "og-default, home-fde-teaser",
-      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02694.JPG",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/tech-team-whiteboard-lake-geneva.png",
       "position": "50% 45%",
-      "og": "og-default",
-      "alt": "A packed room of tech leaders follows a discussion as one participant gestures"
+      "alt": "An engineer explains a system diagram on a flip chart to two colleagues at an oak table, with Lake Geneva outside the tall windows"
     },
     {
-      "id": "speaker-stage-engaged-audience-hall",
-      "slot": "about",
-      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04321.JPG",
-      "position": "55% 20%",
-      "alt": "A speaker addresses a seated audience of tech leaders from a stage in a modern hall"
-    },
-    {
-      "id": "panelists-sharing-a-laugh",
-      "slot": "home-what-we-do",
-      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02727.JPG",
+      "id": "engineer-with-specialist-pharma-lab",
+      "slot": "fde-hero",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineer-with-specialist-pharma-lab.png",
       "position": "45% 50%",
-      "alt": "Two panelists share a laugh while one explains a point with his hands"
+      "alt": "An engineer points at a laptop beside a lab specialist in a pharmaceutical quality lab"
     },
     {
-      "id": "speaker-smiling-front-row",
-      "slot": "home-sprint",
-      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04319.JPG",
+      "id": "engineer-demo-bank-operations-team",
+      "slot": "fde-talks",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineer-demo-bank-operations-team.png",
+      "position": "50% 50%",
+      "alt": "An engineer walks an operations team through a prototype on a wall screen while colleagues lean in and take notes"
+    },
+    {
+      "id": "engineer-with-underwriter-open-office",
+      "slot": "fde-builders",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineer-with-underwriter-open-office.png",
       "position": "45% 50%",
-      "alt": "A speaker with a microphone talks to a smiling front row beside a lectern with a laptop"
+      "alt": "An engineer works beside an insurance underwriter at the underwriter's own desk, both looking at a laptop"
     },
     {
-      "id": "close-conversation-engineering-leaders",
-      "slot": "home-look-for",
-      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02742.JPG",
-      "position": "70% 55%",
-      "alt": "A participant in glasses makes a point with open hands while another listens closely"
-    },
-    {
-      "id": "attentive-audience-sunlit-room",
-      "slot": "home-inside",
-      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02670.JPG",
-      "position": "50% 55%",
-      "alt": "An attentive audience listens to a talk in a sunlit room with leaf patterned wallpaper"
-    },
-    {
-      "id": "three-people-talking-at-table",
-      "slot": "home-shortlist",
-      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04236.JPG",
-      "position": "55% 30%",
-      "alt": "Three people in conversation around a table in a bright open workspace"
-    },
-    {
-      "id": "moderator-and-panel-with-notes",
-      "slot": "unused (same panel as the home hero)",
-      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04259.JPG",
+      "id": "engineer-with-operator-factory-floor",
+      "slot": "og-fde",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineer-with-operator-factory-floor.png",
       "position": "55% 40%",
-      "alt": "A moderator holding notes puts a question to three seated panelists in front of a screen"
+      "alt": "A machine operator explains a precision machine to an engineer holding a tablet on a bright factory floor",
+      "og": "og-fde"
     },
     {
-      "id": "two-tech-leaders-laughing",
-      "slot": "contact",
-      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04277.JPG",
+      "id": "team-around-laptop-logistics-office",
+      "slot": "guide",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/team-around-laptop-logistics-office.png",
+      "position": "50% 45%",
+      "alt": "An engineer and three dispatchers lean over one laptop in a logistics office overlooking the loading bays"
+    },
+    {
+      "id": "engineers-gathered-around-laptop",
+      "slot": "og-default, home-fde-teaser",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineers-gathered-around-laptop.png",
+      "position": "50% 45%",
+      "alt": "Engineers of different ages gather around a laptop demo at an early evening meetup, one of them laughing",
+      "og": "og-default"
+    },
+    {
+      "id": "engineers-campus-terrace-conversation",
+      "slot": "about",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineers-campus-terrace-conversation.png",
+      "position": "50% 78%",
+      "alt": "Four engineers talk as they walk across a sunny campus terrace with the lake and the Alps in the distance"
+    },
+    {
+      "id": "hiring-brief-notebook-geneva",
+      "slot": "home-what-we-do",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/hiring-brief-notebook-geneva.png",
+      "position": "50% 50%",
+      "alt": "A recruiter takes notes by hand while a hiring manager describes the role, Geneva rooftops outside the window"
+    },
+    {
+      "id": "team-planning-wall-sticky-notes",
+      "slot": "home-sprint",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/team-planning-wall-sticky-notes.png",
+      "position": "50% 45%",
+      "alt": "Two colleagues arrange paper cards in columns on a wall in a bright studio office"
+    },
+    {
+      "id": "pair-programming-explaining-code",
+      "slot": "home-look-for",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/pair-programming-explaining-code.png",
+      "position": "50% 45%",
+      "alt": "Two engineers pair program at one laptop, one explaining with a pen while the other listens closely"
+    },
+    {
+      "id": "small-team-studio-office-tools",
+      "slot": "home-inside",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/small-team-studio-office-tools.png",
+      "position": "50% 55%",
+      "alt": "A small team at work in a bright loft office: one at a laptop, one on a call by the window, one sketching in a notebook"
+    },
+    {
+      "id": "hiring-manager-reading-shortlist",
+      "slot": "home-shortlist",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/hiring-manager-reading-shortlist.png",
       "position": "50% 40%",
-      "alt": "Two men share a laugh in conversation in a bright office corridor"
+      "alt": "A hiring manager smiles while reading printed one page notes at a lakeside cafe table"
     },
     {
-      "id": "networking-conversation-evening",
-      "slot": "cta (site wide CtaSection default)",
-      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00278.JPG",
-      "position": "45% 45%",
-      "alt": "A small group talks in warm light during a networking break after the talks"
+      "id": "phone-call-window-lake-geneva",
+      "slot": "contact",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/phone-call-window-lake-geneva.png",
+      "position": "45% 40%",
+      "alt": "A recruiter smiles on a phone call by a tall window overlooking Lake Geneva, notebook in hand"
     },
     {
-      "id": "networking-under-pendant-lights",
+      "id": "candidate-and-manager-coffee",
+      "slot": "cta",
+      "original": "/Users/david/Pictures/Haystack site 2026-11/candidate-and-manager-coffee.png",
+      "position": "50% 45%",
+      "alt": "Two people laugh together over coffee in a bright office kitchen"
+    },
+    {
+      "id": "engineer-work-sample-home-desk",
       "slot": "process, 404",
-      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04371.JPG",
-      "position": "40% 55%",
-      "alt": "Guests talk in small groups in a modern space lit by rows of globe pendant lights"
+      "original": "/Users/david/Pictures/Haystack site 2026-11/engineer-work-sample-home-desk.png",
+      "position": "45% 45%",
+      "alt": "An engineer thinks over her work at a home desk by a window onto vineyards"
     },
     {
-      "id": "host-presenting-community-slide",
+      "id": "robotics-engineer-lab-smiling",
       "slot": "about (second 4:5 frame)",
-      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00193.JPG",
-      "position": "30% 50%",
-      "alt": "A speaker in a light blazer gestures in front of a projected slide while attendees with laptops listen"
+      "original": "/Users/david/Pictures/Haystack site 2026-11/robotics-engineer-lab-smiling.png",
+      "position": "55% 35%",
+      "alt": "A robotics engineer smiles as he adjusts a small robot arm on a workbench in a university lab"
     }
   ]
 }

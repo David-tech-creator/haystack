@@ -1,5 +1,5 @@
 // LEGACY (2026-10 generated still lifes). Kept for reference; do not run. The site now uses
-// scripts/images/photos.cjs (Romandy CTO event photography); running this would overwrite
+// scripts/images/photos.cjs (editorial illustrations); running this would overwrite
 // src/lib/images.ts with ids the site no longer uses.
 // Usage (from the repo root): node scripts/images/optimize.cjs scripts/images/selection.json
 // Reads the chosen raw PNGs from scripts/images/raw/ (git-ignored), writes WebP files to

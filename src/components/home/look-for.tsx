@@ -13,9 +13,8 @@ export function LookFor() {
       <Container className="grid-12 items-center gap-y-12">
         <Reveal className="order-2 col-span-12 lg:order-1 lg:col-span-6">
           <Frame
-            image={IMG["close-conversation-engineering-leaders"]}
+            image={IMG["pair-programming-explaining-code"]}
             ratio="1/1"
-            position="70% 55%"
             sizes="(min-width:1280px) 570px, (min-width:1024px) 44vw, 100vw"
           />
         </Reveal>

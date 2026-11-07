@@ -13,10 +13,9 @@ export function Sprint() {
         <div className="col-span-12 lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:col-span-4">
           <SectionHeading index="02" eyebrow={SPRINT.eyebrow} title={SPRINT.title} titleId="sprint-title" lead={SPRINT.intro} />
           <Frame
-            image={IMG["speaker-smiling-front-row"]}
+            image={IMG["team-planning-wall-sticky-notes"]}
             ratio="4/3"
             ratioLg="4/5"
-            position="45% 50%"
             sizes="(min-width:1280px) 380px, (min-width:1024px) 30vw, 100vw"
             className="mt-10"
           />

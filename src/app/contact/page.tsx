@@ -72,9 +72,8 @@ export default function ContactPage({
             </aside>
 
             <Frame
-              image={IMG["two-tech-leaders-laughing"]}
+              image={IMG["phone-call-window-lake-geneva"]}
               ratio="4/3"
-              position="50% 40%"
               sizes="(min-width:1280px) 460px, 34vw"
               className="mt-12 hidden lg:block"
             />
