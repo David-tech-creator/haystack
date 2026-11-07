@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 /*
- * Haystack 2026-10: paper, straw, one gold needle. Light only.
+ * Haystack 2026-11: cream paper, navy ink, one gold accent; real event
+ * photography (people and technology) in clean frames. Light only.
  * Tokens: DESIGN.md section 2. Tailwind carries the same values as names.
  */
 @layer base {
@@ -396,22 +397,50 @@
   }
 
   /* Image frame ----------------------------------------------------------- */
+  /* Event photography: clean edge, a modest radius, a hairline and a soft
+     lift. No paper or linen texture. The navy placeholder matches the photos'
+     low-key tones so the blur-up does not flash cream. */
   .frame {
     position: relative;
     overflow: hidden;
-    border-radius: var(--r-xs);
-    background: var(--linen);
+    isolation: isolate;
+    border-radius: var(--r-md);
+    background: var(--deep-raised);
+    box-shadow:
+      0 1px 2px rgba(16, 21, 42, 0.06),
+      0 18px 40px -24px rgba(16, 21, 42, 0.35);
   }
   .frame::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    box-shadow: inset 0 0 0 1px rgba(26, 33, 54, 0.06);
+    box-shadow: inset 0 0 0 1px rgba(16, 21, 42, 0.1);
+    pointer-events: none;
+  }
+  /* Optional navy wash, for frames that carry text or sit next to a headline. */
+  .frame-navy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(16, 21, 42, 0) 45%, rgba(16, 21, 42, 0.55) 100%);
+    pointer-events: none;
+  }
+  .frame-navy-strong::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(16, 21, 42, 0.82) 0%, rgba(16, 21, 42, 0.45) 55%, rgba(16, 21, 42, 0.1) 100%);
     pointer-events: none;
   }
   [data-tone="deep"] .frame {
-    background: var(--deep-raised);
+    background: var(--deep);
+    box-shadow: none;
+  }
+  [data-tone="deep"] .frame::after {
+    box-shadow: inset 0 0 0 1px var(--deep-line);
   }
   a .frame img {
     transition: transform 700ms var(--ease-out);

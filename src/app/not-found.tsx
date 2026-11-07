@@ -26,8 +26,9 @@ export default function NotFound() {
           </div>
         </div>
         <Frame
-          image={IMG["single-straw"]}
+          image={IMG["networking-under-pendant-lights"]}
           ratio="1/1"
+          position="50% 60%"
           priority
           sizes="(min-width:1280px) 420px, (min-width:1024px) 34vw, 100vw"
           className="col-span-12 sm:col-span-8 sm:col-start-3 lg:col-span-5 lg:col-start-8"

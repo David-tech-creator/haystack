@@ -1,0 +1,138 @@
+{
+  "_about": "Romandy CTO event photography (originals 7008x4672, Sony DSC). Photos are from Romandy CTO evenings, not Haystack or FDE Club events: never caption them as such, and never name people in alt text or captions. 'position' is the CSS object-position used by <Frame> and by the OG crops. Run: node scripts/images/photos.cjs",
+  "grade": {
+    "warmth": 0.025,
+    "saturation": 0.97,
+    "brightness": 1.01
+  },
+  "photos": [
+    {
+      "id": "tech-leaders-panel-discussion-screen",
+      "slot": "home-hero",
+      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04267.JPG",
+      "position": "45% 50%",
+      "alt": "A panelist gestures mid answer beside a presentation screen while tech leaders listen in the foreground"
+    },
+    {
+      "id": "speaker-quantum-slide-long-tables",
+      "slot": "fde-hero",
+      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00213.JPG",
+      "position": "45% 55%",
+      "alt": "A speaker presents a quantum computing slide to engineers seated at long tables under round pendant lights"
+    },
+    {
+      "id": "engineer-presenting-ai-drug-discovery",
+      "slot": "fde-talks",
+      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00220.JPG",
+      "position": "30% 50%",
+      "alt": "A presenter raises a hand while explaining a slide on accelerating drug discovery with computing"
+    },
+    {
+      "id": "presenter-explaining-ai-models-slide",
+      "slot": "fde-builders",
+      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02675.JPG",
+      "position": "55% 45%",
+      "alt": "A presenter walks the room through a slide about AI models and modalities on a large screen"
+    },
+    {
+      "id": "classical-vs-quantum-computing-talk",
+      "slot": "og-fde",
+      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00209.JPG",
+      "position": "50% 40%",
+      "og": "og-fde",
+      "alt": "Attendees watch a presenter point at a slide comparing classical and quantum computers"
+    },
+    {
+      "id": "speaker-no-ai-without-ia-slide",
+      "slot": "guide (16:9 or 3:2 only, keeps the slide text)",
+      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04325.JPG",
+      "position": "55% 35%",
+      "alt": "A speaker raises both hands on stage in front of a slide reading no AI without IA"
+    },
+    {
+      "id": "packed-salon-tech-leaders-discussion",
+      "slot": "og-default, home-fde-teaser",
+      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02694.JPG",
+      "position": "50% 45%",
+      "og": "og-default",
+      "alt": "A packed room of tech leaders follows a discussion as one participant gestures"
+    },
+    {
+      "id": "speaker-stage-engaged-audience-hall",
+      "slot": "about",
+      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04321.JPG",
+      "position": "55% 20%",
+      "alt": "A speaker addresses a seated audience of tech leaders from a stage in a modern hall"
+    },
+    {
+      "id": "panelists-sharing-a-laugh",
+      "slot": "home-what-we-do",
+      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02727.JPG",
+      "position": "45% 50%",
+      "alt": "Two panelists share a laugh while one explains a point with his hands"
+    },
+    {
+      "id": "speaker-smiling-front-row",
+      "slot": "home-sprint",
+      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04319.JPG",
+      "position": "45% 50%",
+      "alt": "A speaker with a microphone talks to a smiling front row beside a lectern with a laptop"
+    },
+    {
+      "id": "close-conversation-engineering-leaders",
+      "slot": "home-look-for",
+      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02742.JPG",
+      "position": "70% 55%",
+      "alt": "A participant in glasses makes a point with open hands while another listens closely"
+    },
+    {
+      "id": "attentive-audience-sunlit-room",
+      "slot": "home-inside",
+      "original": "/Users/david/Pictures/Romandy CTO 25.6/DSC02670.JPG",
+      "position": "50% 55%",
+      "alt": "An attentive audience listens to a talk in a sunlit room with leaf patterned wallpaper"
+    },
+    {
+      "id": "three-people-talking-at-table",
+      "slot": "home-shortlist",
+      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04236.JPG",
+      "position": "55% 30%",
+      "alt": "Three people in conversation around a table in a bright open workspace"
+    },
+    {
+      "id": "moderator-and-panel-with-notes",
+      "slot": "unused (same panel as the home hero)",
+      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04259.JPG",
+      "position": "55% 40%",
+      "alt": "A moderator holding notes puts a question to three seated panelists in front of a screen"
+    },
+    {
+      "id": "two-tech-leaders-laughing",
+      "slot": "contact",
+      "original": "/Users/david/Pictures/Romandy CTO 29.9/DSC04277.JPG",
+      "position": "50% 40%",
+      "alt": "Two men share a laugh in conversation in a bright office corridor"
+    },
+    {
+      "id": "networking-conversation-evening",
+      "slot": "cta (site wide CtaSection default)",
+      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00278.JPG",
+      "position": "45% 45%",
+      "alt": "A small group talks in warm light during a networking break after the talks"
+    },
+    {
+      "id": "networking-under-pendant-lights",
+      "slot": "process, 404",
+      "original": "/Users/david/Pictures/Romandy CTO 15.10/DSC04371.JPG",
+      "position": "40% 55%",
+      "alt": "Guests talk in small groups in a modern space lit by rows of globe pendant lights"
+    },
+    {
+      "id": "host-presenting-community-slide",
+      "slot": "about (second 4:5 frame)",
+      "original": "/Users/david/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/DSC00193.JPG",
+      "position": "30% 50%",
+      "alt": "A speaker in a light blazer gestures in front of a projected slide while attendees with laptops listen"
+    }
+  ]
+}

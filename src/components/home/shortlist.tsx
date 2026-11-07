@@ -4,7 +4,7 @@ import { Frame } from "@/components/ui/frame"
 import { Reveal } from "@/components/ui/reveal"
 import { Section } from "@/components/ui/section"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { CAPTIONS, SHORTLIST } from "@/lib/content"
+import { SHORTLIST } from "@/lib/content"
 import { IMG } from "@/lib/images"
 
 export function Shortlist() {
@@ -13,13 +13,11 @@ export function Shortlist() {
       <Container>
         <Reveal>
           <Frame
-            image={IMG["shortlist-notes"]}
+            image={IMG["three-people-talking-at-table"]}
             ratio="16/9"
             ratioLg="21/9"
-            position="50% 47%"
+            position="55% 30%"
             sizes="(min-width:1280px) 1200px, 100vw"
-            caption={CAPTIONS.notes}
-            label="Fig. 05"
           />
         </Reveal>
         <SectionHeading

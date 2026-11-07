@@ -24,8 +24,9 @@ function check(data: FormData): Partial<Record<Field, string>> {
  * Contact form. Real labels, 16px inputs (no iOS zoom), autocomplete hints.
  * With JavaScript it posts JSON and answers inline; without, it posts the
  * form to the same route, which redirects back with ?sent=1 or ?error=1.
+ * `topic="fde"` (from /contact?topic=fde) prefills the role and tags the email.
  */
-export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
+export function ContactForm({ initial, topic }: { initial?: "sent" | "error"; topic?: "fde" }) {
   const [status, setStatus] = useState<Status>(initial ?? "idle")
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({})
 
@@ -127,7 +128,13 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
           <span className="field-label">
             Role(s) you are hiring for <span className="font-normal text-ink-mute">(optional)</span>
           </span>
-          <input name="roles" type="text" placeholder="e.g. Senior backend engineer, Head of data" className="input" />
+          <input
+            name="roles"
+            type="text"
+            defaultValue={topic === "fde" ? "Forward deployed engineer" : undefined}
+            placeholder="e.g. Senior backend engineer, Head of data"
+            className="input"
+          />
         </label>
       </div>
       <div className="field">
@@ -149,6 +156,7 @@ export function ContactForm({ initial }: { initial?: "sent" | "error" }) {
           </span>
         )}
       </div>
+      {topic ? <input type="hidden" name="topic" value={topic} /> : null}
       {/* honeypot: hidden from people and assistive tech */}
       <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden">
         <label>

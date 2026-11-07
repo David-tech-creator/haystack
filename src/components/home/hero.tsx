@@ -33,11 +33,11 @@ export function HomeHero() {
             </div>
           </div>
           <Frame
-            image={IMG["hero-needle"]}
+            image={IMG["tech-leaders-panel-discussion-screen"]}
             ratio="4/3"
             ratioLg="4/5"
             priority
-            position="55% 50%"
+            position="45% 50%"
             sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw"
             caption={HERO.caption}
             label="Fig. 01"

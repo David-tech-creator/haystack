@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { ContactForm } from "@/components/contact-form"
 import { StructuredData } from "@/components/structured-data"
 import { Card } from "@/components/ui/card"
@@ -10,14 +11,19 @@ import { IMG } from "@/lib/images"
 import { contactJsonLd, pageMetadata } from "@/lib/seo"
 
 const DESCRIPTION =
-  "Start a recruitment sprint with Haystack. Tell us about the role and we will reply within one business day."
+  "Start a recruitment sprint with Haystack in Geneva, or hire a forward deployed engineer. Tell us about the role and we reply within one business day."
 
-export const metadata = pageMetadata({ title: "Contact", description: DESCRIPTION, path: "/contact" })
+export const metadata = pageMetadata({ absoluteTitle: "Contact Haystack · Hire engineers in Switzerland", description: DESCRIPTION, path: "/contact" })
 
 const n = (i: number) => String(i + 1).padStart(2, "0")
 
-export default function ContactPage({ searchParams }: { searchParams: { sent?: string; error?: string } }) {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams: { sent?: string; error?: string; topic?: string }
+}) {
   const initial = searchParams.sent ? "sent" : searchParams.error ? "error" : undefined
+  const topic = searchParams.topic === "fde" ? "fde" : undefined
   return (
     <>
       <StructuredData data={contactJsonLd(DESCRIPTION)} />
@@ -48,9 +54,27 @@ export default function ContactPage({ searchParams }: { searchParams: { sent?: s
               </ol>
             </div>
 
+            <aside aria-labelledby="contact-fde" className="mt-10 border-l-2 border-gold pl-5">
+              <h2 id="contact-fde" className="font-display text-h3 font-semibold">
+                {CONTACT.fde.title}
+              </h2>
+              <p className="mt-2 max-w-prose-tight text-ink-soft">{CONTACT.fde.body}</p>
+              <p className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+                {topic === "fde" ? null : (
+                  <Link href={CONTACT.fde.start.href} className="link font-medium">
+                    {CONTACT.fde.start.label}
+                  </Link>
+                )}
+                <Link href={CONTACT.fde.club.href} className="link font-medium">
+                  {CONTACT.fde.club.label}
+                </Link>
+              </p>
+            </aside>
+
             <Frame
-              image={IMG["envelope-thread"]}
+              image={IMG["two-tech-leaders-laughing"]}
               ratio="4/3"
+              position="50% 40%"
               sizes="(min-width:1280px) 460px, 34vw"
               className="mt-12 hidden lg:block"
             />
@@ -58,7 +82,7 @@ export default function ContactPage({ searchParams }: { searchParams: { sent?: s
 
           <div id="form" className="col-span-12 scroll-mt-28 lg:col-span-6 lg:col-start-7">
             <Card padding="lg" className="shadow-raise">
-              <ContactForm initial={initial} />
+              <ContactForm initial={initial} topic={topic} />
             </Card>
           </div>
         </Container>

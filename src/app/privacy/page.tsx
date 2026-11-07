@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo"
 
 export const metadata = pageMetadata({
   title: "Privacy",
-  description: "How Haystack handles the details you send through the contact form, under the Swiss Federal Act on Data Protection.",
+  description: "How Haystack handles the details you send through the contact form and the FDE Club Switzerland form, under the Swiss Federal Act on Data Protection.",
   path: "/privacy",
 })
 
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <aside className="col-span-12 lg:col-span-3">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             <Eyebrow>Privacy</Eyebrow>
-            <p className="mt-3 text-small text-ink-mute">Last updated: 25 October 2026.</p>
+            <p className="mt-3 text-small text-ink-mute">Last updated: 7 November 2026.</p>
           </div>
         </aside>
         <article className="prose prose-lg col-span-12 max-w-none lg:col-span-7 lg:col-start-4 prose-headings:text-ink prose-h2:mt-12 prose-h2:border-t prose-h2:border-line prose-h2:pt-8 prose-h2:font-display prose-h2:text-h3 prose-h2:font-semibold prose-p:max-w-[38rem] prose-p:text-ink-soft prose-li:text-ink-soft prose-strong:text-ink">
@@ -40,6 +40,10 @@ export default function PrivacyPage() {
           <ul>
             <li>What you type into the contact form: name, email, and optionally company, roles and your message.</li>
             <li>
+              What you type into the FDE Club Switzerland form: name, email, what you tell us about yourself or your talk,
+              optionally your company, and whether you want the newsletter and the community chat.
+            </li>
+            <li>
               Standard server logs kept by our host (IP address, time, page requested) for security and to keep the site
               running.
             </li>
@@ -52,10 +56,20 @@ export default function PrivacyPage() {
             candidate, to talk with you about roles you might want next.
           </p>
 
+          <h2 id="fde-club">FDE Club Switzerland</h2>
+          <p>
+            Haystack runs <Link href="/forward-deployed-engineers">FDE Club Switzerland</Link>. When you join or offer a
+            talk, we use your details to run the club: to invite you to meetups, to reply about your talk, and, only if you
+            ticked the boxes, to send you the newsletter and invite you to the community chat once it opens. Haystack is also a
+            recruitment agency, so we say this plainly: we never pass a member&apos;s details to an employer without asking
+            that member first. You can leave the club or unsubscribe at any time by telling us through the{" "}
+            <Link href="/contact">contact form</Link>, and we delete your details.
+          </p>
+
           <h2>Who processes it for us</h2>
           <ul>
             <li>
-              <strong>Brevo</strong> (Sendinblue SAS, France) delivers the contact form to our inbox.
+              <strong>Brevo</strong> (Sendinblue SAS, France) delivers the contact form and the FDE Club Switzerland form to our inbox.
             </li>
             <li>
               <strong>Vercel</strong> (Vercel Inc., USA) hosts this website; requests are served from its Frankfurt

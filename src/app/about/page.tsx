@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { CtaSection } from "@/components/sections"
 import { StructuredData } from "@/components/structured-data"
 import { Card } from "@/components/ui/card"
@@ -12,9 +13,9 @@ import { IMG } from "@/lib/images"
 import { aboutJsonLd, pageMetadata } from "@/lib/seo"
 
 const DESCRIPTION =
-  "Haystack is a small recruitment agency in Geneva with Swiss engineering roots and a simple rule: evidence over volume."
+  "Haystack is a small recruitment agency in Geneva with Swiss engineering roots and a simple rule: evidence over volume. We also started FDE Club Switzerland."
 
-export const metadata = pageMetadata({ title: "About", description: DESCRIPTION, path: "/about" })
+export const metadata = pageMetadata({ absoluteTitle: "About Haystack · Tech recruitment in Geneva", description: DESCRIPTION, path: "/about" })
 
 const n = (i: number) => String(i + 1).padStart(2, "0")
 
@@ -23,7 +24,7 @@ export default function AboutPage() {
     <>
       <StructuredData data={aboutJsonLd(DESCRIPTION)} />
 
-      {/* Hero: text first, then the wide Geneva still life */}
+      {/* Hero: text first, then a wide Romandy CTO event photo */}
       <Section spacing="tight" labelledBy="about-title">
         <Container>
           <div className="grid-12 gap-y-6">
@@ -37,15 +38,23 @@ export default function AboutPage() {
               className="col-span-12 lg:col-span-7"
             >
               <p className="enter enter-1 mt-5 max-w-prose-tight text-ink-soft">{ABOUT.story}</p>
+              <p className="enter enter-1 mt-4 max-w-prose-tight text-ink-soft">
+                {ABOUT.fde.text}{" "}
+                <Link href="/forward-deployed-engineers" className="link">
+                  {ABOUT.fde.link}
+                </Link>
+                .
+              </p>
             </SectionHeading>
           </div>
           <Frame
-            image={IMG["geneva-light"]}
+            image={IMG["speaker-stage-engaged-audience-hall"]}
             ratio="16/9"
             ratioLg="21/9"
             priority
+            position="55% 20%"
             sizes="(min-width:1280px) 1200px, 100vw"
-            caption={CAPTIONS.light}
+            caption={CAPTIONS.event}
             label="Fig. 01"
             className="mt-12 lg:mt-16"
           />
@@ -75,8 +84,9 @@ export default function AboutPage() {
         <Container className="grid-12 items-center gap-y-12">
           <Reveal className="order-2 col-span-12 sm:col-span-8 sm:col-start-3 lg:order-1 lg:col-span-5 lg:col-start-1">
             <Frame
-              image={IMG["straw-grid"]}
+              image={IMG["host-presenting-community-slide"]}
               ratio="4/5"
+              position="30% 50%"
               sizes="(min-width:1024px) 34vw, (min-width:640px) 66vw, 100vw"
             />
           </Reveal>

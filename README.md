@@ -1,6 +1,6 @@
 # haystack.agency
 
-Haystack is a small tech recruitment agency in Geneva. This is its website: Next.js 14 (App Router) and Tailwind 3, server-rendered, with editorial still images and CSS-only motion. The only client JavaScript beyond the Next runtime is the phone menu, the nav's current-page marker and the contact form.
+Haystack is a small tech recruitment agency in Geneva. This is its website: Next.js 14 (App Router) and Tailwind 3, server-rendered, with real event photography and CSS-only motion. The only client JavaScript beyond the Next runtime is the phone menu, the nav's current-page marker and the contact form.
 
 ## Run it
 
@@ -23,6 +23,12 @@ Environment variables (set in Vercel, never committed):
 - `CONTACT_FORM_FROM_EMAIL`
 - `CONTACT_FORM_TO`
 
+## FDE Club Switzerland
+
+`/forward-deployed-engineers` is the hub for FDE Club Switzerland (Switzerland's first club for forward deployed engineers, started by Haystack); `/forward-deployed-engineers/what-is-a-forward-deployed-engineer` is the evergreen guide. Facts live in `src/lib/site.ts` (`FDE_CLUB`, `FDE_UPDATED`, `FDE_EMPLOYERS`, `FDE_EVENTS`), copy in `src/lib/content.ts` (`FDE_DEFINITION`, `FDE_HUB`, `FDE_CLUB_FAQ`, `FDE_GUIDE`, `FDE_GUIDE_FAQ`, `FDE_SOURCES`), components in `src/components/fde/`. Re-check every employer row on its source before bumping `FDE_UPDATED`. `FDE_EVENTS` stays empty until a meetup date and venue are confirmed; no Event JSON-LD is emitted until then.
+
+The join form posts to `src/app/api/fde-club/route.ts` and reuses the Brevo pipeline in `src/lib/contact.ts` (same env vars). Emails are tagged `[FDE Club join]` or `[FDE Club speaker]`; `/contact?topic=fde` prefills the role and tags the email `[Hire an FDE]`. Without JavaScript the form redirects to `/forward-deployed-engineers?joined=1#join` or `?error=1#join`. The form reads `?joined`, `?error` and `?kind=speak` on the client (`useSearchParams` in a Suspense boundary), so the hub stays a static page served from the CDN; do not read `searchParams` in the page itself.
+
 ## Where things live
 
 - `src/lib/site.ts`: facts (URL, LinkedIn, city, brand colours). `src/lib/content.ts`: all copy, with the house copy rules in its header. Pages, JSON-LD (`src/lib/seo.ts`), `llms.txt`, `llms-full.txt` and the sitemap read from these two files.
@@ -31,20 +37,32 @@ Environment variables (set in Vercel, never committed):
 - `src/components/ui/`: small server components (`Section`, `Container`, `SectionHeading`, `Frame`, `Button`, `Card`, `StepList`, `CheckList`, `Faq`, `Stitch`, `Reveal`, `HaystackMark`).
 - `src/components/site/`: header, footer, phone menu and nav links.
 - `src/lib/formations/strands.ts` (with `random.ts`): rebuilds the logo mark from numbers. The SVG mark and the Open Graph images both draw from it.
-- `src/lib/og.tsx`: the Open Graph image template (cream paper, the mark, the page title, the hero photograph on the right).
+- `src/lib/og.tsx`: the Open Graph image template (a full-bleed event photo under a navy gradient, the mark, the page title, the brand line, and a small visible credit "Photo: a Romandy CTO evening."). Cards are re-encoded as JPEG with sharp so they stay well under the size limits of WhatsApp and Slack previews.
 
 ## Images
 
-Every photograph is an art-directed still life (straw, a gold needle, navy thread, linen, cream paper) generated with OpenAI `gpt-image-2.5`, then optimised with sharp. They are served through `next/image` (AVIF or WebP, responsive `sizes`, blur placeholders). Each page has one priority image; everything else is lazy.
+Every photograph on the site is real event photography from Romandy CTO evenings (a community of tech leaders in Romandy): people, talks, panels and conversations. These are not Haystack or FDE Club events, so a photo is never captioned as one. Where a caption describes the scene it reads "A Romandy CTO evening." (`CAPTIONS.event` in `src/lib/content.ts`), with no city, date or names, and alt text never names a person. Photos are served through `next/image` (AVIF or WebP, responsive `sizes`, blur placeholders). Each page has one priority image; everything else is lazy.
 
 The pipeline lives in `scripts/images/`:
 
-1. `prompts.json` holds the prompt, size and alt text for each image id.
-2. `generate.py <id> [suffix]` calls the Images API with `OPENAI_API_KEY` from the environment and writes a raw PNG to `scripts/images/raw/` (git-ignored).
-3. `selection.json` names the raw take chosen for each id.
-4. `node scripts/images/optimize.cjs scripts/images/selection.json` writes the WebP files to `public/images/site/`, the OG crop `og-needle.jpg`, and regenerates `src/lib/images.ts` (sizes, alt text, blur placeholders). Do not edit `images.ts` by hand.
+1. `photos.json` lists each photo: `id` (a descriptive slug, which is also the file name), the absolute path of the full-resolution original (7008x4672 Sony JPEGs in `~/Pictures/Romandy CTO <date>/` and `~/Library/CloudStorage/OneDrive-Personal/Romandy CTO photos/`; they are not in git), the slot it fills, its alt text, its focal point `position` (CSS object-position), and for the two Open Graph photos an `og` name. A shared `grade` (a touch of warmth toward the cream palette, slightly eased saturation) keeps the set consistent without touching skin tones.
+2. `node scripts/images/photos.cjs` (from the repo root, on a machine that has the originals) applies the EXIF orientation, resizes to 2400px on the long edge, grades, strips metadata and writes `public/images/site/<id>.webp` (quality 78), the 1200x630 crops `og-default.jpg` and `og-fde.jpg`, and regenerates `src/lib/images.ts` (sizes, alt text, focal points, blur placeholders, `OG_IMAGES`). Do not edit `images.ts` by hand.
+3. `<Frame>` uses the photo's `position` unless a page passes its own, and takes `overlay="navy"` or `overlay="navy-strong"` when text sits on or next to the photo. `ogImage(title, "fde")` in `src/lib/og.tsx` picks the FDE photo; the default is the packed room.
+
+To swap a photo: point its entry at another original (or add an entry), rerun the script, then check the crop at every ratio the slot uses.
+
+The earlier generated still lifes (`prompts.json`, `generate.py`, `selection.json`, `optimize.cjs`) are kept for reference only. Do not run `optimize.cjs`: it would overwrite `images.ts` with ids the site no longer uses.
 
 Logo source files live in `public/brand/` (used by the JSON-LD) and `public/images/` (originals, not used by the pages).
+
+## Search and AI assistants
+
+- `src/lib/seo.ts` builds one JSON-LD graph per page with stable `@id`s: Haystack, the FDE Club (a sub-organisation), the two services, the `DefinedTerm` for "forward deployed engineer", the guide `Article`, FAQs, breadcrumbs and the employer `ItemList`. Every page gets `dateModified` and a `primaryImageOfPage`.
+- `src/lib/page-images.ts` says which photos each page shows (first = primary). It feeds the JSON-LD and `/image-sitemap.xml`. Change it when a Frame changes.
+- `robots.ts` allows search and AI crawlers by name and lists both sitemaps. `/llms.txt` and `/llms-full.txt` come from `src/lib/llms.ts`.
+- Dates: bump `CONTENT_UPDATED` (recruitment pages) or `FDE_UPDATED` (FDE pages, only after re-checking every employer row) in `src/lib/site.ts`. The sitemap, JSON-LD and llms files follow.
+- IndexNow: the key is `INDEXNOW_KEY` in `site.ts`, served from `public/<key>.txt`. After a production deploy, run `node scripts/indexnow.mjs` (or pass paths) to ping Bing and friends. It refuses to run until the key file is live.
+- Outside the repo: verify the site in Google Search Console and Bing Webmaster Tools and submit both sitemaps; check the Vercel firewall does not block AI bots; run the Rich Results test on the hub and the guide.
 
 ## Motion
 

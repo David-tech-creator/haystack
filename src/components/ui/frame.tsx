@@ -22,14 +22,22 @@ const RATIO_LG: Record<FrameRatio, string> = {
   "21/9": "lg:aspect-[21/9]",
 }
 
-/** Editorial image: next/image in a fixed-ratio frame (no layout shift), blur placeholder, optional figure label + caption. */
+const OVERLAY = { none: "", navy: "frame-navy", "navy-strong": "frame-navy-strong" } as const
+export type FrameOverlay = keyof typeof OVERLAY
+
+/**
+ * Editorial photo: next/image in a fixed-ratio frame (no layout shift), blur
+ * placeholder, optional navy wash, optional figure label + caption.
+ * `position` defaults to the photo's own focal point from images.ts.
+ */
 export function Frame({
   image,
   ratio = "3/2",
   ratioLg,
   sizes,
   priority = false,
-  position = "50% 50%",
+  position,
+  overlay = "none",
   caption,
   label,
   className,
@@ -40,24 +48,25 @@ export function Frame({
   sizes: string
   priority?: boolean
   position?: string
+  overlay?: FrameOverlay
   caption?: React.ReactNode
   label?: string
   className?: string
 }) {
   return (
     <figure className={className}>
-      <div className={cn("frame", RATIO[ratio], ratioLg && RATIO_LG[ratioLg])}>
+      <div className={cn("frame", OVERLAY[overlay], RATIO[ratio], ratioLg && RATIO_LG[ratioLg])}>
         <Image
           src={image.src}
           alt={image.alt}
           fill
           sizes={sizes}
           priority={priority}
-          quality={80}
+          quality={75}
           placeholder="blur"
           blurDataURL={image.blurDataURL}
           className="object-cover"
-          style={{ objectPosition: position }}
+          style={{ objectPosition: position ?? image.position ?? "50% 50%" }}
         />
       </div>
       {caption || label ? (

@@ -13,7 +13,15 @@ const AI_BOTS = [
   "Perplexity-User",
   "Google-Extended",
   "Applebot-Extended",
+  "Google-CloudVertexBot",
+  "Applebot",
   "Bingbot",
+  "DuckAssistBot",
+  "MistralAI-User",
+  "meta-externalagent",
+  "Meta-ExternalFetcher",
+  "Amazonbot",
+  "cohere-ai",
   "CCBot",
 ]
 
@@ -23,7 +31,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/", disallow: "/api/" },
       ...AI_BOTS.map((userAgent) => ({ userAgent, allow: "/", disallow: "/api/" })),
     ],
-    sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    sitemap: [`${SITE_URL}/sitemap.xml`, `${SITE_URL}/image-sitemap.xml`],
   }
 }

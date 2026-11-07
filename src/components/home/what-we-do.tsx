@@ -4,7 +4,7 @@ import { Frame } from "@/components/ui/frame"
 import { Reveal } from "@/components/ui/reveal"
 import { Section } from "@/components/ui/section"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { CAPTIONS, WHAT_WE_DO } from "@/lib/content"
+import { WHAT_WE_DO } from "@/lib/content"
 import { IMG } from "@/lib/images"
 
 export function WhatWeDo() {
@@ -22,11 +22,10 @@ export function WhatWeDo() {
         </div>
         <Reveal className="col-span-12 lg:col-span-6 lg:col-start-7">
           <Frame
-            image={IMG["straw-sorted"]}
+            image={IMG["panelists-sharing-a-laugh"]}
             ratio="3/2"
+            position="45% 50%"
             sizes="(min-width:1280px) 580px, (min-width:1024px) 46vw, 100vw"
-            caption={CAPTIONS.sorted}
-            label="Fig. 02"
           />
         </Reveal>
       </Container>

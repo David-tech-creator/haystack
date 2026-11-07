@@ -1,14 +1,10 @@
 import Link from "next/link"
 import { HaystackMark } from "@/components/ui/haystack-mark"
 import { FOOTER } from "@/lib/content"
-import { LINKEDIN_URL } from "@/lib/site"
+import { FDE_GUIDE_PATH, LINKEDIN_URL, NAV } from "@/lib/site"
 
-const SITE_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/process", label: "Process" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-]
+/** The footer's site links are the main nav, so a new page needs one edit. */
+const SITE_LINKS = NAV
 
 function ExternalIcon() {
   return (
@@ -55,9 +51,19 @@ export function SiteFooter() {
                 </a>
               </li>
               <li>
+                <Link href={FDE_GUIDE_PATH} className="footer-link">
+                  What is an FDE?
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="footer-link">
                   Privacy
                 </Link>
+              </li>
+              <li>
+                <a href="/llms.txt" className="footer-link">
+                  llms.txt
+                </a>
               </li>
             </ul>
           </div>

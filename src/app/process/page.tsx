@@ -13,9 +13,9 @@ import { IMG } from "@/lib/images"
 import { pageMetadata, processJsonLd } from "@/lib/seo"
 
 const DESCRIPTION =
-  "How a Haystack recruitment sprint runs: scorecards agreed up front, work samples, weekly evidence updates and help with the offer."
+  "How a Haystack recruitment sprint runs: scorecards agreed up front, work samples, weekly written updates and help with the offer, for tech and AI roles."
 
-export const metadata = pageMetadata({ title: "Process", description: DESCRIPTION, path: "/process" })
+export const metadata = pageMetadata({ absoluteTitle: "How a tech recruitment sprint works · Haystack", description: DESCRIPTION, path: "/process" })
 
 export default function ProcessPage() {
   return (
@@ -36,14 +36,15 @@ export default function ProcessPage() {
               className="col-span-12 lg:col-span-7"
             />
             <Frame
-              image={IMG["spool-stitches"]}
+              image={IMG["networking-under-pendant-lights"]}
               ratio="4/3"
               ratioLg="1/1"
               priority
+              position="40% 55%"
               sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw"
-              caption={CAPTIONS.spool}
+              caption={CAPTIONS.event}
               label="Fig. 01"
-              className="enter enter-3 col-span-12 lg:col-span-5 lg:col-start-8"
+              className="col-span-12 lg:col-span-5 lg:col-start-8"
             />
           </div>
           <Stitch className="mt-16 lg:mt-24" />

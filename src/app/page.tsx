@@ -5,6 +5,7 @@ import { LookFor } from "@/components/home/look-for"
 import { Shortlist } from "@/components/home/shortlist"
 import { Sprint } from "@/components/home/sprint"
 import { WhatWeDo } from "@/components/home/what-we-do"
+import { FdeHomeTeaser } from "@/components/fde/home-teaser"
 import { CtaSection } from "@/components/sections"
 import { StructuredData } from "@/components/structured-data"
 import { homeJsonLd, pageMetadata } from "@/lib/seo"
@@ -22,6 +23,7 @@ export default function HomePage() {
       <LookFor />
       <Inside />
       <Shortlist />
+      <FdeHomeTeaser />
       <FaqSection />
       <CtaSection />
     </>

@@ -18,7 +18,7 @@ export function Inside() {
             <SectionHeading index="04" eyebrow={INSIDE.eyebrow} title={INSIDE.title} titleId="inside-title" lead={INSIDE.body} />
           </div>
           <Reveal className="col-span-12 lg:col-span-5 lg:col-start-8">
-            <Frame image={IMG["tools-still-life"]} ratio="3/2" sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw" />
+            <Frame image={IMG["attentive-audience-sunlit-room"]} ratio="3/2" position="50% 55%" sizes="(min-width:1280px) 480px, (min-width:1024px) 38vw, 100vw" />
           </Reveal>
         </div>
 
