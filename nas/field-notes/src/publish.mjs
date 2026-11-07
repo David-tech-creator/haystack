@@ -55,34 +55,48 @@ export async function publish({ slug, date, render, asset, ext, title }, data, l
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/** The newsletter's HTML. {{ unsubscribe }} is Brevo's own unsubscribe link, filled in per recipient. */
+/** Resend's per-recipient unsubscribe link, filled in when the broadcast goes out. */
+export const UNSUBSCRIBE = '{{{RESEND_UNSUBSCRIBE_URL}}}';
+
+/** The newsletter's HTML. */
 export function newsletterHtml({ summary, tldr, url }) {
   const bullets = tldr.map((t) => `<li style="margin:0 0 8px">${esc(t)}</li>`).join('');
-  return `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#F6F1E7"><div style="font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;color:#1A2136;max-width:560px;margin:0 auto"><p>${esc(summary)}</p><ul style="padding-left:20px">${bullets}</ul><p><a href="${esc(url)}" style="color:#1A2136;font-weight:bold;text-decoration:underline;text-decoration-color:#C29A3E">Read the post</a></p><p style="font-size:13px;color:#4A5068;margin-top:32px">Written by an agent I built, in my voice. <a href="{{ unsubscribe }}" style="color:#4A5068">Unsubscribe</a></p></div></body></html>`;
+  return `<!DOCTYPE html><html><body style="margin:0;padding:24px;background:#F6F1E7"><div style="font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;color:#1A2136;max-width:560px;margin:0 auto"><p>${esc(summary)}</p><ul style="padding-left:20px">${bullets}</ul><p><a href="${esc(url)}" style="color:#1A2136;font-weight:bold;text-decoration:underline;text-decoration-color:#C29A3E">Read the post</a></p><p style="font-size:13px;color:#4A5068;margin-top:32px">Written by an agent I built, in my voice. <a href="${UNSUBSCRIBE}" style="color:#4A5068">Unsubscribe</a></p></div></body></html>`;
 }
 
-/** One Brevo campaign to the Field notes list, sent now. A failure here never takes the post down. */
-export async function sendNewsletter({ title, summary, tldr, url }, log = console.log) {
-  const key = process.env.BREVO_API_KEY, list = Number(process.env.BREVO_FIELD_NOTES_LIST_ID), from = process.env.NEWSLETTER_FROM_EMAIL;
-  if (!key || !list || !from) { log('[newsletter] not configured, skipped'); return; }
-  const api = (path, body) => fetch(`https://api.brevo.com/v3${path}`, {
-    method: 'POST', headers: { 'api-key': key, 'content-type': 'application/json', accept: 'application/json' },
-    body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(30_000),
-  });
-  const campaign = {
-    name: `Field notes: ${title}`.slice(0, 200),
+/** The plain text version of the same email. */
+export function newsletterText({ summary, tldr, url }) {
+  return `${summary}\n\n${tldr.map((t) => `- ${t}`).join('\n')}\n\nRead the post: ${url}\n\nWritten by an agent I built, in my voice.\nUnsubscribe: ${UNSUBSCRIBE}`;
+}
+
+/** The Resend broadcast body. Resend caps the broadcast name at 70 characters. */
+export function broadcastBody({ title, summary, tldr, url }, env = process.env) {
+  const body = {
+    segment_id: env.NEWSLETTER_SEGMENT_ID,
+    from: env.NEWSLETTER_FROM,
     subject: title,
-    sender: { name: process.env.NEWSLETTER_FROM_NAME || 'David from Haystack', email: from },
-    recipients: { listIds: [list] },
-    htmlContent: newsletterHtml({ summary, tldr, url }),
+    html: newsletterHtml({ summary, tldr, url }),
+    text: newsletterText({ summary, tldr, url }),
+    name: `Field notes: ${title}`.slice(0, 70),
   };
-  if (process.env.NEWSLETTER_REPLY_TO) campaign.replyTo = process.env.NEWSLETTER_REPLY_TO;
-  const made = await api('/emailCampaigns', campaign);
-  if (!made.ok) throw new Error(`campaign create: HTTP ${made.status} ${(await made.text()).slice(0, 200)}`);
+  if (env.NEWSLETTER_REPLY_TO) body.reply_to = env.NEWSLETTER_REPLY_TO;
+  return body;
+}
+
+/** One Resend broadcast to the Field notes segment, sent now. A failure here never takes the post down. */
+export async function sendNewsletter({ title, summary, tldr, url }, log = console.log) {
+  const key = process.env.RESEND_API_KEY, segment = process.env.NEWSLETTER_SEGMENT_ID, from = process.env.NEWSLETTER_FROM;
+  if (!key || !segment || !from) { log('[newsletter] not configured, skipped'); return; }
+  const api = (path, body) => fetch(`https://api.resend.com${path}`, {
+    method: 'POST', headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+    body: JSON.stringify(body), signal: AbortSignal.timeout(30_000),
+  });
+  const made = await api('/broadcasts', broadcastBody({ title, summary, tldr, url }));
+  if (!made.ok) throw new Error(`broadcast create: HTTP ${made.status} ${(await made.text()).slice(0, 200)}`);
   const { id } = await made.json();
-  const sent = await api(`/emailCampaigns/${id}/sendNow`);
-  if (!sent.ok) throw new Error(`campaign ${id} send: HTTP ${sent.status} ${(await sent.text()).slice(0, 200)}`);
-  log(`[newsletter] sent campaign ${id}`);
+  const sent = await api(`/broadcasts/${id}/send`, {});
+  if (!sent.ok) throw new Error(`broadcast ${id} send: HTTP ${sent.status} ${(await sent.text()).slice(0, 200)}`);
+  log(`[newsletter] sent broadcast ${id}`);
 }
 
 /** A message to David. Always prefixed, so he can tell it from Frontier's. */

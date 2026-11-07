@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 
-import { sendFdeClubSignup, subscribeFieldNotes, validateFdeClub } from "@/lib/contact"
+import { sendFdeClubSignup, validateFdeClub } from "@/lib/contact"
+import { sendFieldNotesConfirmation } from "@/lib/newsletter"
 import { clientIp, rateLimiter } from "@/lib/rate-limit"
 import { FDE_PATH } from "@/lib/site"
 
@@ -11,18 +12,18 @@ const limited = rateLimiter({ windowMs: 10 * 60 * 1000, max: 5 })
 
 /**
  * FDE Club Switzerland join and speaker form. Same pipeline as the contact
- * form (Brevo, honeypot, rate limit); the email to Haystack is tagged
+ * form (Resend, honeypot, rate limit); the email to Haystack is tagged
  * "[FDE Club join]" or "[FDE Club speaker]". Without JavaScript the form
  * posts plain form data and gets a 303 back to the hub.
  *
- * A ticked newsletter box also adds the person to the Field notes list in
- * Brevo, in parallel. That step can never fail the request: only the email
- * to our inbox decides success.
+ * A ticked newsletter box also sends the Field notes confirmation email
+ * (double opt-in, src/lib/newsletter.ts), in parallel. That step can never
+ * fail the request: only the email to our inbox decides success.
  */
 export async function POST(request: Request) {
   const isForm = !(request.headers.get("content-type") ?? "").includes("application/json")
-  const back = (state: "joined" | "error") =>
-    NextResponse.redirect(new URL(`${FDE_PATH}?${state}=1#join`, request.url), 303)
+  const back = (state: "joined" | "error", newsletter = false) =>
+    NextResponse.redirect(new URL(`${FDE_PATH}?${state}=1${newsletter ? "&newsletter=1" : ""}#join`, request.url), 303)
 
   let body: unknown
   try {
@@ -47,9 +48,9 @@ export async function POST(request: Request) {
   const [result] = await Promise.all([
     sendFdeClubSignup(parsed.data),
     parsed.data.newsletter
-      ? subscribeFieldNotes(parsed.data).catch(() => ({ subscribed: false }))
-      : Promise.resolve({ subscribed: false }),
+      ? sendFieldNotesConfirmation(parsed.data).catch(() => ({ sent: false }))
+      : Promise.resolve({ sent: false }),
   ])
-  if (isForm) return back(result.success ? "joined" : "error")
+  if (isForm) return result.success ? back("joined", parsed.data.newsletter) : back("error")
   return NextResponse.json(result, { status: result.success ? 200 : 502 })
 }

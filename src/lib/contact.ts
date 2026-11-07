@@ -1,7 +1,8 @@
 /**
- * Contact form and FDE Club form delivery through the Brevo transactional email API.
- * Env vars (set in Vercel, never committed): BREVO_API_KEY,
+ * Contact form and FDE Club form delivery through the Resend email API.
+ * Env vars (set in Vercel, never committed): RESEND_API_KEY,
  * CONTACT_FORM_FROM_NAME, CONTACT_FORM_FROM_EMAIL, CONTACT_FORM_TO.
+ * The sending domain (haystack.agency) must be verified in Resend.
  */
 export type ContactPayload = {
   name: string
@@ -18,7 +19,7 @@ export type ContactTopic = (typeof CONTACT_TOPICS)[number]
 export const isContactTopic = (v: unknown): v is ContactTopic =>
   typeof v === "string" && (CONTACT_TOPICS as readonly string[]).includes(v)
 
-const brevoEndpoint = "https://api.brevo.com/v3/smtp/email"
+const resendEndpoint = "https://api.resend.com/emails"
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;")
@@ -46,43 +47,39 @@ export function validateContact(input: unknown): { ok: true; data: ContactPayloa
 
 type Email = { subject: string; text: string; html: string; replyTo: { email: string; name: string } }
 
-/** Sends one email to Haystack's inbox through Brevo. Shared by the contact form and the FDE Club form. */
+/** Sends one email to Haystack's inbox through Resend. Shared by the contact form and the FDE Club form. */
 async function sendToInbox(mail: Email, label: string): Promise<{ success: boolean }> {
-  const brevoKey = process.env.BREVO_API_KEY
+  const resendKey = process.env.RESEND_API_KEY
   const fromName = process.env.CONTACT_FORM_FROM_NAME ?? "Haystack"
   const fromEmail = process.env.CONTACT_FORM_FROM_EMAIL ?? "david.v@haystack.agency"
   const toEmail = process.env.CONTACT_FORM_TO ?? "david.v@haystack.agency"
 
-  if (!brevoKey) {
-    console.error(`${label}: BREVO_API_KEY is not configured, message not sent.`)
+  if (!resendKey) {
+    console.error(`${label}: RESEND_API_KEY is not configured, message not sent.`)
     return { success: false }
   }
 
   try {
-    const response = await fetch(brevoEndpoint, {
+    const response = await fetch(resendEndpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-        "api-key": brevoKey,
-      },
+      headers: { authorization: `Bearer ${resendKey}`, "content-type": "application/json" },
       body: JSON.stringify({
-        sender: { name: fromName, email: fromEmail },
-        to: [{ email: toEmail }],
-        replyTo: mail.replyTo,
+        from: `${oneLine(fromName).replace(/[<>"]/g, "")} <${fromEmail}>`,
+        to: [toEmail],
+        reply_to: mail.replyTo.email,
         subject: mail.subject,
-        textContent: mail.text,
-        htmlContent: mail.html,
+        text: mail.text,
+        html: mail.html,
       }),
     })
 
     if (!response.ok) {
-      console.error(`${label}: Brevo answered`, response.status)
+      console.error(`${label}: Resend answered`, response.status, (await response.text().catch(() => "")).slice(0, 300))
       return { success: false }
     }
     return { success: true }
   } catch {
-    console.error(`${label}: request to Brevo failed`)
+    console.error(`${label}: request to Resend failed`)
     return { success: false }
   }
 }
@@ -172,46 +169,4 @@ ${e.company ? `<p><strong>Company:</strong> ${e.company}</p>` : ""}
     },
     "FDE Club form",
   )
-}
-
-/* Field notes newsletter --------------------------------------------------- */
-
-/**
- * Adds (or updates) a contact on the Field notes list in Brevo, for people
- * who ticked the newsletter box on the FDE Club form. Uses BREVO_API_KEY and
- * BREVO_FIELD_NOTES_LIST_ID (the numeric list id in Brevo). Brevo adds the
- * unsubscribe link to every campaign email.
- *
- * Never throws and never fails the sign-up: with the list id unset it only
- * logs, and any Brevo error is logged and swallowed.
- */
-export async function subscribeFieldNotes(p: { name: string; email: string }): Promise<{ subscribed: boolean }> {
-  const brevoKey = process.env.BREVO_API_KEY
-  const listId = Number(process.env.BREVO_FIELD_NOTES_LIST_ID)
-  if (!brevoKey || !Number.isInteger(listId) || listId <= 0) {
-    console.info("Field notes: BREVO_API_KEY or BREVO_FIELD_NOTES_LIST_ID not set, newsletter sign-up skipped.")
-    return { subscribed: false }
-  }
-  const [first, ...rest] = p.name.split(/\s+/)
-  try {
-    const response = await fetch("https://api.brevo.com/v3/contacts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", accept: "application/json", "api-key": brevoKey },
-      body: JSON.stringify({
-        email: p.email,
-        attributes: { FIRSTNAME: first, ...(rest.length ? { LASTNAME: rest.join(" ") } : {}) },
-        listIds: [listId],
-        updateEnabled: true,
-      }),
-      signal: AbortSignal.timeout(8000),
-    })
-    if (!response.ok) {
-      console.error("Field notes: Brevo contacts answered", response.status)
-      return { subscribed: false }
-    }
-    return { subscribed: true }
-  } catch {
-    console.error("Field notes: request to Brevo contacts failed")
-    return { subscribed: false }
-  }
 }

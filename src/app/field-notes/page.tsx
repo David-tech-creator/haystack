@@ -1,4 +1,5 @@
 import { NoteList } from "@/components/field-notes/note-list"
+import { SubscribedNotice } from "@/components/field-notes/subscribed-notice"
 import { StructuredData } from "@/components/structured-data"
 import { ButtonLink } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -43,6 +44,7 @@ export default function FieldNotesPage() {
 
       <Section spacing="tight" labelledBy="field-notes-title">
         <Container>
+          <SubscribedNotice />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionHeading as="h1" size="display-xl" eyebrow={f.eyebrow} title={f.title} titleId="field-notes-title" lead={f.lead} />
             <a href={FIELD_NOTES_FEED} className="link inline-flex min-h-11 items-center gap-2 self-start text-small text-ink-soft lg:self-auto">

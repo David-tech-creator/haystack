@@ -67,16 +67,19 @@ export default function PrivacyPage() {
           </p>
           <p id="newsletter">
             The newsletter is <Link href="/field-notes">Field notes</Link>: emails with David Vinkenroye&apos;s notes on
-            forward deployed engineering and tech hiring in Switzerland. If you tick its box, we add your name and email to
-            our Field notes list in Brevo. Every Field notes email has an unsubscribe link, and you can also ask us to take
-            you off the list through the <Link href="/contact">contact form</Link>.
+            forward deployed engineering and tech hiring in Switzerland, from FDE Club Switzerland. We use double opt-in: if
+            you tick its box, we send you one email with a confirmation link, and only when you click it do we add your
+            first name and email to our Field notes list in Resend. If you do not click, we keep nothing. Every Field notes
+            email has an unsubscribe link, and you can also ask us to take you off the list through the{" "}
+            <Link href="/contact">contact form</Link>.
           </p>
 
           <h2>Who processes it for us</h2>
           <ul>
             <li>
-              <strong>Brevo</strong> (Sendinblue SAS, France) delivers the contact form and the FDE Club Switzerland form to our
-              inbox, keeps the Field notes mailing list and sends the Field notes emails.
+              <strong>Resend</strong> (Resend, Inc., USA) delivers the contact form and the FDE Club Switzerland form to our
+              inbox, sends the Field notes confirmation email, keeps the Field notes mailing list and sends the Field notes
+              emails.
             </li>
             <li>
               <strong>Vercel</strong> (Vercel Inc., USA) hosts this website; requests are served from its Frankfurt

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { collect, findImage, genericImage, imageType, parseFeed, parseLinks, plainText } from '../src/collect.mjs';
 import { collectJobs, fdeInSwitzerland, matchesLocation, matchesTitle, normalize } from '../src/jobs.mjs';
-import { indexNowUrls, newsletterHtml, postUrl } from '../src/publish.mjs';
+import { broadcastBody, indexNowUrls, newsletterHtml, newsletterText, postUrl } from '../src/publish.mjs';
 import { due, parseDays, parseRunAt, zurich } from '../src/schedule.mjs';
 import { cleanAlt, renderPost, slugify, validateFigure, validatePost } from '../src/validate.mjs';
 
@@ -90,13 +90,31 @@ test('live URL and IndexNow list', () => {
   assert.equal(postUrl('p'), 'https://www.haystack.agency/field-notes/p');
   assert.deepEqual(indexNowUrls(postUrl('p')), ['https://www.haystack.agency/field-notes/p', 'https://www.haystack.agency/field-notes', 'https://www.haystack.agency/field-notes/rss.xml']);
 });
-test('newsletter HTML escapes, links the post and carries the Brevo unsubscribe tag', () => {
+test('newsletter HTML escapes, links the post and carries the Resend unsubscribe tag', () => {
   const h = newsletterHtml({ summary: 'A <b> & c', tldr: ['one', 'two'], url: 'https://www.haystack.agency/field-notes/p' });
   assert.match(h, /A &lt;b&gt; &amp; c/);
   assert.match(h, /<li[^>]*>one<\/li>/);
   assert.match(h, /href="https:\/\/www\.haystack\.agency\/field-notes\/p"[^>]*>Read the post</);
   assert.match(h, /Written by an agent I built, in my voice\./);
-  assert.match(h, /href="\{\{ unsubscribe \}\}"/);
+  assert.match(h, /href="\{\{\{RESEND_UNSUBSCRIBE_URL\}\}\}"/);
+});
+test('newsletter text carries the post link and the Resend unsubscribe tag', () => {
+  const t = newsletterText({ summary: 'S', tldr: ['one', 'two'], url: 'https://www.haystack.agency/field-notes/p' });
+  assert.match(t, /^S\n\n- one\n- two\n\nRead the post: https:\/\/www\.haystack\.agency\/field-notes\/p\n/);
+  assert.match(t, /Unsubscribe: \{\{\{RESEND_UNSUBSCRIBE_URL\}\}\}$/);
+});
+test('Resend broadcast goes to the segment, caps the name at 70 and sets reply_to only when given', () => {
+  const env = { NEWSLETTER_SEGMENT_ID: 'seg_1', NEWSLETTER_FROM: 'David <d@haystack.agency>' };
+  const post = { title: 'x'.repeat(100), summary: 'S', tldr: ['one'], url: 'https://www.haystack.agency/field-notes/p' };
+  const b = broadcastBody(post, env);
+  assert.equal(b.segment_id, 'seg_1');
+  assert.equal(b.from, 'David <d@haystack.agency>');
+  assert.equal(b.subject, post.title);
+  assert.equal(b.name.length, 70);
+  assert.ok(b.name.startsWith('Field notes: '));
+  assert.ok(b.html.includes('{{{RESEND_UNSUBSCRIBE_URL}}}') && b.text.includes('{{{RESEND_UNSUBSCRIBE_URL}}}'));
+  assert.equal('reply_to' in b, false);
+  assert.equal(broadcastBody(post, { ...env, NEWSLETTER_REPLY_TO: 'd@haystack.agency' }).reply_to, 'd@haystack.agency');
 });
 
 // schedule

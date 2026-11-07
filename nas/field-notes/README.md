@@ -27,7 +27,7 @@ agent (Rive-Foundry/nas/frontier) with a different topic, sources, schedule, pal
    `content/field-notes/<slug>.md` and `public/field-notes/<slug>.<ext>` to `main` ("Field notes: <title>"),
    waits until `https://www.haystack.agency/field-notes/<slug>` is live (Vercel), pings IndexNow for the post,
    `/field-notes` and `/field-notes/rss.xml`.
-6. **Newsletter** through Brevo (if configured), then a **Telegram** message to David, prefixed "Field notes:".
+6. **Newsletter** as a Resend broadcast (if configured), then a **Telegram** message to David, prefixed "Field notes:".
 
 A run that fails keeps its news: the items it collected are un-marked and wait for the next run. A
 newsletter failure never takes the post down; it is reported on Telegram.
@@ -68,23 +68,25 @@ root alpine container, owned by the container user 1027:100, and prints only the
 GitHub: **David-tech-creator/haystack > Settings > Deploy keys > Add deploy key**, title `field-notes@nimbus`,
 tick **Allow write access**. The private key never leaves the NAS.
 
-## Newsletter (Brevo)
+## Newsletter (Resend)
 
 Write a file outside the repo, without quotes around values:
 
 ```
-BREVO_API_KEY=xkeysib-...
-BREVO_FIELD_NOTES_LIST_ID=12
-NEWSLETTER_FROM_EMAIL=david@haystack.agency
-NEWSLETTER_FROM_NAME=David from Haystack
-NEWSLETTER_REPLY_TO=david@haystack.agency
+RESEND_API_KEY=re_...
+NEWSLETTER_SEGMENT_ID=<the Field notes segment id in Resend>
+NEWSLETTER_FROM=David from Haystack <david.v@haystack.agency>
+NEWSLETTER_REPLY_TO=david.v@haystack.agency
 ```
 
 and deploy with it once: `NEWSLETTER_ENV=~/field-notes-newsletter.env ./deploy.sh`. Later deploys without
-`NEWSLETTER_ENV` keep these lines. The sender address must be a verified sender in Brevo. Each post creates
-one campaign ("Field notes: <title>") to that list and sends it at once: the summary, the short version,
-a "Read the post" link and Brevo's unsubscribe link. Without the three required settings the newsletter is
-skipped and the log says so.
+`NEWSLETTER_ENV` keep these lines. The sending domain haystack.agency must be verified in Resend. The
+segment is the same one the website fills through its double opt-in (`/api/field-notes/confirm`), so use
+the same `NEWSLETTER_SEGMENT_ID` as in Vercel. Each post creates one broadcast ("Field notes: <title>",
+capped at 70 characters) to that segment and sends it at once: the summary, the short version, a "Read
+the post" link and Resend's unsubscribe link (`{{{RESEND_UNSUBSCRIBE_URL}}}`), in HTML and plain text.
+`NEWSLETTER_REPLY_TO` is optional. Without the three required settings the newsletter is skipped and the
+log says so.
 
 ## Pause, unpause
 

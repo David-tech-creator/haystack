@@ -602,6 +602,18 @@ export const FIELD_NOTES = {
     body: "The first note will appear here. Follow the RSS feed, or join FDE Club Switzerland and tick the Field notes box to get each one by email.",
     join: "Join FDE Club Switzerland",
   },
+  /** Shown after the link in the newsletter confirmation email (?subscribed=yes|expired|error). */
+  subscribed: {
+    yes: { title: "You are subscribed", body: "Thanks for confirming. The next Field notes will land in your inbox." },
+    expired: {
+      title: "That link has expired",
+      body: "Confirmation links work for 7 days. Join FDE Club Switzerland again and tick the Field notes box, and we will send a fresh one.",
+    },
+    error: {
+      title: "That did not go through",
+      body: "We could not confirm your subscription. Please try the link again in a minute, or tell us through the contact form.",
+    },
+  },
   tldr: "The short version",
   sources: "Sources",
   more: "More field notes",

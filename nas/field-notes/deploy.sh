@@ -6,8 +6,8 @@
 #   ps      the container's status
 #   keygen  create the deploy key in /volume1/field-notes/data/ssh if there is none; prints the public key only
 #   dry     one run now in the running container, publishing nothing; prints /data/last-dry.md
-# NEWSLETTER_ENV: a file of newsletter settings (BREVO_API_KEY, BREVO_FIELD_NOTES_LIST_ID,
-#   NEWSLETTER_FROM_EMAIL, NEWSLETTER_FROM_NAME, NEWSLETTER_REPLY_TO) for the container's .env.
+# NEWSLETTER_ENV: a file of newsletter settings (RESEND_API_KEY, NEWSLETTER_SEGMENT_ID,
+#   NEWSLETTER_FROM, NEWSLETTER_REPLY_TO) for the container's .env.
 #   Omit it and the newsletter lines already on the NAS are kept.
 # FIELD_NOTES_DAYS / FIELD_NOTES_RUN_AT: set them when deploying to change the schedule. Omit them and the
 #   values already on the NAS are kept (or the defaults, Tue,Thu at 08:30).
@@ -61,7 +61,7 @@ COPYFILE_DISABLE=1 tar --no-xattrs -czf - Dockerfile docker-compose.yml package.
 TELEGRAM_LINES=$(ssh "$NAS" "$DOCKER run --rm -v $ASSISTANT_ENV:/e:ro alpine:3.20 grep -E '^(TELEGRAM_BOT_TOKEN|TELEGRAM_OWNER_ID)=' /e")
 # What is on the NAS now, to keep the newsletter and schedule settings when this deploy does not set them.
 CURRENT=$(ssh "$NAS" "cat $STACK/.env 2>/dev/null || true")
-NEWSLETTER_KEYS='^(BREVO_API_KEY|BREVO_FIELD_NOTES_LIST_ID|NEWSLETTER_FROM_EMAIL|NEWSLETTER_FROM_NAME|NEWSLETTER_REPLY_TO)='
+NEWSLETTER_KEYS='^(RESEND_API_KEY|NEWSLETTER_SEGMENT_ID|NEWSLETTER_FROM|NEWSLETTER_REPLY_TO)='
 if [ -n "${NEWSLETTER_ENV:-}" ]; then
   NEWSLETTER_LINES=$(grep -E "$NEWSLETTER_KEYS" "$NEWSLETTER_ENV") || { echo "no newsletter settings in $NEWSLETTER_ENV" >&2; exit 1; }
 else

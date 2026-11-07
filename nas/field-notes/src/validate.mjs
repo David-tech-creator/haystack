@@ -10,7 +10,7 @@ const HOUSE = [
 ];
 const SLOP = [
   /here'?s the thing/i, /\bdelve\b/i, /\bgame.?changer\b/i, /\bin today'?s\b/i, /\blandscape\b/i, /\bgroundbreaking\b/i,
-  /\bit'?s worth noting\b/i, /\bunlock(s|ing)?\b/i, /\bseamless(ly)?\b/i, /\brevolutioni[sz]e/i, /\bnot just\b.{0,40}\bbut\b/i,
+  /\bit'?s worth noting\b/i, /\bunlock(s|ing)?\b/i, /\bseamless(ly)?\b/i, /(?<!\w)revolutioni[sz]e/i, /\bnot just\b.{0,40}\bbut\b/i,
 ];
 
 export const linksIn = (md) => [...md.matchAll(/https?:\/\/[^\s)\]>"']+/g)].map((m) => m[0].replace(/[.,;:]+$/, ''));

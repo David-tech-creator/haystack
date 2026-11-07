@@ -23,20 +23,31 @@ function check(data: FormData): Partial<Record<Field, string>> {
 }
 
 /**
- * Reads ?joined, ?error and ?kind=speak after hydration (and on client-side
+ * Reads ?joined (with ?newsletter), ?error and ?kind=speak after hydration (and on client-side
  * navigation, e.g. the "Offer a talk" link) without making the page dynamic.
  * Inside its own Suspense boundary so the form itself is in the static HTML.
  */
-function QuerySync({ onStatus, onKind }: { onStatus: (s: Status) => void; onKind: (k: Kind) => void }) {
+function QuerySync({
+  onStatus,
+  onKind,
+  onNewsletter,
+}: {
+  onStatus: (s: Status) => void
+  onKind: (k: Kind) => void
+  onNewsletter: (ticked: boolean) => void
+}) {
   const q = useSearchParams()
   const joined = q.get("joined")
   const error = q.get("error")
   const kind = q.get("kind")
+  const newsletter = q.get("newsletter")
   useEffect(() => {
-    if (joined) onStatus("sent")
-    else if (error) onStatus("error")
+    if (joined) {
+      onNewsletter(Boolean(newsletter))
+      onStatus("sent")
+    } else if (error) onStatus("error")
     if (kind === "speak") onKind("speak")
-  }, [joined, error, kind, onStatus, onKind])
+  }, [joined, error, kind, newsletter, onStatus, onKind, onNewsletter])
   return null
 }
 
@@ -52,6 +63,7 @@ export function JoinForm() {
   const [status, setStatus] = useState<Status>("idle")
   const [kind, setKind] = useState<Kind>("join")
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({})
+  const [newsletter, setNewsletter] = useState(false)
 
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -74,6 +86,7 @@ export function JoinForm() {
       })
       const json = (await res.json().catch(() => ({}))) as { success?: boolean }
       if (res.ok && json.success) {
+        setNewsletter(data.has("newsletter"))
         setStatus("sent")
         form.reset()
       } else setStatus("error")
@@ -84,7 +97,7 @@ export function JoinForm() {
 
   const sync = (
     <Suspense fallback={null}>
-      <QuerySync onStatus={setStatus} onKind={setKind} />
+      <QuerySync onStatus={setStatus} onKind={setKind} onNewsletter={setNewsletter} />
     </Suspense>
   )
 
@@ -95,6 +108,11 @@ export function JoinForm() {
         <p className="mt-3 text-lead text-ink-soft">
           Thanks for joining FDE Club Switzerland. We will be in touch before the first meetup.
         </p>
+        {newsletter && (
+          <p className="mt-3 text-ink-soft">
+            One more step for Field notes: check your inbox and click the link in our email to confirm the newsletter.
+          </p>
+        )}
         {sync}
       </div>
     )
