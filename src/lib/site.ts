@@ -181,6 +181,30 @@ export const FDE_EMPLOYERS = [
   },
 ] as const
 
+/* Field notes ---------------------------------------------------------------- */
+
+/**
+ * Field notes: David's bylined posts, one Markdown file per post in
+ * content/field-notes/ (format in the README there), committed by the agent
+ * in nas/field-notes/. Posts are read at build time by src/lib/field-notes.ts.
+ */
+export const FIELD_NOTES_PATH = "/field-notes"
+export const FIELD_NOTES_FEED = `${FIELD_NOTES_PATH}/rss.xml`
+
+/**
+ * The author of Field notes. The @id is the Person node on David's own site
+ * (rive-foundry.com), so both sites describe the same person. LinkedIn
+ * checked against rive-foundry's lib/site.ts.
+ */
+export const AUTHOR = {
+  name: "David Vinkenroye",
+  givenName: "David",
+  familyName: "Vinkenroye",
+  url: "https://www.rive-foundry.com",
+  id: "https://www.rive-foundry.com/#david",
+  linkedin: "https://www.linkedin.com/in/david-vinkenroye-1a479468/",
+} as const
+
 /** "2026-11-07" to "7 November 2026", fixed to en-GB so server and client agree. */
 export function formatDate(iso: string) {
   const [y, m, d] = iso.split("-").map(Number)

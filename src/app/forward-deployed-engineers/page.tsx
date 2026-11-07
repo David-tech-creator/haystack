@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { EmployersTable } from "@/components/fde/employers-table"
+import { LatestFieldNotes } from "@/components/field-notes/latest-notes"
 import { JoinForm } from "@/components/fde/join-form"
 import { StructuredData } from "@/components/structured-data"
 import { ButtonLink } from "@/components/ui/button"
@@ -218,6 +219,9 @@ export default function FdeHubPage() {
           </ul>
         </Container>
       </Section>
+
+      {/* Latest field notes: up to three posts, not rendered while there are none */}
+      <LatestFieldNotes />
 
       {/* Speak */}
       <Section id="speak" tone="linen" rule labelledBy="speak-title" className="scroll-mt-20">

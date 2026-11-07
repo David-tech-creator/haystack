@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-import { sendFdeClubSignup, validateFdeClub } from "@/lib/contact"
+import { sendFdeClubSignup, subscribeFieldNotes, validateFdeClub } from "@/lib/contact"
 import { clientIp, rateLimiter } from "@/lib/rate-limit"
 import { FDE_PATH } from "@/lib/site"
 
@@ -14,6 +14,10 @@ const limited = rateLimiter({ windowMs: 10 * 60 * 1000, max: 5 })
  * form (Brevo, honeypot, rate limit); the email to Haystack is tagged
  * "[FDE Club join]" or "[FDE Club speaker]". Without JavaScript the form
  * posts plain form data and gets a 303 back to the hub.
+ *
+ * A ticked newsletter box also adds the person to the Field notes list in
+ * Brevo, in parallel. That step can never fail the request: only the email
+ * to our inbox decides success.
  */
 export async function POST(request: Request) {
   const isForm = !(request.headers.get("content-type") ?? "").includes("application/json")
@@ -40,7 +44,12 @@ export async function POST(request: Request) {
   const parsed = validateFdeClub(body)
   if (!parsed.ok) return isForm ? back("error") : NextResponse.json({ success: false, error: parsed.error }, { status: 400 })
 
-  const result = await sendFdeClubSignup(parsed.data)
+  const [result] = await Promise.all([
+    sendFdeClubSignup(parsed.data),
+    parsed.data.newsletter
+      ? subscribeFieldNotes(parsed.data).catch(() => ({ subscribed: false }))
+      : Promise.resolve({ subscribed: false }),
+  ])
   if (isForm) return back(result.success ? "joined" : "error")
   return NextResponse.json(result, { status: result.success ? 200 : 502 })
 }

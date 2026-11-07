@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { HaystackMark } from "@/components/ui/haystack-mark"
 import { FOOTER } from "@/lib/content"
-import { FDE_GUIDE_PATH, LINKEDIN_URL, NAV } from "@/lib/site"
+import { FDE_GUIDE_PATH, FIELD_NOTES_PATH, LINKEDIN_URL, NAV } from "@/lib/site"
 
 /** The footer's site links are the main nav, so a new page needs one edit. */
 const SITE_LINKS = NAV
@@ -53,6 +53,11 @@ export function SiteFooter() {
               <li>
                 <Link href={FDE_GUIDE_PATH} className="footer-link">
                   What is an FDE?
+                </Link>
+              </li>
+              <li>
+                <Link href={FIELD_NOTES_PATH} className="footer-link">
+                  Field notes
                 </Link>
               </li>
               <li>

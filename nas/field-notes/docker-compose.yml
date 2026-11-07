@@ -1,0 +1,20 @@
+# The Field notes agent: reads the AI labs, the Swiss ecosystem and the job boards on Tuesday and
+# Thursday mornings, and publishes to haystack.agency/field-notes.
+# It holds no brain, mail, WhatsApp or LinkedIn access, and no token for any other service on the
+# assistant network. Claude comes through the stack's llm service, on David's subscription.
+name: field-notes
+services:
+  field-notes:
+    build: .
+    container_name: field-notes
+    restart: always
+    env_file: .env
+    volumes:
+      - /volume1/field-notes/data:/data
+    networks: [assistant]
+    mem_limit: 2g
+    shm_size: 512m
+networks:
+  assistant:
+    name: assistant_assistant_net
+    external: true

@@ -173,3 +173,45 @@ ${e.company ? `<p><strong>Company:</strong> ${e.company}</p>` : ""}
     "FDE Club form",
   )
 }
+
+/* Field notes newsletter --------------------------------------------------- */
+
+/**
+ * Adds (or updates) a contact on the Field notes list in Brevo, for people
+ * who ticked the newsletter box on the FDE Club form. Uses BREVO_API_KEY and
+ * BREVO_FIELD_NOTES_LIST_ID (the numeric list id in Brevo). Brevo adds the
+ * unsubscribe link to every campaign email.
+ *
+ * Never throws and never fails the sign-up: with the list id unset it only
+ * logs, and any Brevo error is logged and swallowed.
+ */
+export async function subscribeFieldNotes(p: { name: string; email: string }): Promise<{ subscribed: boolean }> {
+  const brevoKey = process.env.BREVO_API_KEY
+  const listId = Number(process.env.BREVO_FIELD_NOTES_LIST_ID)
+  if (!brevoKey || !Number.isInteger(listId) || listId <= 0) {
+    console.info("Field notes: BREVO_API_KEY or BREVO_FIELD_NOTES_LIST_ID not set, newsletter sign-up skipped.")
+    return { subscribed: false }
+  }
+  const [first, ...rest] = p.name.split(/\s+/)
+  try {
+    const response = await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", accept: "application/json", "api-key": brevoKey },
+      body: JSON.stringify({
+        email: p.email,
+        attributes: { FIRSTNAME: first, ...(rest.length ? { LASTNAME: rest.join(" ") } : {}) },
+        listIds: [listId],
+        updateEnabled: true,
+      }),
+      signal: AbortSignal.timeout(8000),
+    })
+    if (!response.ok) {
+      console.error("Field notes: Brevo contacts answered", response.status)
+      return { subscribed: false }
+    }
+    return { subscribed: true }
+  } catch {
+    console.error("Field notes: request to Brevo contacts failed")
+    return { subscribed: false }
+  }
+}

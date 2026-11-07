@@ -215,7 +215,7 @@ export function JoinForm() {
         <legend className="field-label">Keep me posted</legend>
         <label className="mt-3 flex cursor-pointer items-start gap-3 text-ink">
           <input type="checkbox" name="newsletter" className="mt-1 h-5 w-5 flex-none accent-[#1A2136]" />
-          <span>Send me the FDE Club Switzerland newsletter</span>
+          <span>Send me Field notes, the FDE Club Switzerland newsletter</span>
         </label>
         <label className="flex cursor-pointer items-start gap-3 text-ink">
           <input type="checkbox" name="chat" className="mt-1 h-5 w-5 flex-none accent-[#1A2136]" />

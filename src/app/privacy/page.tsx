@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo"
 
 export const metadata = pageMetadata({
   title: "Privacy",
-  description: "How Haystack handles the details you send through the contact form and the FDE Club Switzerland form, under the Swiss Federal Act on Data Protection.",
+  description: "How Haystack handles the details you send through the contact form, the FDE Club Switzerland form and the Field notes newsletter, under the Swiss Federal Act on Data Protection.",
   path: "/privacy",
 })
 
@@ -41,7 +41,7 @@ export default function PrivacyPage() {
             <li>What you type into the contact form: name, email, and optionally company, roles and your message.</li>
             <li>
               What you type into the FDE Club Switzerland form: name, email, what you tell us about yourself or your talk,
-              optionally your company, and whether you want the newsletter and the community chat.
+              optionally your company, and whether you want Field notes, our newsletter, and the community chat.
             </li>
             <li>
               Standard server logs kept by our host (IP address, time, page requested) for security and to keep the site
@@ -62,14 +62,21 @@ export default function PrivacyPage() {
             talk, we use your details to run the club: to invite you to meetups, to reply about your talk, and, only if you
             ticked the boxes, to send you the newsletter and invite you to the community chat once it opens. Haystack is also a
             recruitment agency, so we say this plainly: we never pass a member&apos;s details to an employer without asking
-            that member first. You can leave the club or unsubscribe at any time by telling us through the{" "}
+            that member first. You can leave the club at any time by telling us through the{" "}
             <Link href="/contact">contact form</Link>, and we delete your details.
+          </p>
+          <p id="newsletter">
+            The newsletter is <Link href="/field-notes">Field notes</Link>: emails with David Vinkenroye&apos;s notes on
+            forward deployed engineering and tech hiring in Switzerland. If you tick its box, we add your name and email to
+            our Field notes list in Brevo. Every Field notes email has an unsubscribe link, and you can also ask us to take
+            you off the list through the <Link href="/contact">contact form</Link>.
           </p>
 
           <h2>Who processes it for us</h2>
           <ul>
             <li>
-              <strong>Brevo</strong> (Sendinblue SAS, France) delivers the contact form and the FDE Club Switzerland form to our inbox.
+              <strong>Brevo</strong> (Sendinblue SAS, France) delivers the contact form and the FDE Club Switzerland form to our
+              inbox, keeps the Field notes mailing list and sends the Field notes emails.
             </li>
             <li>
               <strong>Vercel</strong> (Vercel Inc., USA) hosts this website; requests are served from its Frankfurt
@@ -83,7 +90,8 @@ export default function PrivacyPage() {
 
           <h2>How long we keep it</h2>
           <p>
-            Enquiries stay in our inbox as long as the conversation is useful. Ask us and we delete them.
+            Enquiries stay in our inbox as long as the conversation is useful. Ask us and we delete them. Field notes
+            subscribers stay on the list until they unsubscribe.
           </p>
 
           <h2>Your rights</h2>

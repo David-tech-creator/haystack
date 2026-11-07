@@ -1,0 +1,11 @@
+{
+  "name": "field-notes-agent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/core.test.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.64.1"
+  }
+}

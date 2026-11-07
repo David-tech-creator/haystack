@@ -7,22 +7,27 @@ import {
   FDE_GUIDE_FAQ,
   FDE_HUB,
   FDE_SOURCES,
+  FIELD_NOTES,
   PROCESS,
   STEPS,
 } from "./content"
+import { fieldNotePath, getFieldNotes, latestFieldNoteDate } from "./field-notes"
 import {
+  AUTHOR,
   CONTENT_UPDATED,
   FDE_CLUB,
   FDE_EMPLOYERS,
   FDE_GUIDE_PATH,
   FDE_PATH,
   FDE_UPDATED,
+  FIELD_NOTES_FEED,
+  FIELD_NOTES_PATH,
   LINKEDIN_URL,
   SITE_URL,
   formatDate,
 } from "./site"
 
-const latest = CONTENT_UPDATED > FDE_UPDATED ? CONTENT_UPDATED : FDE_UPDATED
+const latest = [CONTENT_UPDATED, FDE_UPDATED, latestFieldNoteDate() ?? ""].sort().pop()!
 const hub = `${SITE_URL}${FDE_PATH}`
 const guide = `${SITE_URL}${FDE_GUIDE_PATH}`
 
@@ -53,7 +58,39 @@ ${FDE_DEFINITION}
 - [What is a forward deployed engineer?](${guide}): the role, its origin at Palantir, FDE vs solutions engineer, skills, Switzerland
 - [Where FDEs are hired in Switzerland](${hub}#hiring): companies with live FDE postings in Switzerland, checked ${FDE_UPDATED}
 - [Hire a forward deployed engineer](${hub}#hire): Haystack runs FDE searches in Switzerland
+- [${FIELD_NOTES.name}](${SITE_URL}${FIELD_NOTES_PATH}): ${FIELD_NOTES.lead} RSS: ${SITE_URL}${FIELD_NOTES_FEED}
 `
+
+/** How many posts the llms files list. */
+const LLMS_NOTES = 10
+const noteUrl = (slug: string) => `${SITE_URL}${fieldNotePath(slug)}`
+
+/** Latest posts as a link list for llms.txt; empty while there are none. */
+function notesList() {
+  const notes = getFieldNotes().slice(0, LLMS_NOTES)
+  if (!notes.length) return ""
+  return `
+## ${FIELD_NOTES.name}
+${FIELD_NOTES.lead}
+${notes.map((n) => `- [${n.title}](${noteUrl(n.slug)}) (${n.date}): ${n.summary}`).join("\n")}
+`
+}
+
+/** Recent posts with their summary and short version, for llms-full.txt. */
+function notesMarkdown() {
+  const notes = getFieldNotes().slice(0, LLMS_NOTES)
+  if (!notes.length) return ""
+  const one = (n: (typeof notes)[number]) => {
+    const tldr = n.tldrText.length ? `\n\n${n.tldrText.map((t) => `- ${t}`).join("\n")}` : ""
+    return `### ${n.title}\nBy ${AUTHOR.name}, Haystack. Published ${formatDate(n.date)}. ${noteUrl(n.slug)}\n\n${n.summary}${tldr}`
+  }
+  return `
+## ${FIELD_NOTES.name}
+${FIELD_NOTES.description} Index: ${SITE_URL}${FIELD_NOTES_PATH}. RSS: ${SITE_URL}${FIELD_NOTES_FEED}
+
+${notes.map(one).join("\n\n")}
+`
+}
 
 export function llmsTxt() {
   const employers = FDE_EMPLOYERS.map((e) => `- ${e.company}, ${e.city}: [${e.title}](${e.sourceUrl})`).join("\n")
@@ -61,7 +98,7 @@ export function llmsTxt() {
 ### Where forward deployed engineers are hired in Switzerland
 Live postings, each checked on its source page on ${formatDate(FDE_UPDATED)}. Roles open and close; follow the source link.
 ${employers}
-
+${notesList()}
 ## Optional
 - [Full text for AI assistants](${SITE_URL}/llms-full.txt): every page's copy, the full FDE guide with sources, the club FAQ
 `
@@ -149,5 +186,5 @@ ${FAQ.map((f) => `### ${f.q}\n${f.a}`).join("\n\n")}
 ${hubMarkdown()}
 
 ${guideMarkdown()}
-`
+${notesMarkdown()}`
 }

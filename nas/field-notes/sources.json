@@ -1,0 +1,21 @@
+[
+  { "id": "anthropic-eng", "name": "Anthropic engineering", "kind": "official", "type": "page", "url": "https://www.anthropic.com/engineering", "linkPrefix": "https://www.anthropic.com/research/" },
+  { "id": "anthropic-news", "name": "Anthropic news", "kind": "official", "type": "page", "url": "https://www.anthropic.com/news", "linkPrefix": "https://www.anthropic.com/news/" },
+  { "id": "claude-notes", "name": "Claude release notes", "kind": "official", "type": "whole", "url": "https://docs.claude.com/en/release-notes/overview" },
+  { "id": "openai-news", "name": "OpenAI news", "kind": "official", "type": "feed", "url": "https://openai.com/news/rss.xml" },
+  { "id": "deepmind", "name": "Google DeepMind blog", "kind": "official", "type": "feed", "url": "https://deepmind.google/blog/rss.xml" },
+  { "id": "google-ai", "name": "Google AI blog", "kind": "official", "type": "feed", "url": "https://blog.google/technology/ai/rss/" },
+  { "id": "google-devs", "name": "Google Developers blog", "kind": "official", "type": "feed", "url": "https://developers.googleblog.com/feeds/posts/default", "undated": true },
+  { "id": "mistral", "name": "Mistral news", "kind": "official", "type": "page", "url": "https://mistral.ai/news", "linkPrefix": "https://mistral.ai/news/" },
+  { "id": "huggingface", "name": "Hugging Face blog", "kind": "official", "type": "feed", "url": "https://huggingface.co/blog/feed.xml" },
+  { "id": "langchain", "name": "LangChain blog", "kind": "official", "type": "feed", "url": "https://blog.langchain.com/rss.xml" },
+  { "id": "palantir", "name": "Palantir blog", "kind": "official", "type": "feed", "url": "https://blog.palantir.com/feed" },
+  { "id": "mcp", "name": "Model Context Protocol releases", "kind": "official", "type": "feed", "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases.atom" },
+  { "id": "eth-news", "name": "ETH Zurich news", "kind": "official", "type": "feed", "url": "https://ethz.ch/en/news-and-events/eth-news/news/_jcr_content.feed.html" },
+  { "id": "epfl-news", "name": "EPFL news", "kind": "official", "type": "feed", "url": "https://actu.epfl.ch/feeds/rss/mediacom/en/" },
+  { "id": "sdsc", "name": "Swiss Data Science Center", "kind": "official", "type": "page", "url": "https://www.datascience.ch/news", "linkPrefix": "https://www.datascience.ch/articles/" },
+  { "id": "startupticker", "name": "Startupticker.ch", "kind": "official", "type": "page", "url": "https://www.startupticker.ch/en", "linkPrefix": "https://www.startupticker.ch/en/news/" },
+  { "id": "pragmatic", "name": "The Pragmatic Engineer", "kind": "tip", "type": "feed", "url": "https://newsletter.pragmaticengineer.com/feed" },
+  { "id": "latent-space", "name": "Latent Space", "kind": "tip", "type": "feed", "url": "https://www.latent.space/feed" },
+  { "id": "simonw", "name": "Simon Willison", "kind": "tip", "type": "feed", "url": "https://simonwillison.net/atom/everything/" }
+]

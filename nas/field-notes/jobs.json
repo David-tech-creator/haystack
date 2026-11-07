@@ -1,0 +1,16 @@
+[
+  { "id": "openai", "name": "OpenAI", "ats": "ashby", "board": "openai" },
+  { "id": "anthropic", "name": "Anthropic", "ats": "greenhouse", "board": "anthropic" },
+  { "id": "databricks", "name": "Databricks", "ats": "greenhouse", "board": "databricks" },
+  { "id": "mistral", "name": "Mistral AI", "ats": "ashby", "board": "mistral.ai" },
+  { "id": "cohere", "name": "Cohere", "ats": "ashby", "board": "cohere" },
+  { "id": "latticeflow", "name": "LatticeFlow AI", "ats": "workable", "board": "latticeflow" },
+  { "id": "deepjudge", "name": "DeepJudge", "ats": "ashby", "board": "deepjudge" },
+  { "id": "scale", "name": "Scale AI", "ats": "greenhouse", "board": "scaleai" },
+  { "id": "palantir", "name": "Palantir", "ats": "lever", "board": "palantir" },
+  { "id": "huggingface", "name": "Hugging Face", "ats": "workable", "board": "huggingface" },
+  { "id": "elevenlabs", "name": "ElevenLabs", "ats": "ashby", "board": "elevenlabs" },
+  { "id": "harvey", "name": "Harvey", "ats": "ashby", "board": "harvey" },
+  { "id": "sierra", "name": "Sierra", "ats": "ashby", "board": "sierra" },
+  { "id": "decagon", "name": "Decagon", "ats": "ashby", "board": "decagon" }
+]

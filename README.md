@@ -22,12 +22,19 @@ Environment variables (set in Vercel, never committed):
 - `CONTACT_FORM_FROM_NAME`
 - `CONTACT_FORM_FROM_EMAIL`
 - `CONTACT_FORM_TO`
+- `BREVO_FIELD_NOTES_LIST_ID` (optional: the Brevo list for the Field notes newsletter, see below)
 
 ## FDE Club Switzerland
 
 `/forward-deployed-engineers` is the hub for FDE Club Switzerland (Switzerland's first club for forward deployed engineers, started by Haystack); `/forward-deployed-engineers/what-is-a-forward-deployed-engineer` is the evergreen guide. Facts live in `src/lib/site.ts` (`FDE_CLUB`, `FDE_UPDATED`, `FDE_EMPLOYERS`, `FDE_EVENTS`), copy in `src/lib/content.ts` (`FDE_DEFINITION`, `FDE_HUB`, `FDE_CLUB_FAQ`, `FDE_GUIDE`, `FDE_GUIDE_FAQ`, `FDE_SOURCES`), components in `src/components/fde/`. Re-check every employer row on its source before bumping `FDE_UPDATED`. `FDE_EVENTS` stays empty until a meetup date and venue are confirmed; no Event JSON-LD is emitted until then.
 
 The join form posts to `src/app/api/fde-club/route.ts` and reuses the Brevo pipeline in `src/lib/contact.ts` (same env vars). Emails are tagged `[FDE Club join]` or `[FDE Club speaker]`; `/contact?topic=fde` prefills the role and tags the email `[Hire an FDE]`. Without JavaScript the form redirects to `/forward-deployed-engineers?joined=1#join` or `?error=1#join`. The form reads `?joined`, `?error` and `?kind=speak` on the client (`useSearchParams` in a Suspense boundary), so the hub stays a static page served from the CDN; do not read `searchParams` in the page itself.
+
+## Field notes
+
+`/field-notes` is David's bylined blog on forward deployed engineering and tech hiring in Switzerland. Posts are Markdown files in `content/field-notes/` (format in the README there), committed by the agent in `nas/field-notes/`, with images in `public/field-notes/`. `src/lib/field-notes.ts` reads them at build time (`src/lib/markdown.ts` renders the body from escaped text, so no raw HTML is ever rendered); a new post goes live with the next deploy. The index, posts, `/field-notes/rss.xml`, the sitemaps, `llms.txt`, `llms-full.txt`, the BlogPosting JSON-LD and the "Latest field notes" strip on the FDE hub all read from there. The author's Person `@id` is the one on rive-foundry.com (`AUTHOR` in `site.ts`). Field notes is in the footer, not in the main nav. With zero posts the index shows an empty state and the hub strip is hidden.
+
+Newsletter: when the newsletter box on the FDE Club form is ticked, `/api/fde-club` also adds the person to the Field notes list in Brevo (`subscribeFieldNotes` in `src/lib/contact.ts`). It needs `BREVO_FIELD_NOTES_LIST_ID` (the numeric list id) next to `BREVO_API_KEY`; without it the step is skipped and logged. A Brevo error never fails the sign-up.
 
 ## Where things live
 

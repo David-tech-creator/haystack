@@ -4,10 +4,12 @@
  * never rename them.
  */
 import type { Metadata } from "next"
-import { FAQ, FDE_CLUB_FAQ, FDE_DEFINITION, FDE_GUIDE, FDE_GUIDE_FAQ, FDE_HUB, FDE_SOURCES, STEPS } from "./content"
+import { FAQ, FDE_CLUB_FAQ, FDE_DEFINITION, FDE_GUIDE, FDE_GUIDE_FAQ, FDE_HUB, FDE_SOURCES, FIELD_NOTES, STEPS } from "./content"
+import { fieldNotePath, type FieldNote } from "./field-notes"
 import type { ImageEntry } from "./images"
 import { primaryImage } from "./page-images"
 import {
+  AUTHOR,
   CONTENT_UPDATED,
   FDE_CLUB,
   FDE_EMPLOYERS,
@@ -15,6 +17,8 @@ import {
   FDE_GUIDE_PATH,
   FDE_PATH,
   FDE_UPDATED,
+  FIELD_NOTES_FEED,
+  FIELD_NOTES_PATH,
   KEYWORDS,
   LINKEDIN_URL,
   SITE,
@@ -33,6 +37,11 @@ export const FDE_GUIDE_ID = `${FDE_GUIDE_URL}#article`
 export const FDE_SERVICE_ID = `${SITE_URL}/#fde-recruitment`
 export const EMPLOYERS_ID = `${FDE_HUB_URL}#employers`
 
+export const FIELD_NOTES_URL = `${SITE_URL}${FIELD_NOTES_PATH}`
+export const BLOG_ID = `${FIELD_NOTES_URL}#blog`
+/** David's Person node lives on his own site; we reference the same @id. */
+export const AUTHOR_ID = AUTHOR.id
+
 type PageInput = {
   title?: string
   absoluteTitle?: string
@@ -41,10 +50,12 @@ type PageInput = {
   /** Per-page keywords, added in front of the site list. */
   keywords?: readonly string[]
   /** An evergreen guide is an article; everything else is a website page. */
-  article?: { publishedTime: string; modifiedTime: string }
+  article?: { publishedTime: string; modifiedTime: string; authors?: string[] }
+  /** RSS feed advertised in <head> (alternates.types). */
+  feed?: { url: string; title: string }
 }
 
-export function pageMetadata({ title, absoluteTitle, description, path, keywords, article }: PageInput): Metadata {
+export function pageMetadata({ title, absoluteTitle, description, path, keywords, article, feed }: PageInput): Metadata {
   const url = `${SITE_URL}${path === "/" ? "/" : path}`
   const shown = absoluteTitle ?? `${title} · ${SITE.name}`
   const base = { url, title: shown, description, siteName: SITE.name, locale: SITE.locale }
@@ -52,9 +63,18 @@ export function pageMetadata({ title, absoluteTitle, description, path, keywords
     title: absoluteTitle ? { absolute: absoluteTitle } : title,
     description,
     keywords: keywords ? Array.from(new Set([...keywords, ...KEYWORDS])) : KEYWORDS,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      ...(feed ? { types: { "application/rss+xml": [{ url: `${SITE_URL}${feed.url}`, title: feed.title }] } } : {}),
+    },
     openGraph: article
-      ? { ...base, type: "article", publishedTime: article.publishedTime, modifiedTime: article.modifiedTime, authors: [SITE.name] }
+      ? {
+          ...base,
+          type: "article",
+          publishedTime: article.publishedTime,
+          modifiedTime: article.modifiedTime,
+          authors: article.authors ?? [SITE.name],
+        }
       : { ...base, type: "website" },
     twitter: { card: "summary_large_image", title: shown, description },
   }
@@ -374,3 +394,117 @@ export function fdeGuideJsonLd(description: string, image: ImageEntry) {
     ]),
   )
 }
+
+/* Field notes ----------------------------------------------------------------- */
+
+/**
+ * David, the author of every Field note. The @id is the Person node on his
+ * own site, so search engines can join the two graphs.
+ */
+const author = {
+  "@type": "Person",
+  "@id": AUTHOR_ID,
+  name: AUTHOR.name,
+  givenName: AUTHOR.givenName,
+  familyName: AUTHOR.familyName,
+  url: AUTHOR.url,
+  sameAs: [AUTHOR.linkedin],
+  worksFor: { "@id": ORG_ID },
+}
+
+const blogRef = {
+  "@type": "Blog",
+  "@id": BLOG_ID,
+  name: FIELD_NOTES.name,
+  url: FIELD_NOTES_URL,
+}
+
+/** The small BlogPosting summary used inside the Blog node on the index. */
+const postStub = (p: FieldNote) => ({
+  "@type": "BlogPosting",
+  "@id": `${SITE_URL}${fieldNotePath(p.slug)}#article`,
+  headline: p.title,
+  url: `${SITE_URL}${fieldNotePath(p.slug)}`,
+  datePublished: p.date,
+  dateModified: p.updated,
+  author: { "@id": AUTHOR_ID },
+})
+
+export function fieldNotesJsonLd(posts: FieldNote[], updated: string) {
+  return graph(
+    organization,
+    website,
+    author,
+    {
+      ...blogRef,
+      description: FIELD_NOTES.description,
+      inLanguage: "en",
+      isPartOf: { "@id": WEBSITE_ID },
+      publisher: { "@id": ORG_ID },
+      author: { "@id": AUTHOR_ID },
+      about: [{ "@id": FDE_TERM_ID }, "Tech hiring in Switzerland"],
+      ...(posts.length ? { blogPost: posts.map(postStub) } : {}),
+    },
+    webPage(FIELD_NOTES_PATH, "CollectionPage", "webpage", FIELD_NOTES.title, FIELD_NOTES.description, {
+      mainEntity: { "@id": BLOG_ID },
+      dateModified: updated,
+    }),
+    breadcrumbs([{ name: FIELD_NOTES.name, path: FIELD_NOTES_PATH }]),
+  )
+}
+
+export function fieldNoteJsonLd(p: FieldNote, size: { width: number; height: number } | null) {
+  const path = fieldNotePath(p.slug)
+  const url = `${SITE_URL}${path}`
+  const pageId = `${url}#webpage`
+  const image = p.figure
+    ? {
+        "@type": "ImageObject",
+        url: p.figure.src.startsWith("/") ? `${SITE_URL}${p.figure.src}` : p.figure.src,
+        contentUrl: p.figure.src.startsWith("/") ? `${SITE_URL}${p.figure.src}` : p.figure.src,
+        ...(size ?? {}),
+        ...(p.figure.alt ? { description: p.figure.alt } : {}),
+        ...(p.figure.credit ? { creditText: p.figure.credit.label } : {}),
+        ...(p.figure.credit?.url ? { acquireLicensePage: p.figure.credit.url } : {}),
+      }
+    : { "@type": "ImageObject", url: `${url}/opengraph-image`, width: 1200, height: 630 }
+  return graph(
+    organization,
+    author,
+    blogRef,
+    webPage(path, "WebPage", "webpage", p.title, p.summary, {
+      // A post is about its subject, not about Haystack: drop the default "about".
+      about: undefined,
+      mainEntity: { "@id": `${url}#article` },
+      primaryImageOfPage: image,
+      datePublished: p.date,
+      dateModified: p.updated,
+      author: { "@id": AUTHOR_ID },
+    }),
+    {
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      headline: p.title,
+      description: p.summary,
+      ...(p.tldrText.length ? { abstract: p.tldrText.join(" ") } : {}),
+      datePublished: p.date,
+      dateModified: p.updated,
+      inLanguage: "en",
+      wordCount: p.words,
+      timeRequired: `PT${p.minutes}M`,
+      author: { "@id": AUTHOR_ID },
+      publisher: { "@id": ORG_ID },
+      isPartOf: { "@id": BLOG_ID },
+      mainEntityOfPage: { "@id": pageId },
+      url,
+      image,
+      ...(p.sources.some((s) => s.url) ? { citation: p.sources.filter((s) => s.url).map((s) => s.url) } : {}),
+    },
+    breadcrumbs([
+      { name: FIELD_NOTES.name, path: FIELD_NOTES_PATH },
+      { name: p.title, path },
+    ]),
+  )
+}
+
+export const FIELD_NOTES_FEED_LINK = { url: FIELD_NOTES_FEED, title: `${FIELD_NOTES.name}, ${SITE.name}` }

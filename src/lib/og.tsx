@@ -81,6 +81,8 @@ function loadPhoto(variant: OgVariant): Promise<string | null> {
  */
 export async function ogImage(title: string, variant: OgVariant = "default") {
   const [{ display, serif }, photo] = await Promise.all([loadFonts(), loadPhoto(variant)])
+  // Page titles are short; Field notes titles can run long, so they step down.
+  const titleSize = title.length <= 44 ? 64 : title.length <= 80 ? 52 : 42
   const fg = photo ? PAPER : INK
   const png = new ImageResponse(
     (
@@ -131,10 +133,10 @@ export async function ogImage(title: string, variant: OgVariant = "default") {
           style={{
             position: "absolute",
             left: 64,
-            top: 200,
-            width: 620,
+            top: titleSize === 64 ? 200 : 170,
+            width: titleSize === 64 ? 620 : 680,
             display: "flex",
-            fontSize: 64,
+            fontSize: titleSize,
             lineHeight: 1.05,
             letterSpacing: -2,
           }}

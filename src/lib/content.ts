@@ -365,7 +365,7 @@ export const FDE_HUB = {
     ],
     offers: [
       "Meetups with talks from people who shipped the thing",
-      "A newsletter, from the first meetup on",
+      "Field notes, our newsletter on forward deployed engineering in Switzerland",
       "A community chat, opening with the first meetup",
       "A public list of where FDEs are hired in Switzerland",
     ],
@@ -434,7 +434,7 @@ export const FDE_HUB = {
 export const FDE_CLUB_FAQ = [
   {
     q: "What is FDE Club Switzerland?",
-    a: "FDE Club Switzerland is Switzerland's first club for forward deployed engineers, started by Haystack, a tech recruitment agency in Geneva. It brings together engineers who build and ship software inside their customers' teams to share what works in the field, through meetups, with a newsletter and a community chat starting from the first meetup.",
+    a: "FDE Club Switzerland is Switzerland's first club for forward deployed engineers, started by Haystack, a tech recruitment agency in Geneva. It brings together engineers who build and ship software inside their customers' teams to share what works in the field, through meetups and Field notes, our newsletter, with a community chat starting from the first meetup.",
   },
   {
     q: "Who is it for?",
@@ -594,6 +594,52 @@ export const FDE_GUIDE_FAQ = [
 export const HOME_FDE = {
   eyebrow: "FDE Club Switzerland",
   title: "Switzerland's first club for forward deployed engineers",
-  body: "We started FDE Club Switzerland for the engineers who build and ship software inside their customers' teams: meetups, a newsletter, and a public list of where FDEs are hired.",
+  body: "We started FDE Club Switzerland for the engineers who build and ship software inside their customers' teams: meetups, the Field notes newsletter, and a public list of where FDEs are hired.",
   link: "Join FDE Club Switzerland",
+}
+
+/**
+ * Field notes: the blog. The posts themselves are David's, in his first
+ * person (bylined, so that is allowed); everything here is site copy and
+ * follows the house rules above.
+ */
+export const FIELD_NOTES = {
+  name: "Field notes",
+  /** Index eyebrow; posts use the name. */
+  eyebrow: "Writing",
+  title: "Field notes",
+  lead: "Notes on forward deployed engineering and tech hiring in Switzerland, by David Vinkenroye.",
+  /** Used in metadata, the Blog JSON-LD, the RSS channel and llms.txt. */
+  description: "Notes on forward deployed engineering and tech hiring in Switzerland, by David Vinkenroye of Haystack, a tech recruitment agency in Geneva.",
+  rss: "RSS feed",
+  empty: {
+    title: "Nothing published yet",
+    body: "The first note will appear here. Follow the RSS feed, or join FDE Club Switzerland and tick the Field notes box to get each one by email.",
+    join: "Join FDE Club Switzerland",
+  },
+  tldr: "The short version",
+  sources: "Sources",
+  more: "More field notes",
+  all: "All field notes",
+  read: "Read the note",
+  /** The fixed box at the end of every post. */
+  end: {
+    join: {
+      eyebrow: "FDE Club Switzerland",
+      title: "Compare notes with other FDEs",
+      body: "Switzerland's first club for forward deployed engineers. Join to hear about meetups, and tick the box to get Field notes by email.",
+      cta: { label: "Join the club", href: "/forward-deployed-engineers#join" },
+    },
+    hire: {
+      eyebrow: "Hiring an FDE?",
+      title: "We run FDE searches in Switzerland",
+      body: "One role at a time, with a scorecard agreed up front and a written note on every candidate on the shortlist.",
+      cta: { label: "Tell us about the role", href: "/contact?topic=fde#form" },
+    },
+  },
+  /** FDE hub strip; hidden while there are no posts. */
+  hub: {
+    eyebrow: "Field notes",
+    title: "Latest field notes",
+  },
 }
