@@ -76,7 +76,7 @@ Write a file outside the repo, without quotes around values:
 RESEND_API_KEY=re_...
 NEWSLETTER_SEGMENT_ID=<the Field notes segment id in Resend>
 NEWSLETTER_FROM=David from Haystack <david.v@haystack.agency>
-NEWSLETTER_REPLY_TO=david.v@haystack.agency
+NEWSLETTER_REPLY_TO=davidvinkenroye@gmail.com
 ```
 
 and deploy with it once: `NEWSLETTER_ENV=~/field-notes-newsletter.env ./deploy.sh`. Later deploys without

@@ -20,12 +20,12 @@ Environment variables (set in Vercel, never committed):
 
 - `RESEND_API_KEY`
 - `CONTACT_FORM_FROM_NAME` (default `Haystack`)
-- `CONTACT_FORM_FROM_EMAIL` (default `david.v@haystack.agency`)
-- `CONTACT_FORM_TO` (default `david.v@haystack.agency`)
+- `CONTACT_FORM_FROM_EMAIL` (default `david.v@haystack.agency`, a send-only address on the verified domain; replies go to the visitor)
+- `CONTACT_FORM_TO` (default `davidvinkenroye@gmail.com`; the old david.v@haystack.agency mailbox no longer exists)
 - `NEWSLETTER_SECRET` (any long random string; signs the Field notes confirmation links)
 - `NEWSLETTER_SEGMENT_ID` (the Resend segment for Field notes subscribers)
 - `NEWSLETTER_FROM` (e.g. `David Vinkenroye <david.v@haystack.agency>`)
-- `NEWSLETTER_REPLY_TO` (optional, e.g. `david.v@haystack.agency`)
+- `NEWSLETTER_REPLY_TO` (e.g. `davidvinkenroye@gmail.com`; must be a real inbox)
 
 The sending domain `haystack.agency` must be verified in Resend (DNS records from the Resend dashboard), or Resend refuses to send from it.
 

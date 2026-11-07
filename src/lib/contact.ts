@@ -52,7 +52,7 @@ async function sendToInbox(mail: Email, label: string): Promise<{ success: boole
   const resendKey = process.env.RESEND_API_KEY
   const fromName = process.env.CONTACT_FORM_FROM_NAME ?? "Haystack"
   const fromEmail = process.env.CONTACT_FORM_FROM_EMAIL ?? "david.v@haystack.agency"
-  const toEmail = process.env.CONTACT_FORM_TO ?? "david.v@haystack.agency"
+  const toEmail = process.env.CONTACT_FORM_TO ?? "davidvinkenroye@gmail.com"
 
   if (!resendKey) {
     console.error(`${label}: RESEND_API_KEY is not configured, message not sent.`)
