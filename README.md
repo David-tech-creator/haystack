@@ -1,6 +1,6 @@
 # haystack.agency
 
-Haystack is a small tech recruitment agency in Geneva. This is its website: Next.js 14 (App Router) and Tailwind 3, server-rendered, with real event photography and CSS-only motion. The only client JavaScript beyond the Next runtime is the phone menu, the nav's current-page marker and the contact form.
+Haystack is a small tech recruitment agency in Geneva. This is its website: Next.js 14 (App Router) and Tailwind 3, server-rendered, with real event photography and CSS-only motion. The only client JavaScript beyond the Next runtime is the phone menu, the nav's current-page marker, the header's navy switch, the home page's "How it works" scroll scene and the contact form.
 
 ## Run it
 
@@ -79,6 +79,10 @@ Logo source files live in `public/brand/` (used by the JSON-LD) and `public/imag
 ## Motion
 
 No animation library. Above the fold, the hero lead and buttons settle in once on load (`.enter`); the h1 and the priority image are never animated so they do not delay LCP. Below the fold, `<Reveal>` uses CSS scroll-driven animations (`animation-timeline: view()`); browsers without support simply show the content. `prefers-reduced-motion` turns all of it off.
+
+One exception, on the home page: "How it works" (`src/components/home/sprint-scroll.tsx`) is a pinned scroll scene on a 2D canvas. A haystack of drifting strands, a gold scan line that snaps them into a grid of dots, then fewer dots, a short row, and one gold dot ringed in the viewfinder, in step with the five steps on the left. It draws only while on screen and only when the scroll moves (plus a 30fps idle drift while the strands are visible), with DPR capped at 2 and pre-rendered glows. The tall track is CSS behind `(scripting: enabled) and (prefers-reduced-motion: no-preference)`; without JavaScript or with reduced motion it is a normal section with all five steps and a static SVG of the end state.
+
+The header turns navy with cream text while a `[data-tone="deep"]` band is under it (`src/components/site/header-tone.tsx`, one IntersectionObserver; colours in globals.css).
 
 ## Deploy
 

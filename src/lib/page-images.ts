@@ -14,7 +14,6 @@ export const PAGE_IMAGES: Record<string, readonly PhotoId[]> = {
   "/": [
     "tech-team-whiteboard-lake-geneva",
     "hiring-brief-notebook-geneva",
-    "team-planning-wall-sticky-notes",
     "pair-programming-explaining-code",
     "small-team-studio-office-tools",
     "hiring-manager-reading-shortlist",

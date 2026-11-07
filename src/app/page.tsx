@@ -3,7 +3,7 @@ import { HomeHero } from "@/components/home/hero"
 import { Inside } from "@/components/home/inside"
 import { LookFor } from "@/components/home/look-for"
 import { Shortlist } from "@/components/home/shortlist"
-import { Sprint } from "@/components/home/sprint"
+import { SprintScroll } from "@/components/home/sprint-scroll"
 import { WhatWeDo } from "@/components/home/what-we-do"
 import { FdeHomeTeaser } from "@/components/fde/home-teaser"
 import { CtaSection } from "@/components/sections"
@@ -19,7 +19,7 @@ export default function HomePage() {
       <StructuredData data={homeJsonLd()} />
       <HomeHero />
       <WhatWeDo />
-      <Sprint />
+      <SprintScroll />
       <LookFor />
       <Inside />
       <Shortlist />

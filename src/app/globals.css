@@ -862,6 +862,56 @@
   }
 }
 
+/*
+ * Over a navy band (HeaderTone sets data-over="deep" while a [data-tone="deep"]
+ * section is under the bar) the header turns navy with cream text and mark.
+ */
+.site-header {
+  transition:
+    background-color 280ms var(--ease-out),
+    border-color 280ms var(--ease-out);
+}
+.site-header .header-bar .text-ink {
+  transition: color 280ms var(--ease-out);
+}
+.site-header .header-bar svg line {
+  transition: stroke 280ms var(--ease-out);
+}
+.site-header[data-over="deep"] {
+  animation: none;
+  background-color: rgb(16 21 42 / 0.94);
+  border-bottom-color: var(--deep-line);
+}
+.site-header[data-over="deep"] .header-bar .text-ink {
+  color: var(--on-deep);
+}
+.site-header[data-over="deep"] .header-bar svg line[stroke="#1A2136"] {
+  stroke: var(--on-deep);
+}
+.site-header[data-over="deep"] .nav-link {
+  color: var(--on-deep-soft);
+}
+.site-header[data-over="deep"] .nav-link:hover,
+.site-header[data-over="deep"] .nav-link[aria-current="page"] {
+  color: var(--on-deep);
+}
+.site-header[data-over="deep"] .nav-link[aria-current="page"] {
+  text-decoration-color: var(--gold-light);
+}
+.site-header[data-over="deep"] .header-bar .btn-primary {
+  background: var(--paper);
+  color: var(--ink);
+}
+.site-header[data-over="deep"] .header-bar .btn-primary:hover {
+  background: #ffffff;
+}
+.site-header[data-over="deep"] .menu-trigger {
+  color: var(--on-deep);
+}
+.site-header[data-over="deep"] :focus-visible {
+  outline-color: var(--gold-light);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

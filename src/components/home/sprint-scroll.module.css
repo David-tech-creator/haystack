@@ -1,0 +1,285 @@
+/*
+ * "How it works" scroll scene (sprint-scroll.tsx).
+ *
+ * Base styles are the static version: no track, every step listed with its
+ * text, the field shows the final frame as SVG. This is what no-JS and
+ * reduced-motion visitors get. The pinned scene lives entirely inside the
+ * LIVE media query below, which the component also checks with matchMedia,
+ * so server HTML and client agree and nothing shifts on hydration.
+ */
+
+.section {
+  position: relative;
+  background: var(--deep);
+  color: var(--on-deep);
+}
+
+/* ---- Static (no JS, reduced motion) ------------------------------------ */
+
+.stage {
+  padding-block: var(--section-y);
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.intro {
+  margin-top: 1.25rem;
+  max-width: 30rem;
+}
+
+.ticks,
+.rail {
+  display: none;
+}
+
+.steps {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.items {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: 1.1875rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--on-deep);
+}
+.num {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-light);
+}
+.body {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.body > p {
+  min-height: 0;
+  overflow: hidden;
+  padding-top: 0.375rem;
+  max-width: 34rem;
+}
+
+.field {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+.final,
+.field canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.field canvas {
+  display: none;
+}
+.section[data-live] .field canvas {
+  display: block;
+}
+.section[data-live] .final {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 2rem;
+    align-items: center;
+  }
+  .copy {
+    grid-column: 1 / span 5;
+  }
+  .field {
+    grid-column: 7 / span 6;
+  }
+}
+
+/* ---- Live: a tall track with the stage pinned -------------------------- */
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .track {
+    position: relative;
+    height: 330vh;
+    height: 330svh;
+  }
+  .stage {
+    position: sticky;
+    top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+    height: calc(100svh - var(--header-h));
+    overflow: hidden;
+    padding-block: 0;
+  }
+
+  /* Phones: heading and progress ticks on top, the field in the middle
+     (capped, centered), the current step underneath. */
+  .grid {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 1.25rem 1.5rem;
+  }
+  .copy {
+    display: contents;
+  }
+  .head {
+    order: 1;
+  }
+  .intro {
+    display: none;
+  }
+  .ticks {
+    order: 2;
+    display: flex;
+    gap: 6px;
+  }
+  .tick {
+    height: 2px;
+    flex: 1 1 0;
+    border-radius: 2px;
+    background: var(--deep-line);
+    transition: background-color 360ms var(--ease-out);
+  }
+  .tick[data-on] {
+    background: var(--gold-light);
+  }
+  .field {
+    order: 3;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: 60svh;
+    max-width: none;
+    aspect-ratio: auto;
+    margin-block: auto;
+  }
+  .steps {
+    order: 4;
+    margin-top: 0;
+  }
+  .items {
+    gap: 0;
+  }
+  .item {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+    transition:
+      opacity 360ms var(--ease-out),
+      transform 480ms var(--ease-out);
+  }
+  .item[data-on] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Desktop: copy left, field right; the steps sit on a rail that fills with
+     gold, the active one lit and its text open. */
+  @media (min-width: 1024px) {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 2rem;
+      align-items: center;
+      gap: 0 2rem;
+      padding-block: 0;
+    }
+    .copy {
+      display: block;
+      grid-column: 1 / span 5;
+    }
+    .intro {
+      display: block;
+    }
+    .ticks {
+      display: none;
+    }
+    .field {
+      grid-column: 6 / span 7;
+      height: min(84%, 760px);
+      max-height: none;
+      margin: 0;
+    }
+    .steps {
+      margin-top: 2.25rem;
+    }
+    .items {
+      display: block;
+      position: relative;
+      padding-left: 1.75rem;
+    }
+    .item {
+      position: relative;
+      opacity: 0.42;
+      transform: none;
+      padding-block: 0.55rem;
+    }
+    .item[data-on] {
+      opacity: 1;
+    }
+    .item::before {
+      content: "";
+      position: absolute;
+      left: calc(-1.75rem - 3px);
+      top: 1.05rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 9999px;
+      background: var(--deep);
+      box-shadow: inset 0 0 0 1px rgb(246 241 231 / 0.45);
+      transition:
+        background-color 360ms var(--ease-out),
+        box-shadow 360ms var(--ease-out);
+    }
+    .item[data-on]::before {
+      background: var(--gold-light);
+      box-shadow: 0 0 0 4px rgb(230 199 122 / 0.16);
+    }
+    .body {
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 520ms var(--ease-out),
+        opacity 360ms var(--ease-out);
+    }
+    .item[data-on] .body {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .rail {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 1.2rem;
+      bottom: 1.2rem;
+      width: 1px;
+      background: var(--deep-line);
+    }
+    .railFill {
+      position: absolute;
+      inset: 0;
+      background: var(--gold-light);
+      transform-origin: 50% 0;
+      transform: scaleY(0);
+      will-change: transform;
+    }
+  }
+}
