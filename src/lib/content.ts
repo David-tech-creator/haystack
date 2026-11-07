@@ -90,10 +90,10 @@ export const INSIDE = {
       href: "https://spott.io",
     },
     {
-      name: "Wispr Flow",
+      name: "Granola",
       role: "Notes",
-      body: "We talk, it types. Call notes turn into clean updates while the details are still fresh.",
-      href: "https://wisprflow.ai",
+      body: "It takes the notes so we can listen. Every call ends with clean notes, and the details make it into your update while they are still fresh.",
+      href: "https://www.granola.ai",
     },
   ],
   side: [
